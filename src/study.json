@@ -1,0 +1,83 @@
+{
+  "number": "19",
+  "name": "LinkedIn",
+  "brand": "GIFin",
+  "notice": "A layout study, not LinkedIn: its signed-in feed, profile, profile editing, settings and skill assessments rebuilt with Golden Grids as GIFin, a parody name, with characters from Quentin Tarantino's films as its members. Not affiliated with LinkedIn; nothing you do here is sent anywhere.",
+  "pages": {
+    "index": "Feed",
+    "profile": "Profile",
+    "edit": "Edit profile",
+    "settings": "Settings & Privacy",
+    "assessments": "Skill assessments"
+  },
+  "summary": "The signed-in application of linkedin.com, rebuilt as stacked golden grids: the feed, a member's profile, the editing of one's own profile, Settings & Privacy, and the skill assessments the reference ran until 2023. Its twenty-two members are characters from eight of Quentin Tarantino's films, each given the profile a professional network would ask of them, and nearly everything on the pages answers back: reactions, comments, reposts, polls, invitations, endorsements, edits, settings and timed tests, all kept in the reader's browser.",
+  "reviewed": {
+    "date": "October 15, 2026",
+    "method": "Built from the signed-in application's known structure, without signing in: the reference shows its feed, settings and full profiles only to members, and the study does not sign in to anyone's account. The retirement of skill assessments in 2023 is from the reference's own help page. No screenshot, photograph or text of the reference is kept in the repository or published.",
+    "pages": [
+      {
+        "label": "The feed (signed-in home)",
+        "url": "https://www.linkedin.com/feed/"
+      },
+      {
+        "label": "A member profile",
+        "url": "https://www.linkedin.com/"
+      },
+      {
+        "label": "Editing one's own profile",
+        "url": "https://www.linkedin.com/"
+      },
+      {
+        "label": "Settings & Privacy",
+        "url": "https://www.linkedin.com/mypreferences/d/categories/account"
+      },
+      {
+        "label": "Skill Assessments: no longer available (help)",
+        "url": "https://www.linkedin.com/help/learning/answer/a1690529"
+      }
+    ]
+  },
+  "real": [
+    "The shape of each page as the reference's application is known: the global navigation, the three columns of the feed, a post's author line, text, picture, counts and action bar with its six reactions, the profile's top card and sections, the edit forms and their limits (a headline of 220 characters, an About of 2,600), the six categories of Settings & Privacy, and a skill assessment's timed multiple-choice questions and badge.",
+    "The members' names, jobs, places and the turns in their stories, as their films establish them, checked against each film's plot on Wikipedia; and every answer in the skill assessments, checked against the Wikipedia or Wiktionary page named beside it."
+  ],
+  "invented": [
+    "The name. GIFin is a parody name made for this study; GIFin Premium plays on the reference's premium tier. Neither is a service.",
+    "Every post, comment, headline, About, recommendation, count and setting value: new writing in the study's own words for characters who never had such profiles. No line of dialogue from the films is quoted. Each member's dates run in the years of their own film. Where a film gives a character no employer, the study names the person they worked for, or none.",
+    "The skill assessments, which have six questions each where the reference's had fifteen, and the pass mark of seventy per cent; the reference's badge went to members in the top thirty per cent, which a study of one reader cannot measure.",
+    "Everything the reader does: posts, reactions, comments, votes, invitations, messages, endorsements, edits, settings and results are kept in this browser's local storage and sent nowhere. Settings & Privacy can clear them."
+  ],
+  "assets": [
+    {
+      "what": "Photographs",
+      "source": "Wikimedia Commons: museum, library and amateur photographers, each credited on the page and beside the photograph when it is opened. Each stands in for a place or thing a post describes; none is a still from a film",
+      "url": "https://commons.wikimedia.org/",
+      "licence": "Creative Commons BY, BY-SA and CC0 licences, and the public domain, as recorded for each photograph"
+    },
+    {
+      "what": "Faces",
+      "source": "None. Every avatar is drawn: the member's initials on a ground of their own colour, so that no real person's face is put to a fictional profile"
+    },
+    {
+      "what": "Facts",
+      "source": "Wikipedia plot summaries of the films, and Wikipedia and Wiktionary for the assessment answers; written in the study's own words",
+      "url": "https://en.wikipedia.org/",
+      "licence": "CC BY-SA 4.0; nothing is copied from them"
+    },
+    {
+      "what": "Icons and reaction glyphs",
+      "source": "Drawn for the study; none is the reference's"
+    },
+    {
+      "what": "Typeface",
+      "source": "The reader's own system face, as the reference uses"
+    },
+    {
+      "what": "Text",
+      "source": "The study's own"
+    }
+  ],
+  "owner": "LinkedIn or Microsoft, or by Quentin Tarantino or any studio, actor or rights holder of the films named here",
+  "repo": "https://github.com/gregoryedgerton/golden-grids-study-19-linkedin",
+  "updated": "October 15, 2026"
+}

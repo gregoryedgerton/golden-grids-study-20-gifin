@@ -1,0 +1,24 @@
+{
+  "name": "golden-grids-study-19-linkedin",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Golden Grids layout study 19: LinkedIn's signed-in feed, profile, profile editing, settings and skill assessments, rebuilt as stacked golden grids under the GIFin brand and populated with characters from Quentin Tarantino's films, with the emphasis on interaction.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@gifcommit/golden-grids": "^5.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.3.0"
+  }
+}
