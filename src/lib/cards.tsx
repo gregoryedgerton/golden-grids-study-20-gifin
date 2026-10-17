@@ -62,8 +62,8 @@ export function FactStrip({ f }: { f: Fact }) {
 export function TextTile({ title, body, href, label, tone = "tile" }: { title: string; body?: string; href?: string; label?: string; tone?: "tile" | "blue" | "ink" }) {
   const inner = (
     <>
-      <div className="box__fit box__fit--top"><Fit as="p" className="fit--title" min={12} max={44}>{title}</Fit></div>
-      {body && <div className="box__body"><Fit as="div" className="fit--body" min={12} max={20}><p>{body}</p></Fit></div>}
+      <div className="box__fit box__fit--top"><Fit as="p" className="fit--title" min={12} max={64}>{title}</Fit></div>
+      {body && <div className="box__body"><Fit as="div" className="fit--body" min={12} max={26}><p>{body}</p></Fit></div>}
       {href && <div className="box__foot"><span className="more more--link" aria-hidden="true">Open</span></div>}
     </>
   );

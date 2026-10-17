@@ -67,7 +67,7 @@ function App() {
       )}
       <Section title="People also viewed">
         <ul className="suggest">{viewed.map((v) => (
-          <li key={v.id}><a href={profileHref(v.id)} tabIndex={-1} aria-hidden="true"><Avatar m={v} size={48} /></a><div><a href={profileHref(v.id)}><strong>{fullName(v)}</strong></a><p>{v.headline}</p>{!CONNECTED.has(v.id) && <FollowButton id={v.id} />}</div></li>
+          <li key={v.id}><a href={profileHref(v.id)} tabIndex={-1} aria-hidden="true"><Avatar m={v} size={64} /></a><div><a href={profileHref(v.id)}><strong>{fullName(v)}</strong></a><p>{v.headline}</p>{!CONNECTED.has(v.id) && <FollowButton id={v.id} />}</div></li>
         ))}</ul>
       </Section>
       <RailFooter />
@@ -106,8 +106,8 @@ function App() {
         <section className="wrap scard" aria-labelledby="rec-title">
           <h2 id="rec-title" className="card__title">Recommendations</h2>
           <Tabs label="Recommendations" tabs={[
-            { id: "rec", label: "Received", body: m.recs?.length ? <ul className="recs">{m.recs.map((r) => { const f = member(r.from)!; return <li key={r.from}><Avatar m={f} size={48} /><div><a href={profileHref(f.id)}><strong>{fullName(f)}</strong></a><p className="note">{f.headline}</p><p className="note">{r.relation}</p><p>{r.text}</p></div></li>; })}</ul> : <p className="note">No recommendations received yet.</p> },
-            { id: "giv", label: "Given", body: given.length ? <ul className="recs">{given.map((r) => { const t = member(r.to)!; return <li key={r.to}><Avatar m={t} size={48} /><div><a href={profileHref(t.id)}><strong>{fullName(t)}</strong></a><p className="note">{t.headline}</p><p>{r.text}</p></div></li>; })}</ul> : <p className="note">No recommendations given yet.</p> },
+            { id: "rec", label: "Received", body: m.recs?.length ? <ul className="recs">{m.recs.map((r) => { const f = member(r.from)!; return <li key={r.from}><Avatar m={f} size={64} /><div><a href={profileHref(f.id)}><strong>{fullName(f)}</strong></a><p className="note">{f.headline}</p><p className="note">{r.relation}</p><p>{r.text}</p></div></li>; })}</ul> : <p className="note">No recommendations received yet.</p> },
+            { id: "giv", label: "Given", body: given.length ? <ul className="recs">{given.map((r) => { const t = member(r.to)!; return <li key={r.to}><Avatar m={t} size={64} /><div><a href={profileHref(t.id)}><strong>{fullName(t)}</strong></a><p className="note">{t.headline}</p><p>{r.text}</p></div></li>; })}</ul> : <p className="note">No recommendations given yet.</p> },
           ]} />
         </section>
         {m.languages && (
@@ -119,7 +119,7 @@ function App() {
         <section className="wrap scard" aria-labelledby="int-title">
           <h2 id="int-title" className="card__title">Interests</h2>
           <Tabs label="Interests" tabs={[
-            { id: "voices", label: "Top Voices", body: interests.length ? <ul className="entries">{interests.map((v) => <li key={v.id}><Avatar m={v} size={48} /><div><a href={profileHref(v.id)}><strong>{fullName(v)}</strong></a><p className="note">{v.headline}</p><p className="note">{v.followers.toLocaleString("en-US")} followers</p><FollowButton id={v.id} /></div></li>)}</ul> : <p className="note">Nobody followed yet.</p> },
+            { id: "voices", label: "Top Voices", body: interests.length ? <ul className="entries">{interests.map((v) => <li key={v.id}><Avatar m={v} size={64} /><div><a href={profileHref(v.id)}><strong>{fullName(v)}</strong></a><p className="note">{v.headline}</p><p className="note">{v.followers.toLocaleString("en-US")} followers</p><FollowButton id={v.id} /></div></li>)}</ul> : <p className="note">Nobody followed yet.</p> },
             { id: "companies", label: "Companies", body: companies.length ? <ul className="entries">{companies.map((c) => <li key={c}><CompanyLogo name={c} size={48} /><div><strong>{c}</strong></div></li>)}</ul> : <p className="note">No companies followed.</p> },
           ]} />
         </section>

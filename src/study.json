@@ -10,7 +10,7 @@
     "settings": "Settings & Privacy",
     "assessments": "Skill assessments"
   },
-  "summary": "The signed-in application of linkedin.com, rebuilt as stacked golden grids: the feed, a member's profile, the editing of one's own profile, Settings & Privacy, and the skill assessments the reference ran until 2023. Its twenty-four members are fruits and vegetables, each with the profile a professional network would ask of them and a pair of googly eyes that match what they write. The voice is cheeky and the facts are true. Nearly everything on the pages answers back: reactions, comments, reposts, polls, invitations, endorsements, edits, settings and timed tests, all kept in the reader's browser.",
+  "summary": "The signed-in application of linkedin.com, rebuilt as stacked golden grids: the feed, a member's profile, the editing of one's own profile, Settings & Privacy, and the skill assessments the reference ran until 2023. Its twenty-five members are fruits and vegetables with first names (Tessa Tomato, Otto Orange, Chelsea Chilli), each with the profile a professional network would ask of them and a pair of googly eyes that match what they write. The feed mixes photographs, galleries, carousels of slides and long reads on the dishes each one is used in. The voice is cheeky and the facts are true. Nearly everything on the pages answers back: reactions, comments, reposts, polls, invitations, endorsements, edits, settings and timed tests, all kept in the reader's browser.",
   "reviewed": {
     "date": "October 16, 2026",
     "method": "Built from the signed-in application's known structure, without signing in: the reference shows its feed, settings and full profiles only to members, and the study does not sign in to anyone's account. The retirement of skill assessments in 2023 is from the reference's own help page. No screenshot, photograph or text of the reference is kept in the repository or published.",
@@ -40,11 +40,11 @@
   "real": [
     "The shape of each page as the reference's application is known: the global navigation, the three columns of the feed, a post's author line, text, picture, counts and action bar with its six reactions, the profile's top card and sections, the edit forms and their limits (a headline of 220 characters, an About of 2,600), the six categories of Settings & Privacy, and a skill assessment's timed multiple-choice questions and badge.",
     "Every fact about a member: its botany, where and when it was domesticated or bred, the people in its history (Rudolph Hass, Gregor Mendel, Wilbur Scoville, James Lind, Joseph Paxton, Norman Sondag) and the dates of each, checked against the Wikipedia page the disclosure names for that member; and every answer in the skill assessments, checked against the Wikipedia page named beside it. Claims that could not be checked were left out.",
-    "Each member's surname, which is its genus: the nightshades are all Solanum and the brassicas all Brassica. Pea's surname is shown as under review, as its genus is disputed."
+    "Each member's scientific name, shown as a profile detail, and every fact in the long reads, galleries and carousels about the dishes the members are used in (pizza Margherita, gazpacho, baba ghanoush, moussaka, Hawaiian pizza, al pastor, peach Melba, caldo verde, colcannon, nixtamalization, guacamole, bananas Foster), each checked against the Wikipedia page the disclosure names for that post."
   ],
   "invented": [
     "The name. GIFin is a parody name made for this study; GIFin Premium plays on the reference's premium tier. Neither is a service.",
-    "Every post, comment, headline, About, recommendation, count and setting value: new writing in the study's own words, in the members' own cheeky voices. The jokes are the study's; the facts inside them are not invented. Job titles, employers and dates turn a plant's history into a career: Tomato's role as a vegetable, for tariff purposes, begins in 1893, the year of Nix v. Hedden. Roles whose dates no source gives exactly carry a phrase in place of years.",
+    "The members' first names (Tessa Tomato, Otto Orange, Peter Peppers, Chelsea Chilli, Eleanor Eggplant and the rest), at Greg's direction, and every post, comment, headline, About, recommendation, count and setting value: new writing in the study's own words, in the members' own cheeky voices. The jokes and the opinions are the study's; the facts inside them are not invented. Job titles, employers and dates turn a plant's history into a career: Tessa Tomato's role as a vegetable, for tariff purposes, begins in 1893, the year of Nix v. Hedden. Roles whose dates no source gives exactly carry a phrase in place of years.",
     "The googly eyes, drawn in CSS over each photograph. Each post and comment sets its author's mood (happy, proud, cheeky, surprised, worried, curious or sleepy), and what the reader types sets the mood of their own. The eyes wobble and blink, and hold still with reduced motion.",
     "The skill assessments, which have six questions each where the reference's had fifteen, and the pass mark of seventy per cent; the reference's badge went to members in the top thirty per cent, which a study of one reader cannot measure.",
     "Everything the reader does: posts, reactions, comments, votes, invitations, messages, endorsements, edits, settings and results are kept in this browser's local storage and sent nowhere. Settings & Privacy can clear them."
@@ -52,7 +52,7 @@
   "assets": [
     {
       "what": "Photographs",
-      "source": "Wikimedia Commons: amateur and agency photographers, each credited on the page and beside the photograph when it is opened. The avatars are photographs of the produce itself; the covers and post pictures are of its fields, trees and markets",
+      "source": "Wikimedia Commons, each credited on the page and beside the photograph when it is opened. The avatars are photographs of the produce itself; the covers and post pictures are its fields, trees, markets and the dishes it is used in. No person appears in any photograph",
       "url": "https://commons.wikimedia.org/",
       "licence": "Creative Commons BY, BY-SA and CC0 licences, and the public domain, as recorded for each photograph"
     },

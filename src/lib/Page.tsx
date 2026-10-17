@@ -20,7 +20,7 @@ function Search() {
   const [q, setQ] = useState("");
   const id = useId();
   const t = q.trim().toLowerCase();
-  const people = t.length >= 2 ? MEMBERS.filter((m) => `${fullName(m)} ${m.headline}`.toLowerCase().includes(t)).slice(0, 5) : [];
+  const people = t.length >= 2 ? MEMBERS.filter((m) => `${fullName(m)} ${m.binomial} ${m.headline}`.toLowerCase().includes(t)).slice(0, 5) : [];
   const tests = t.length >= 2 ? ASSESSMENTS.filter((a) => a.skill.toLowerCase().includes(t)).slice(0, 2) : [];
   const n = people.length + tests.length;
   return (
@@ -33,7 +33,7 @@ function Search() {
         <div className="search__hits">
           {n === 0 && <p className="search__none">No members or assessments match “{q.trim()}”.</p>}
           {people.length > 0 && <p className="search__head">People</p>}
-          <ul>{people.map((m) => <li key={m.id}><a href={profileHref(m.id)}><Avatar m={m} size={36} /><span><strong>{fullName(m)}</strong><small>{m.headline}</small></span></a></li>)}</ul>
+          <ul>{people.map((m) => <li key={m.id}><a href={profileHref(m.id)}><Avatar m={m} size={44} /><span><strong>{fullName(m)}</strong><small>{m.headline}</small></span></a></li>)}</ul>
           {tests.length > 0 && <p className="search__head">Skill assessments</p>}
           <ul>{tests.map((a) => <li key={a.id}><a href={assessmentHref(a.id)}><span className="search__icon2"><Icon name={a.icon} size={22} /></span><span><strong>{a.skill}</strong><small>Skill assessment · {a.questions.length} questions</small></span></a></li>)}</ul>
         </div>
@@ -54,7 +54,7 @@ function MeMenu() {
       </button>
       {open && (
         <div className="memenu" id="me-menu">
-          <div className="memenu__who"><Avatar m={m} size={56} /><div><strong>{fullName(m)}</strong><p>{m.headline}</p></div></div>
+          <div className="memenu__who"><Avatar m={m} size={72} /><div><strong>{fullName(m)}</strong><p>{m.headline}</p></div></div>
           <p className="memenu__view"><a className="btn btn--outline btn--block" href={PAGES.profile}>View profile</a></p>
           <p className="memenu__h">Account</p>
           <ul>

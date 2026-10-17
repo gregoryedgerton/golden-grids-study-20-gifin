@@ -2,8 +2,9 @@
  * Every member, post, comment and question in the study. The members are
  * fruits and vegetables, each given the profile a professional network would
  * ask of them: a headline, an About, the work they have held and the skills it
- * took. Their surnames are their genera, so the nightshades are all Solanum
- * and the brassicas all Brassica. The voice is cheeky and the facts are true:
+ * took. Each goes by a first name and the name of what they are (Otto
+ * Orange, Chelsea Chilli); the scientific name is a profile detail. The
+ * voice is cheeky and the facts are true:
  * every date, place and claim about a plant is checked against the Wikipedia
  * page named in the member's `source`, and anything that could not be checked
  * was left out. Profiles stand in the present year. Nothing is sent anywhere;
@@ -25,7 +26,7 @@ export const ME = "tomato";
 /** The year every profile stands in: a role with no end runs to "Present". */
 export const YEAR = 2026;
 /** The signed-in member's address, the study's own: `.example` reaches no one. */
-export const EMAIL = "tomato@solanum.example";
+export const EMAIL = "tessa@tomato.example";
 
 /**
  * A role. Years before the common era are negative. A role whose dates no
@@ -46,6 +47,8 @@ export interface Member {
   id: string;
   first: string;
   last: string;
+  /** The scientific name, shown under the name on the profile and in Contact info. */
+  binomial: string;
   pronouns?: string;
   headline: string;
   place: string;
@@ -78,7 +81,7 @@ const W = (path: string) => `https://en.wikipedia.org/wiki/${path}`;
 
 export const MEMBERS: Member[] = [
   {
-    id: "tomato", first: "Tomato", last: "Solanum", family: "Solanaceae", source: W("Tomato"), photo: "tomato", eyes: [0.6, 0.5, 0.2, 0.24], mood: "happy", color: "#c62828", cover: "field-tomato",
+    id: "tomato", first: "Tessa", last: "Tomato", binomial: "Solanum lycopersicum", family: "Solanaceae", source: W("Tomato"), photo: "tomato", eyes: [0.6, 0.5, 0.2, 0.24], mood: "happy", color: "#c62828", cover: "field-tomato",
     headline: "Fruit by birth, vegetable by law · Sauces, salads and one Supreme Court case",
     place: "Western South America",
     about: "Botanically I'm an edible berry, from the nightshade family. Legally, in the United States, I've been a vegetable since 1893, when the Supreme Court decided unanimously that I'm served at dinner, not at dessert. I've learned to be both. I was being grown in southern Mexico by 500 BCE, the Aztecs called the red ones xitomatl, and in 1554 Pietro Andrea Mattioli called us pomi d'oro, golden apples, which I'm still not over. Open to new kitchens anywhere, from salsa to ketchup.",
@@ -102,7 +105,7 @@ export const MEMBERS: Member[] = [
     ],
   },
   {
-    id: "potato", first: "Potato", last: "Solanum", family: "Solanaceae", source: W("Potato"), photo: "potato", eyes: [0.5, 0.48, 0.2, 0.24], mood: "happy", color: "#8d6e46", cover: "field-potato",
+    id: "potato", first: "Paolo", last: "Potato", binomial: "Solanum tuberosum", family: "Solanaceae", source: W("Potato"), photo: "potato", eyes: [0.5, 0.48, 0.2, 0.24], mood: "happy", color: "#8d6e46", cover: "field-potato",
     headline: "Stem tuber, not a root · Domesticated in the Andes 7,000 to 10,000 years ago · Mashed, roasted, fried",
     place: "Southern Peru and northwestern Bolivia",
     about: "I'm a stem tuber, not a root, and I'll explain the difference to anyone who asks. I was domesticated in southern Peru and northwestern Bolivia between 7,000 and 10,000 years ago, and the Spanish brought me to Europe in the second half of the 16th century. Since then I've been mashed, roasted, fried and chipped, and I've enjoyed most of it. Same family as Tomato, Eggplant and Chili: the nightshades.",
@@ -120,7 +123,7 @@ export const MEMBERS: Member[] = [
     recs: [{ from: "tomato", relation: "Tomato worked with Potato on the same team", text: "Potato fed half the world and never made a fuss about it. Reliable, versatile, and very good company in a stew." }],
   },
   {
-    id: "eggplant", first: "Eggplant", last: "Solanum", family: "Solanaceae", source: W("Eggplant"), photo: "eggplant", eyes: [0.47, 0.45, 0.19, 0.23], mood: "curious", color: "#5b2a6e", cover: "market",
+    id: "eggplant", first: "Eleanor", last: "Eggplant", binomial: "Solanum melongena", family: "Solanaceae", source: W("Eggplant"), photo: "eggplant", eyes: [0.47, 0.45, 0.19, 0.23], mood: "curious", color: "#5b2a6e", cover: "market",
     headline: "Berry · Also known as aubergine and brinjal · Domesticated twice",
     place: "South Asia and East Asia",
     about: "Three names, one berry. Botanically I'm a berry. I'm an eggplant to some of you, an aubergine to others and a brinjal to others still. I was domesticated twice, once in South Asia and once in East Asia, so I've been doing two jobs from the start. I absorb oils and flavours, which some call a weakness and I call listening.",
@@ -135,7 +138,7 @@ export const MEMBERS: Member[] = [
     connections: 412, followers: 2900,
   },
   {
-    id: "chili", first: "Chili", last: "Capsicum", family: "Solanaceae", source: W("Chili_pepper"), photo: "chili", eyes: [0.5, 0.45, 0.22, 0.26], mood: "cheeky", color: "#b71c1c", cover: "dried-chili",
+    id: "chili", first: "Chelsea", last: "Chilli", binomial: "Capsicum, several species", family: "Solanaceae", source: W("Chili_pepper"), photo: "chili", eyes: [0.5, 0.45, 0.22, 0.26], mood: "cheeky", color: "#b71c1c", cover: "dried-chili",
     headline: "Heat, measured in Scoville units since 1912 · Capsaicin specialist · First cultivated in Mexico",
     place: "Mexico",
     about: "My heat comes from capsaicin, and since 1912 people have measured it in Scoville heat units, after Wilbur Scoville, the pharmacist who devised the test. I was first cultivated in Mexico. On Columbus's second voyage, in 1493, Diego Álvarez Chanca wrote about my medicinal uses, and I've been travelling ever since. Yes, I'm a nightshade too. Tomato and I get along famously in salsa.",
@@ -152,7 +155,24 @@ export const MEMBERS: Member[] = [
     connections: 388, followers: 9600,
   },
   {
-    id: "carrot", first: "Carrot", last: "Daucus", family: "Apiaceae", source: W("Carrot"), photo: "carrot", eyes: [0.5, 0.45, 0.21, 0.25], mood: "proud", color: "#e46a12", cover: "market-roots",
+    id: "pepper", first: "Peter", last: "Peppers", binomial: "Capsicum annuum, Grossum Group", family: "Solanaceae", source: W("Bell_pepper"), photo: "pepper", eyes: [0.24, 0.74, 0.15, 0.19], mood: "happy", color: "#b03a2e", cover: "f-pepper",
+    headline: "Bell pepper · Zero on the Scoville scale · Red is just green that waited",
+    place: "Your salad drawer",
+    about: "I'm the fruit of the Grossum Group of Capsicum annuum: Chelsea Chilli's relation, without the heat. I score zero on the Scoville scale. I come in red, yellow, orange, green, white and purple, and the red ones are simply green ones that ripened. Botanically I'm a berry, though you cook me as a vegetable, and I'm a rich source of vitamin C. I go by a few names: capsicum, paprika (I'm used to make the spice) and, in parts of the American Midwest, mango, which I've stopped correcting.",
+    roles: [
+      { title: "Cold Soup Specialist", company: "Gazpacho", type: "Seasonal", dates: "In most recipes", place: "Southern Iberia", text: "Most gazpacho includes bell peppers, with stale bread, tomato, cucumber, garlic, olive oil, wine vinegar, water and salt." },
+      { title: "Spice Supplier", company: "Paprika", type: "Freelance", dates: "Dried and ground", text: "Bell peppers may be used in the production of the spice paprika." },
+    ],
+    skills: [
+      { name: "Crunch", endorsements: 120, by: ["carrot"] },
+      { name: "Colour Range", endorsements: 96, by: ["tomato"] },
+      { name: "Vitamin C", endorsements: 77, by: ["orange", "lemon"] },
+      { name: "Nightshades", endorsements: 21, assessment: "nightshades" },
+    ],
+    connections: 340, followers: 7400,
+  },
+  {
+    id: "carrot", first: "Caroline", last: "Carrot", binomial: "Daucus carota subsp. sativus", family: "Apiaceae", source: W("Carrot"), photo: "carrot", eyes: [0.5, 0.45, 0.21, 0.25], mood: "proud", color: "#e46a12", cover: "market-roots",
     headline: "Root vegetable · Orange since Dutch growers bred me that way · Formerly white, yellow, red, purple and black",
     place: "Iran",
     about: "I probably began in Iran, where I was first grown for my leaves and seeds, not my root. Heirloom carrots still come in white, yellow, red, purple and black. The orange carrot was created by Dutch growers, and the Western carrot emerged in the Netherlands in the 16th or 17th century. You may have heard I turned orange to honour the House of Orange. It's a lovely story, and it's only a popular claim.",
@@ -168,7 +188,7 @@ export const MEMBERS: Member[] = [
     connections: 466, followers: 4400,
   },
   {
-    id: "broccoli", first: "Broccoli", last: "Brassica", family: "Brassicaceae", source: W("Broccoli"), photo: "broccoli", eyes: [0.5, 0.45, 0.21, 0.25], mood: "happy", color: "#2e7d32", cover: "field-broccoli",
+    id: "broccoli", first: "Bruno", last: "Broccoli", binomial: "Brassica oleracea, Italica Group", family: "Brassicaceae", source: W("Broccoli"), photo: "broccoli", eyes: [0.5, 0.45, 0.21, 0.25], mood: "happy", color: "#2e7d32", cover: "field-broccoli",
     headline: "Brassica oleracea · One species, many careers · Calabrese, after Calabria",
     place: "Calabria, Italy",
     about: "Same species as Kale, Cauliflower and Brussels Sprout, and as cabbage, kohlrabi, collards and gai lan too: we're all Brassica oleracea, bred apart from one plant first cultivated in the eastern Mediterranean. One of my varieties, Calabrese, is named after Calabria. The Italian word broccolo turns up in the 17th century. Family reunions take a while.",
@@ -183,7 +203,7 @@ export const MEMBERS: Member[] = [
     connections: 370, followers: 5100,
   },
   {
-    id: "kale", first: "Kale", last: "Brassica", family: "Brassicaceae", source: W("Kale"), photo: "kale", eyes: [0.45, 0.45, 0.21, 0.25], mood: "proud", color: "#1b5e20", cover: "frost-kale",
+    id: "kale", first: "Kate", last: "Kale", binomial: "Brassica oleracea, Acephala Group", family: "Brassicaceae", source: W("Kale"), photo: "kale", eyes: [0.45, 0.45, 0.21, 0.25], mood: "proud", color: "#1b5e20", cover: "frost-kale",
     headline: "Brassica oleracea · Sweeter after a hard frost · Survives −15 °C",
     place: "Eastern Mediterranean and Anatolia",
     about: "I was being cultivated in the eastern Mediterranean and Anatolia by 2000 BCE, and I've been fashionable at least twice since. I get sweeter after a heavy frost and I can survive down to −15 °C, so I'm the one still standing in the garden in January. In some Scots dialects my name simply means food, and to be off one's kail is to be off one's food.",
@@ -199,7 +219,7 @@ export const MEMBERS: Member[] = [
     connections: 500, followers: 12100,
   },
   {
-    id: "cauliflower", first: "Cauliflower", last: "Brassica", family: "Brassicaceae", source: W("Cauliflower"), photo: "cauliflower", eyes: [0.5, 0.42, 0.21, 0.25], mood: "sleepy", color: "#7d7a5c",
+    id: "cauliflower", first: "Claude", last: "Cauliflower", binomial: "Brassica oleracea, Botrytis Group", family: "Brassicaceae", source: W("Cauliflower"), photo: "cauliflower", eyes: [0.5, 0.42, 0.21, 0.25], mood: "sleepy", color: "#7d7a5c",
     headline: "Brassica oleracea · My head is called the curd · Quiet member of a loud family",
     place: "Cyprus",
     about: "The white head you eat is called the curd. In the Middle Ages I was associated with Cyprus. I'm the quiet one in the Brassica oleracea family, and with Broccoli, Kale and Brussels Sprout around, somebody has to be.",
@@ -214,7 +234,7 @@ export const MEMBERS: Member[] = [
     connections: 214, followers: 1300,
   },
   {
-    id: "brussels", first: "Brussels Sprout", last: "Brassica", family: "Brassicaceae", source: W("Brussels_sprout"), photo: "brussels", eyes: [0.45, 0.42, 0.21, 0.25], mood: "worried", color: "#558b2f",
+    id: "brussels", first: "Sebastian", last: "Sprout", binomial: "Brassica oleracea, Gemmifera Group", family: "Brassicaceae", source: W("Brussels_sprout"), photo: "brussels", eyes: [0.45, 0.42, 0.21, 0.25], mood: "worried", color: "#558b2f",
     headline: "Brassica oleracea · Named after Brussels · Open to a second chance at your table",
     place: "Brussels, Belgium",
     about: "I may have been grown near Brussels as early as the 13th century, which is where my name comes from. Same species as Broccoli, Kale and Cauliflower. Some of you left me on the plate as children. I've grown since, and I'm told you have too.",
@@ -230,7 +250,7 @@ export const MEMBERS: Member[] = [
     open: { titles: ["Side Dish", "Winter Vegetable"], places: ["Brussels, Belgium", "Anywhere"], types: ["Full-time", "Temporary"] },
   },
   {
-    id: "banana", first: "Banana", last: "Musa", family: "Musaceae", source: W("Cavendish_banana"), photo: "banana", eyes: [0.45, 0.62, 0.16, 0.21], mood: "worried", color: "#b8860b", cover: "field-banana",
+    id: "banana", first: "Barry", last: "Banana", binomial: "Musa acuminata, Cavendish", family: "Musaceae", source: W("Cavendish_banana"), photo: "banana", eyes: [0.45, 0.62, 0.16, 0.21], mood: "worried", color: "#b8860b", cover: "field-banana",
     headline: "Cavendish · Main export banana since Gros Michel · Named after the 6th Duke of Devonshire",
     place: "Chatsworth, Derbyshire",
     about: "Botanically I'm a berry, and bananas were probably first domesticated in New Guinea. I'm the Cavendish, named after William Cavendish, 6th Duke of Devonshire, whose head gardener, Joseph Paxton, grew me in the greenhouses at Chatsworth House. I went into mass commercial production in 1903 and took over from Gros Michel after Panama disease devastated it. I don't take that lightly: no fungicide works against TR4, the strain that threatens me now, and breeders are looking for what comes next.",
@@ -246,7 +266,7 @@ export const MEMBERS: Member[] = [
     connections: 500, followers: 26000,
   },
   {
-    id: "strawberry", first: "Strawberry", last: "Fragaria", family: "Rosaceae", source: W("Garden_strawberry"), photo: "strawberry", eyes: [0.6, 0.42, 0.19, 0.23], mood: "cheeky", color: "#d81b60",
+    id: "strawberry", first: "Stella", last: "Strawberry", binomial: "Fragaria × ananassa", family: "Rosaceae", source: W("Garden_strawberry"), photo: "strawberry", eyes: [0.6, 0.42, 0.19, 0.23], mood: "cheeky", color: "#d81b60",
     headline: "Aggregate accessory fruit · Not a berry, whatever the name says · Bred in Brittany in the 1750s",
     place: "Brittany, France",
     about: "Let's get it out of the way: botanically I'm not a berry. I'm an aggregate accessory fruit, and each of the little seeds on my outside is an achene, a fruit of its own with a seed inside. I was first bred in Brittany in the 1750s, from a strawberry of eastern North America and one that Amédée-François Frézier brought from Chile in 1714. My species name, ananassa, means pineapple, for my flavour. Pineapple and I are on very good terms.",
@@ -261,7 +281,7 @@ export const MEMBERS: Member[] = [
     connections: 500, followers: 21000,
   },
   {
-    id: "avocado", first: "Avocado", last: "Persea", family: "Lauraceae", source: W("Hass_avocado"), photo: "avocado", eyes: [0.47, 0.25, 0.15, 0.2], mood: "proud", color: "#4e6b2f", cover: "field-avocado",
+    id: "avocado", first: "Ava", last: "Avocado", binomial: "Persea americana, Hass", family: "Lauraceae", source: W("Hass_avocado"), photo: "avocado", eyes: [0.47, 0.25, 0.15, 0.2], mood: "proud", color: "#4e6b2f", cover: "field-avocado",
     headline: "Hass · One mother tree, planted by a mail carrier in 1926 · Big on toast",
     place: "La Habra Heights, California",
     about: "In 1926 Rudolph Hass, a mail carrier in La Habra Heights, California, planted three seeds, and one of them grew into my mother tree. He patented it in 1935, and every commercial Hass tree descends from it. The mother tree died at 76, in 2002, after a long fight with root rot. Today around four in five avocados grown worldwide are Hass. I'm big on toast. I'm aware of it.",
@@ -277,7 +297,7 @@ export const MEMBERS: Member[] = [
     connections: 500, followers: 41000,
   },
   {
-    id: "kiwi", first: "Kiwifruit", last: "Actinidia", family: "Actinidiaceae", source: W("Kiwifruit"), photo: "kiwi", eyes: [0.47, 0.5, 0.17, 0.22], mood: "cheeky", color: "#6d5a2b", cover: "field-kiwi",
+    id: "kiwi", first: "Kevin", last: "Kiwi", binomial: "Actinidia deliciosa", family: "Actinidiaceae", source: W("Kiwifruit"), photo: "kiwi", eyes: [0.47, 0.5, 0.17, 0.22], mood: "cheeky", color: "#6d5a2b", cover: "field-kiwi",
     headline: "Formerly Chinese gooseberry · Renamed in 1959 · Native to China, grown commercially in New Zealand",
     place: "New Zealand",
     about: "I'm native to China, where I was first described in the 12th century. New Zealand began growing me commercially in the early 20th century, and in 1959 the exporter Turners & Growers adopted the name kiwifruit, on the advice of Norman Sondag. Before that I was the Chinese gooseberry. A rebrand can work: ask anyone who has eaten me with a spoon.",
@@ -293,7 +313,7 @@ export const MEMBERS: Member[] = [
     connections: 320, followers: 7300,
   },
   {
-    id: "lemon", first: "Lemon", last: "Citrus", family: "Rutaceae", source: W("Lemon"), photo: "lemon", eyes: [0.48, 0.46, 0.22, 0.26], mood: "proud", color: "#9a7b00", cover: "field-lemon",
+    id: "lemon", first: "Leo", last: "Lemon", binomial: "Citrus × limon", family: "Rutaceae", source: W("Lemon"), photo: "lemon", eyes: [0.48, 0.46, 0.22, 0.26], mood: "proud", color: "#9a7b00", cover: "field-lemon",
     headline: "Hybrid of citron and bitter orange · Scurvy trial, 1747 · Makes lemonade, professionally",
     place: "Northeastern India",
     about: "I'm a hybrid of citron and bitter orange, from northeastern India in the first millennium BC. In 1747 James Lind tested remedies for scurvy on sailors, and lemon juice was part of the trial. I'm sour, and I'm told it's my best quality.",
@@ -309,7 +329,7 @@ export const MEMBERS: Member[] = [
     connections: 455, followers: 6200,
   },
   {
-    id: "orange", first: "Orange", last: "Citrus", family: "Rutaceae", source: W("Orange_(fruit)"), photo: "orange", eyes: [0.5, 0.45, 0.23, 0.27], mood: "happy", color: "#d35400", cover: "field-orange",
+    id: "orange", first: "Otto", last: "Orange", binomial: "Citrus × sinensis", family: "Rutaceae", source: W("Orange_(fruit)"), photo: "orange", eyes: [0.5, 0.45, 0.23, 0.27], mood: "happy", color: "#d35400", cover: "field-orange",
     headline: "Hybrid of mandarin and pomelo · The colour was named after me · Hesperidium",
     place: "Southern China",
     about: "I'm a hybrid of mandarin and pomelo, from a region that takes in southern China, northeast India and Myanmar. The earliest mention of the sweet orange is in Chinese literature, in 314 BC. Botanically I'm a hesperidium, a modified berry. And yes, the colour was named after the fruit, not the other way round. Brazil grows more of me than anywhere else.",
@@ -324,7 +344,7 @@ export const MEMBERS: Member[] = [
     connections: 500, followers: 15800,
   },
   {
-    id: "grapefruit", first: "Grapefruit", last: "Citrus", family: "Rutaceae", source: W("Grapefruit"), photo: "grapefruit", eyes: [0.4, 0.42, 0.2, 0.24], mood: "worried", color: "#c2185b",
+    id: "grapefruit", first: "Grace", last: "Grapefruit", binomial: "Citrus × paradisi", family: "Rutaceae", source: W("Grapefruit"), photo: "grapefruit", eyes: [0.4, 0.42, 0.2, 0.24], mood: "worried", color: "#c2185b",
     headline: "The forbidden fruit · From Barbados, 18th century · Please check with your pharmacist",
     place: "Barbados",
     about: "I began in Barbados in the 18th century, a cross of the sweet orange and the pomelo, and I was once called the forbidden fruit. I interact with a good many medicines, so ask your pharmacist before we get close.",
@@ -339,10 +359,10 @@ export const MEMBERS: Member[] = [
     connections: 96, followers: 980,
   },
   {
-    id: "pea", first: "Pea", last: "Pisum", family: "Fabaceae", source: W("Pea"), photo: "pea", eyes: [0.5, 0.45, 0.2, 0.25], mood: "proud", color: "#558b2f", cover: "pea-plants",
-    headline: "Gregor Mendel's research subject, 1856 to 1863 · Nitrogen fixer · Surname under review",
+    id: "pea", first: "Petra", last: "Pea", binomial: "Pisum sativum, or Lathyrus oleraceus", family: "Fabaceae", source: W("Pea"), photo: "pea", eyes: [0.5, 0.45, 0.2, 0.25], mood: "proud", color: "#558b2f", cover: "pea-plants",
+    headline: "Gregor Mendel's research subject, 1856 to 1863 · Nitrogen fixer · Scientific name under review",
     place: "Brno, Czech Republic",
-    about: "Between 1856 and 1863 Gregor Mendel grew some 28,000 plants at St Thomas's Abbey in Brno, most of them peas, and followed seven of our traits from one generation to the next. He published in 1866, and hardly anyone noticed until 1900. Botanically my pod is a fruit. Bacteria in nodules on my roots turn nitrogen from the air into ammonia, which feeds the soil after I'm gone. My surname is under review: Linnaeus called me Pisum sativum in 1753, and some sources now say Lathyrus oleraceus.",
+    about: "Between 1856 and 1863 Gregor Mendel grew some 28,000 plants at St Thomas's Abbey in Brno, most of them peas, and followed seven of our traits from one generation to the next. He published in 1866, and hardly anyone noticed until 1900. Botanically my pod is a fruit. Bacteria in nodules on my roots turn nitrogen from the air into ammonia, which feeds the soil after I'm gone. My scientific name is under review: Linnaeus called me Pisum sativum in 1753, and some sources now say Lathyrus oleraceus.",
     roles: [
       { title: "Nitrogen Fixer", company: "Rhizobia, in my root nodules", type: "Full-time", dates: "Every season", text: "Atmospheric nitrogen turned into ammonia, and returned to the soil for the next crop." },
       { title: "Crop", company: "Near Eastern agriculture", type: "Full-time", start: -10000, approx: true, place: "Near East", text: "The earliest archaeological finds date from about 10,000 BC." },
@@ -359,7 +379,7 @@ export const MEMBERS: Member[] = [
     recs: [{ from: "peanut", relation: "Peanut worked with Pea but they were at different companies", text: "A fellow legume and a generous one: Pea leaves every field richer than it found it. And the genetics speak for themselves, seven traits at a time." }],
   },
   {
-    id: "corn", first: "Maize", last: "Zea", family: "Poaceae", source: W("Maize"), photo: "corn", eyes: [0.5, 0.48, 0.19, 0.25], mood: "happy", color: "#a37800", cover: "field-corn",
+    id: "corn", first: "Cora", last: "Corn", binomial: "Zea mays", family: "Poaceae", source: W("Maize"), photo: "corn", eyes: [0.5, 0.48, 0.19, 0.25], mood: "happy", color: "#a37800", cover: "field-corn",
     headline: "Corn, in North America · Domesticated from teosinte about 9,000 years ago · One of the Three Sisters",
     place: "Southern Mexico",
     about: "I was domesticated in southern Mexico about 9,000 years ago from a wild grass, teosinte. I can't spread my own seed any more, so I rely on people to plant me, which has worked out well for all of us. With beans and squash I'm one of the Three Sisters, grown together in one field. Pumpkin is a squash, so we're practically family.",
@@ -375,7 +395,7 @@ export const MEMBERS: Member[] = [
     connections: 500, followers: 24000,
   },
   {
-    id: "pumpkin", first: "Pumpkin", last: "Cucurbita", family: "Cucurbitaceae", source: W("Pumpkin"), photo: "pumpkin", eyes: [0.42, 0.42, 0.2, 0.24], mood: "happy", color: "#c75b12", cover: "pumpkins",
+    id: "pumpkin", first: "Pippa", last: "Pumpkin", binomial: "Cucurbita, several species", family: "Cucurbitaceae", source: W("Pumpkin"), photo: "pumpkin", eyes: [0.42, 0.42, 0.2, 0.24], mood: "happy", color: "#c75b12", cover: "pumpkins",
     headline: "Seasonal, and the season is now · Heaviest yet: 1,246.9 kg · Took over the jack-o'-lantern from the turnip",
     place: "Front porches, every October",
     about: "Most of the year I keep a low profile. In October I'm everywhere. The heaviest pumpkin so far weighed 1,246.9 kg, in October 2023. Jack-o'-lanterns were carved from turnips in Ireland and Scotland before pumpkins took the job, and I'd like to thank the turnip for its service. I'm the squash in the Three Sisters, with Maize and the beans.",
@@ -391,7 +411,7 @@ export const MEMBERS: Member[] = [
     connections: 444, followers: 13300,
   },
   {
-    id: "watermelon", first: "Watermelon", last: "Citrullus", family: "Cucurbitaceae", source: W("Watermelon"), photo: "watermelon", eyes: [0.45, 0.42, 0.2, 0.24], mood: "happy", color: "#2e7d4f", cover: "watermelon-slices",
+    id: "watermelon", first: "Walter", last: "Watermelon", binomial: "Citrullus lanatus", family: "Cucurbitaceae", source: W("Watermelon"), photo: "watermelon", eyes: [0.45, 0.42, 0.2, 0.24], mood: "happy", color: "#2e7d4f", cover: "watermelon-slices",
     headline: "91% water · Pepo · Summer's most reliable guest",
     place: "Sudan",
     about: "I'm 91% water, which is right there in the name. Botanically I'm a pepo, a berry with a hard rind, like Pumpkin. I was domesticated in Sudan, and I've been the best thing at a summer picnic ever since.",
@@ -406,7 +426,7 @@ export const MEMBERS: Member[] = [
     connections: 280, followers: 8800,
   },
   {
-    id: "peanut", first: "Peanut", last: "Arachis", family: "Fabaceae", source: W("Peanut"), photo: "peanut", eyes: [0.62, 0.31, 0.16, 0.21], mood: "curious", color: "#8a5a2b",
+    id: "peanut", first: "Percy", last: "Peanut", binomial: "Arachis hypogaea", family: "Fabaceae", source: W("Peanut"), photo: "peanut", eyes: [0.62, 0.31, 0.16, 0.21], mood: "curious", color: "#8a5a2b",
     headline: "Legume, not a nut · Nitrogen fixer · Championed by George Washington Carver",
     place: "South America",
     about: "Despite the name, I'm a legume, a relative of Pea, not a nut. Like Pea, I fix nitrogen in the soil. I'm native to South America, and George Washington Carver championed me. Please mind the allergies.",
@@ -421,7 +441,7 @@ export const MEMBERS: Member[] = [
     connections: 233, followers: 4100,
   },
   {
-    id: "rhubarb", first: "Rhubarb", last: "Rheum", family: "Polygonaceae", source: W("Rhubarb"), photo: "rhubarb", eyes: [0.5, 0.3, 0.2, 0.25], mood: "cheeky", color: "#a52a4a",
+    id: "rhubarb", first: "Ruby", last: "Rhubarb", binomial: "Rheum", family: "Polygonaceae", source: W("Rhubarb"), photo: "rhubarb", eyes: [0.5, 0.3, 0.2, 0.25], mood: "cheeky", color: "#a52a4a",
     headline: "Leaf stalk, cooked as a fruit · Stalks only, please · My leaves are poisonous",
     place: "The vegetable patch",
     about: "Eat my stalks, not my leaves: the leaves are poisonous, because of the oxalic acid in them. What you eat is a leaf stalk, so botanically I'm no fruit at all, and in the kitchen I'm cooked like one, in pies and crumbles. That makes me Tomato's opposite. We get on.",
@@ -436,7 +456,7 @@ export const MEMBERS: Member[] = [
     connections: 150, followers: 620,
   },
   {
-    id: "pineapple", first: "Pineapple", last: "Ananas", family: "Bromeliaceae", source: W("Pineapple"), photo: "pineapple", eyes: [0.46, 0.7, 0.15, 0.18], mood: "proud", color: "#9c7a00", cover: "field-pineapple",
+    id: "pineapple", first: "Pablo", last: "Pineapple", binomial: "Ananas comosus", family: "Bromeliaceae", source: W("Pineapple"), photo: "pineapple", eyes: [0.46, 0.7, 0.15, 0.18], mood: "proud", color: "#9c7a00", cover: "field-pineapple",
     headline: "Multiple fruit · Once a symbol of wealth in Europe · Opinions on pizza welcome",
     place: "Southern Brazil and Paraguay",
     about: "I'm a multiple fruit: my flowers fuse, and their ovaries become berries that join into one. I come from the Paraná and Paraguay river basins, between southern Brazil and Paraguay. Columbus came across me in Guadeloupe on 4 November 1493, and in 17th- and 18th-century Europe I cost so much to grow in a hothouse that I became a symbol of wealth, more often displayed at dinner parties than eaten.",
@@ -452,7 +472,7 @@ export const MEMBERS: Member[] = [
     connections: 360, followers: 11200,
   },
   {
-    id: "peach", first: "Peach", last: "Prunus", family: "Rosaceae", source: W("Peach"), photo: "peach", eyes: [0.5, 0.26, 0.16, 0.23], mood: "happy", color: "#d0654a", cover: "field-peach",
+    id: "peach", first: "Penny", last: "Peach", binomial: "Prunus persica", family: "Rosaceae", source: W("Peach"), photo: "peach", eyes: [0.5, 0.26, 0.16, 0.23], mood: "happy", color: "#d0654a", cover: "field-peach",
     headline: "Drupe · Domesticated in China, named after Persia · Feeling peachy",
     place: "Zhejiang, China",
     about: "My scientific name, Prunus persica, says Persia, because I was widely grown there, but I come from China, where I was domesticated as early as 6000 BCE in Zhejiang. China still grows nearly two thirds of the world's peaches and nectarines. Botanically I'm a drupe, a stone fruit, in the rose family with the cherry, apricot, almond and plum. In China I'm a symbol of longevity. Nectarines are the same species as me, without the fuzz.",
@@ -513,7 +533,7 @@ export interface Post {
   ago: string;
   /** Minutes since posting, for the Recent sort. */
   minutes: number;
-  kind: "photo" | "text" | "poll" | "event" | "milestone";
+  kind: "photo" | "text" | "poll" | "event" | "milestone" | "article" | "gallery" | "document";
   /** The author's eyes on this post. */
   mood: Mood;
   text: string;
@@ -521,6 +541,14 @@ export interface Post {
   poll?: { question: string; options: { label: string; votes: number }[]; left: string };
   event?: { title: string; when: string; place: string; going: number };
   milestone?: { title: string; detail: string };
+  /** A long read: its title, minutes to read and sections; its cover is `photo`. */
+  article?: { title: string; minutes: number; sections: { h?: string; p: string[] }[] };
+  /** Several photographs in one post. */
+  photos?: string[];
+  /** A carousel of slides, as the reference's document posts. */
+  doc?: { title: string; slides: { title: string; text: string }[] };
+  /** Where the facts in a long read, gallery or carousel are checked, beyond the author's own page. */
+  sources?: string[];
   reactions: Partial<Record<Reaction, number>>;
   reposts: number;
   comments: Comment[];
@@ -529,6 +557,239 @@ export interface Post {
 const c = (id: string, author: string, ago: string, text: string, likes: number, mood: Mood): Comment => ({ id, author, ago, text, likes, mood });
 
 export const POSTS: Post[] = [
+  {
+    id: "tomato-margherita", author: "tomato", ago: "1h", minutes: 60, kind: "article", mood: "proud", photo: "d-margherita",
+    text: "I wrote up the two dishes I'd put at the top of my CV, and the one where I turned up late.",
+    article: {
+      title: "Red, white and a little legend: two dishes on my CV",
+      minutes: 4,
+      sections: [
+        { p: ["People ask what I actually do. Fair question, for someone who is legally a vegetable and botanically a berry. So here are two dishes I'm proud of, with the parts that are true and the parts that are only told."] },
+        { h: "Pizza Margherita, Naples", p: [
+          "The typical Neapolitan pizza is seasoned with hand-crushed peeled tomatoes, mozzarella (buffalo or fior di latte), fresh basil and olive oil. That's me in the first slot, doing the heavy lifting.",
+          "Popular legend says the red, white and green were chosen for the colours of the Italian flag, and that on 10 June 1889 a pizzaiolo called Raffaele Esposito made it for the visiting Queen Margherita, who preferred it to the other two he made. Later research cast doubt on the legend and on the letter said to recognise him, and found that both the story and the name Margherita were first promoted in the 1930s and 1940s.",
+          "My perspective: keep the colours, check the dates. A good story is no excuse for a soggy base.",
+        ] },
+        { h: "Gazpacho, southern Iberia", p: [
+          "Gazpacho is a cold soup and drink of raw, blended vegetables from the south of the Iberian Peninsula, with Córdoba, Seville and Granada among its homes. Most versions today use stale bread, tomato, cucumber, bell peppers, garlic, olive oil, wine vinegar, water and salt. Andalusian cooks say it should be slightly chilled, not iced.",
+          "Now the humbling part. The earliest versions had no tomato at all: stale bread, garlic, olive oil, salt and vinegar. Red gazpacho appeared in the 19th century, when tomatoes were added. I joined an established team and changed its colour. I like to think that counts as leadership.",
+        ] },
+        { h: "What I'm taking from both", p: ["Turn up late if you have to, but turn up ripe. And give credit to the bread, the basil and Peter Peppers, who do more work in that soup than anyone mentions."] },
+      ],
+    },
+    sources: [W("Pizza_Margherita"), W("Gazpacho")],
+    reactions: { like: 2140, insightful: 880, love: 410, funny: 120 }, reposts: 214,
+    comments: [
+      c("c1", "pepper", "50m", "Thank you for the credit. Most people only notice me when I'm red.", 188, "happy"),
+      c("c2", "potato", "40m", "Bread and tomato in a cold soup. Bold. I respect it.", 96, "curious"),
+    ],
+  },
+  {
+    id: "eggplant-smoky", author: "eggplant", ago: "3h", minutes: 200, kind: "article", mood: "proud", photo: "d-baba",
+    text: "Long read: two dishes that prove I'm nobody's side dish.",
+    article: {
+      title: "Smoky, layered, and never the side dish",
+      minutes: 4,
+      sections: [
+        { p: ["I absorb oils and flavours, which some of you call a weakness. Here are two dishes where it's the whole point."] },
+        { h: "Baba ghanoush", p: [
+          "A Levantine appetizer: finely chopped roasted eggplant, mixed with olive oil, lemon juice, seasonings and tahini. I'm traditionally roasted, baked or broiled before I'm peeled, which is where the smoke comes from.",
+          "The name is a small mystery. In Arabic, bābā is a term of endearment for father, and ghanoush could be a personal name, but nobody is certain whether bābā means a person or me. I'll answer to either.",
+        ] },
+        { h: "Moussaka", p: [
+          "Moussaka is an aubergine- or potato-based dish, often with ground meat, popular in the Balkans and the Middle East. The modern Greek version was created in the 1920s by Nikolaos Tselementes, in three layers cooked separately: sliced aubergine sautéed in olive oil, ground lamb cooked with tomatoes, and a top of béchamel or savoury custard.",
+          "In Albania, Bulgaria, the former Yugoslavia and Romania, cooks use potatoes instead of me, so Paolo Potato gets the credit there. In Turkey, musakka isn't layered at all: it's fried aubergine in a meat sauce with tomato. Same name, different jobs. Very this network.",
+        ] },
+        { h: "My take", p: ["Roast me properly. Let me sit in the olive oil. And if a recipe calls me a side, read it again."] },
+      ],
+    },
+    sources: [W("Baba_ghanoush"), W("Moussaka")],
+    reactions: { like: 1210, love: 300, insightful: 260 }, reposts: 61,
+    comments: [
+      c("c1", "potato", "2h", "Happy to cover the Balkans for you.", 140, "proud"),
+      c("c2", "lemon", "2h", "Lemon juice reporting for duty.", 61, "cheeky"),
+    ],
+  },
+  {
+    id: "chili-gallery", author: "chili", ago: "4h", minutes: 260, kind: "gallery", mood: "cheeky", photos: ["dried-chili", "d-pastor", "d-guacamole", "chili"],
+    text: "Places I turned up this week. Dried, in the marinade for al pastor; fresh, as the jalapeños in a molcajete of guacamole; and in a pile, just being myself.",
+    sources: [W("Al_pastor"), W("Guacamole")],
+    reactions: { like: 640, funny: 120, love: 88 }, reposts: 14,
+    comments: [c("c1", "pineapple", "3h", "See you on the trompo.", 77, "cheeky")],
+  },
+  {
+    id: "pineapple-twocontinents", author: "pineapple", ago: "6h", minutes: 380, kind: "article", mood: "cheeky", photo: "d-hawaiian",
+    text: "I've been on pizza in Canada and on a spinning top in Mexico. A long read on both, and on how I keep getting named after places I'm not from.",
+    article: {
+      title: "Two dishes, two countries, neither of them Hawaii",
+      minutes: 5,
+      sections: [
+        { h: "The pizza, Ontario, 1962", p: [
+          "Hawaiian pizza was invented in 1962 by Sam Panopoulos, a Greek-born Canadian, at the Satellite Restaurant in Chatham-Kent, Ontario. It's topped with me, tomato sauce, mozzarella, and either ham or bacon.",
+          "He called it Hawaiian because the pineapple he used came in cans from the Hawaiian Pineapple Company. It was not directly inspired by Hawaii at all. I come from the river basins between southern Brazil and Paraguay, so this is the second time a label has been more famous than my passport.",
+          "My perspective on the pizza debate: Tessa Tomato is on every slice either way. I just make the conversation louder.",
+        ] },
+        { h: "Al pastor, Mexico", p: [
+          "Al pastor is spit-grilled meat, usually pork, sliced and served in tacos. It comes from shawarma, which Lebanese immigrants brought to Mexico in the late 19th and early 20th centuries; by the 1920s pork had largely replaced lamb, and in Mexico City their children's restaurants began marinating the meat in adobo and serving it on corn tortillas.",
+          "The meat is marinated in dried chilies, spices and pineapple, usually with achiote, and cooked slowly on a vertical rotisserie called a trompo, a spinning top. Diced pineapple is a standard topping, with chopped onion and cilantro.",
+          "So I'm in the marinade and on the taco. Chelsea Chilli is in the marinade too. Cora Corn is the tortilla. That's a cross-functional team.",
+        ] },
+      ],
+    },
+    sources: [W("Hawaiian_pizza"), W("Al_pastor")],
+    reactions: { like: 2380, funny: 940, insightful: 600, celebrate: 120 }, reposts: 302,
+    comments: [
+      c("c1", "tomato", "5h", "On every slice either way. Correct.", 410, "proud"),
+      c("c2", "corn", "5h", "Proud to be the tortilla.", 233, "happy"),
+      c("c3", "chili", "4h", "Marinade colleagues forever.", 120, "cheeky"),
+    ],
+  },
+  {
+    id: "pepper-doc", author: "pepper", ago: "8h", minutes: 500, kind: "document", mood: "happy",
+    text: "Made a carousel. Swipe for five facts and one confession.",
+    doc: { title: "Peter Peppers: five things", slides: [
+      { title: "Family", text: "I'm the fruit of the Grossum Group of Capsicum annuum. Chelsea Chilli's relation, without the heat." },
+      { title: "Zero", text: "My score on the Scoville scale. I'm a sweet pepper." },
+      { title: "Six colours", text: "Red, yellow, orange, green, white and purple. Red ones are simply green ones that ripened." },
+      { title: "Berry", text: "Botanically a berry, cooked as a vegetable. Tessa Tomato and I have compared notes." },
+      { title: "Vitamin C", text: "A rich source of it. Otto and Leo, I'm coming for your brand." },
+      { title: "The confession", text: "In parts of the American Midwest some people call me a mango. I've stopped correcting them." },
+    ] },
+    sources: [W("Bell_pepper")],
+    reactions: { like: 980, funny: 410, insightful: 160 }, reposts: 40,
+    comments: [
+      c("c1", "orange", "7h", "Come for it, then. We'll see who's still named after a colour.", 230, "cheeky"),
+      c("c2", "chili", "7h", "Family resemblance, none of the heat. Love you anyway.", 140, "happy"),
+    ],
+  },
+  {
+    id: "peach-melba", author: "peach", ago: "10h", minutes: 600, kind: "article", mood: "happy", photo: "d-melba",
+    text: "A long read about the night a swan made of ice stole my scene.",
+    article: {
+      title: "Peach Melba, or how to be upstaged by a swan",
+      minutes: 3,
+      sections: [
+        { p: ["Some dishes are named after the fruit. Mine is named after a soprano, and I'm fine with that."] },
+        { h: "The Savoy, 1892 or 1893", p: [
+          "Auguste Escoffier made it at the Savoy Hotel in London for the Australian soprano Nellie Melba, who was singing in Wagner's Lohengrin at Covent Garden. The Duke of Orléans gave a dinner there to celebrate her success.",
+          "Escoffier served the peaches and ice cream in a silver dish set on an ice sculpture of a swan, a figure from the opera, and first called it Pêche au cygne, peach with a swan.",
+        ] },
+        { h: "What was in it", p: ["The original, as he wrote it: tender and very ripe peaches, vanilla ice cream, and a purée of sugared raspberry. Three things. No swan required, though it helps."] },
+        { h: "My perspective", p: ["Ripe is the whole recipe. Every peach in that dish was at its best, and you could tell. Wait for it."] },
+      ],
+    },
+    sources: [W("Peach_Melba")],
+    reactions: { like: 1760, love: 620, insightful: 210 }, reposts: 88,
+    comments: [
+      c("c1", "strawberry", "9h", "Raspberry got the purée and I'm not even mad.", 140, "cheeky"),
+      c("c2", "kiwi", "8h", "Upstaged by a swan is the most elegant way to be upstaged.", 98, "happy"),
+    ],
+  },
+  {
+    id: "kale-soups", author: "kale", ago: "14h", minutes: 840, kind: "article", mood: "proud", photo: "d-caldo",
+    text: "Green soup, green mash. A long read on the two dishes where I share the bowl with Paolo Potato.",
+    article: {
+      title: "Green broth and green mash: working with potatoes",
+      minutes: 3,
+      sections: [
+        { h: "Caldo verde, Portugal", p: [
+          "Caldo verde comes from the Minho Province in northern Portugal and is now a favourite across the country. The name means green broth. The basic recipe uses Portuguese cabbage, couve-galega, a cultivar of collard greens, and other leafy greens such as kale can stand in, with potatoes, olive oil and black pepper, onion and garlic.",
+          "A sausage such as paio, chouriço or linguiça is usually boiled whole with the potatoes and sliced into the soup when it's served. It's eaten at weddings, birthdays and popular celebrations, and sometimes as a late supper.",
+          "I'm the understudy there, I know. Collards and I are the same species, so I take it as a family role.",
+        ] },
+        { h: "Colcannon, Ireland", p: [
+          "Colcannon is a traditional Irish dish of mashed potatoes with cabbage, most often made with potatoes, butter, milk and cabbage, and some recipes use kale instead.",
+          "Two dishes, two countries, and Paolo Potato in both. If you want to know who your real collaborators are, look at what you're mashed with.",
+        ] },
+      ],
+    },
+    sources: [W("Caldo_verde"), W("Colcannon")],
+    reactions: { like: 860, love: 220, insightful: 140 }, reposts: 33,
+    comments: [
+      c("c1", "potato", "13h", "Mashed with you any day.", 166, "happy"),
+      c("c2", "brussels", "12h", "Family role. Love that for us.", 71, "proud"),
+    ],
+  },
+  {
+    id: "potato-gallery", author: "potato", ago: "16h", minutes: 960, kind: "gallery", mood: "happy", photos: ["d-colcannon", "d-caldo", "potato-flower", "field-potato"],
+    text: "Week in pictures. Mashed into colcannon in Ireland, in the pot for caldo verde in Portugal, flowering, and back at the field where it all starts. Kate Kale was in two of these.",
+    sources: [W("Colcannon"), W("Caldo_verde")],
+    reactions: { like: 720, love: 160 }, reposts: 12,
+    comments: [c("c1", "kale", "15h", "Two of four. I'll take it.", 52, "cheeky")],
+  },
+  {
+    id: "corn-lime", author: "corn", ago: "20h", minutes: 1200, kind: "article", mood: "curious", photo: "field-corn",
+    text: "Before I'm a tortilla, I'm soaked in lime. A long read on nixtamalization, the oldest kitchen technique on this network.",
+    article: {
+      title: "Before the tortilla, the lime",
+      minutes: 3,
+      sections: [
+        { p: ["Most of you meet me as a tortilla, a tamale or a bowl of pozole. None of those works without a step most people have never heard of."] },
+        { h: "Nixtamalization", p: [
+          "The grain is soaked and cooked in an alkaline solution, usually limewater, which loosens the hulls and softens the kernels before they're washed and hulled.",
+          "It was first developed in Mesoamerica, where maize was first grown. The earliest evidence comes from Guatemala's southern coast, with equipment dating from 1200 to 1500 BCE.",
+        ] },
+        { h: "Why it matters", p: [
+          "Treating corn with alkali makes its tryptophan usable by the body, which helps prevent niacin deficiency, pellagra, in people who eat corn as a staple. A process three thousand years old that is also nutrition science.",
+        ] },
+        { h: "What comes of it", p: ["Ground fresh nixtamal becomes masa, the dough for tortillas, tamales and pupusas. Whole kernels become hominy and pozole. Pablo Pineapple and I have worked together on the tacos al pastor; I'm the tortilla, which is to say the foundation."] },
+      ],
+    },
+    sources: [W("Nixtamalization")],
+    reactions: { like: 1340, insightful: 760, celebrate: 90 }, reposts: 140,
+    comments: [
+      c("c1", "pea", "19h", "A three-thousand-year-old process with a nutrition result. Mendel would approve.", 120, "proud"),
+      c("c2", "pineapple", "18h", "Foundation is right.", 60, "happy"),
+    ],
+  },
+  {
+    id: "avocado-doc", author: "avocado", ago: "1d", minutes: 1380, kind: "document", mood: "proud",
+    text: "Guacamole, in five slides.",
+    doc: { title: "Guacamole, in five slides", slides: [
+      { title: "The name", text: "From the Classical Nahuatl āhuacamōlli, which translates literally as avocado sauce." },
+      { title: "Where", text: "Guacamole was first developed in Mexico." },
+      { title: "How", text: "Traditionally, ripe avocados are mashed with salt in a molcajete, a mortar and pestle." },
+      { title: "With", text: "Lime juice, onions and jalapeños, and often cilantro. Chelsea Chilli is the jalapeño. Leo Lemon is not the lime, and is still upset." },
+      { title: "On toast", text: "Not traditional. Still delicious. I'm aware of it." },
+    ] },
+    sources: [W("Guacamole")],
+    reactions: { like: 1500, love: 520, funny: 230 }, reposts: 71,
+    comments: [
+      c("c1", "lemon", "23h", "Not upset. Disappointed.", 310, "worried"),
+      c("c2", "chili", "22h", "Jalapeño reporting for duty.", 120, "cheeky"),
+    ],
+  },
+  {
+    id: "banana-foster", author: "banana", ago: "2d", minutes: 2600, kind: "article", mood: "surprised", photo: "d-foster",
+    text: "A long read on the time I was set on fire for a dessert named after a crime commissioner.",
+    article: {
+      title: "Bananas Foster: set alight, and named for a crime fighter",
+      minutes: 3,
+      sections: [
+        { h: "New Orleans, 1951", p: [
+          "Bananas Foster was created in 1951 at the original Brennan's in New Orleans, when the restaurant was still called Owen Brennan's Vieux Carré. Ella Brennan and the restaurant's chef, Paul Blangé, worked together to adapt a dish.",
+          "It's named after Richard Foster, the chairman of the New Orleans Crime Commission. I've been on a lot of menus. That's the only time a crime commission was involved.",
+        ] },
+        { h: "How it's done", p: [
+          "The sauce is butter, brown sugar, cinnamon, dark rum and banana liqueur. The butter, sugar and bananas are cooked, then the alcohol is added and set alight, often at the table as a flambé. It's usually served with vanilla ice cream.",
+        ] },
+        { h: "My perspective", p: ["Being set on fire in front of an audience and coming out caramelised is the most transferable skill I have. Breeders looking for my successor, take note."] },
+      ],
+    },
+    sources: [W("Bananas_Foster")],
+    reactions: { like: 1130, funny: 600, celebrate: 120 }, reposts: 52,
+    comments: [
+      c("c1", "pumpkin", "2d", "Respect. I only get candles.", 140, "cheeky"),
+      c("c2", "strawberry", "2d", "Banana liqueur in your own dessert is a power move.", 88, "surprised"),
+    ],
+  },
+  {
+    id: "avocado-gallery", author: "avocado", ago: "3d", minutes: 4100, kind: "gallery", mood: "happy", photos: ["field-avocado", "avocado", "d-guacamole"],
+    text: "From the branch, to the board, to the molcajete. Three photographs, one career path.",
+    sources: [W("Guacamole")],
+    reactions: { like: 900, love: 300 }, reposts: 21,
+    comments: [c("c1", "tomato", "3d", "Career path goals.", 44, "happy")],
+  },
   {
     id: "pea-mendel", author: "pea", ago: "2h", minutes: 120, kind: "photo", mood: "proud", photo: "pea-plants",
     text: "A note from the archive. Between 1856 and 1863 Gregor Mendel grew some 28,000 plants at St Thomas's Abbey in Brno, most of them us, and followed seven of our traits from one generation to the next.\n\nHe published in 1866, and hardly anyone noticed until 1900. If your best work is going unread, give it thirty-four years.",
@@ -700,7 +961,7 @@ export const NEWS = [
   { title: "Hass avocado's mother tree turns 100", ago: "2h ago", readers: 6120 },
   { title: "Breeders look for the banana after Cavendish", ago: "5h ago", readers: 4382 },
   { title: "Giant pumpkin season opens", ago: "1d ago", readers: 2907 },
-  { title: "Pea's surname remains disputed", ago: "1d ago", readers: 1116 },
+  { title: "Pea's scientific name remains disputed", ago: "1d ago", readers: 1116 },
   { title: "Kale gardens brace for first frost", ago: "3d ago", readers: 812 },
   { title: "The tomato is still a vegetable, for tariffs", ago: "4d ago", readers: 1964 },
 ];
@@ -710,7 +971,7 @@ export const SUGGESTIONS = ["kiwi", "watermelon", "brussels"];
 /** Who the signed-in member is connected to; everyone else is a second- or third-degree connection. */
 export const CONNECTED = new Set(["potato", "eggplant", "chili", "carrot", "broccoli", "kale", "banana", "strawberry", "avocado", "lemon", "orange", "pea", "corn", "pumpkin", "pineapple", "peach"]);
 /** Second-degree: someone a connection knows. */
-export const SECOND = new Set(["kiwi", "watermelon", "brussels", "cauliflower", "peanut", "rhubarb"]);
+export const SECOND = new Set(["kiwi", "watermelon", "brussels", "cauliflower", "peanut", "rhubarb", "pepper"]);
 export const degree = (id: string) => (id === ME ? "" : CONNECTED.has(id) ? "1st" : SECOND.has(id) ? "2nd" : "3rd+");
 /** Followed at the start: every connection, and nobody else. */
 export const followedAtStart = (id: string) => CONNECTED.has(id);

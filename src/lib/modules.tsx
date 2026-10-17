@@ -1,6 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { seen, photo } from "../photos";
-import { MEMBERS, fullName } from "../content";
+import { MEMBERS, POSTS, fullName, member } from "../content";
 
 /** Flat modules: tabs, prose, read more and the page's credits. */
 
@@ -70,6 +70,10 @@ export function Credits() {
       <details>
         <summary>Where the members' facts are checked ({MEMBERS.length})</summary>
         <ul>{MEMBERS.map((m) => <li key={m.id}>{fullName(m)}: <a href={m.source}>{decodeURIComponent(m.source.split("/wiki/")[1]).replace(/_/g, " ")}</a>, Wikipedia.</li>)}</ul>
+      </details>
+      <details>
+        <summary>Where the long reads' facts are checked ({POSTS.filter((p) => p.sources).length} posts)</summary>
+        <ul>{POSTS.filter((p) => p.sources).map((p) => <li key={p.id}>{p.article?.title ?? p.doc?.title ?? `Photographs by ${fullName(member(p.author)!)}`}: {p.sources!.map((u, i) => <span key={u}>{i > 0 && ", "}<a href={u}>{decodeURIComponent(u.split("/wiki/")[1]).replace(/_/g, " ")}</a></span>)}, Wikipedia.</li>)}</ul>
       </details>
     </>
   );

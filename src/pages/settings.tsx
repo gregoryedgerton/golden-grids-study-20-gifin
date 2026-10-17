@@ -44,7 +44,7 @@ function Language() { const s = settings.use(); const [msg, setMsg] = useState("
 function Unfollowed() {
   const s = social.use();
   const gone = MEMBERS.filter((m) => m.id !== ME && (m.id in s.follows ? !s.follows[m.id] : false) && followedAtStart(m.id));
-  return gone.length ? <ul className="entries">{gone.map((m) => <li key={m.id}><Avatar m={m} size={40} /><div><a href={profileHref(m.id)}><strong>{fullName(m)}</strong></a><p className="note">{m.headline}</p></div><button type="button" className="btn btn--outline btn--small" onClick={() => setFollowing(m.id, true)}>Follow</button></li>)}</ul> : <Note>You haven't unfollowed anyone. Unfollow someone from a post's menu and they appear here.</Note>;
+  return gone.length ? <ul className="entries">{gone.map((m) => <li key={m.id}><Avatar m={m} size={48} /><div><a href={profileHref(m.id)}><strong>{fullName(m)}</strong></a><p className="note">{m.headline}</p></div><button type="button" className="btn btn--outline btn--small" onClick={() => setFollowing(m.id, true)}>Follow</button></li>)}</ul> : <Note>You haven't unfollowed anyone. Unfollow someone from a post's menu and they appear here.</Note>;
 }
 function CloseAccount() {
   const [step, setStep] = useState(0);
@@ -225,7 +225,7 @@ function App() {
     <Page current={PAGES.settings} source={[REFERENCE.settings]} header="settings">
       <div className="wrap settings">
         <nav className="setnav" aria-label="Settings">
-          <p className="setnav__me"><Avatar m={m} size={40} /><span className="setnav__title">Settings</span></p>
+          <p className="setnav__me"><Avatar m={m} size={48} /><span className="setnav__title">Settings</span></p>
           <ul>{CATS.map((c) => <li key={c.id}><a href={`${PAGES.settings}?s=${c.id}`} aria-current={cat?.id === c.id ? "page" : undefined}><Icon name={c.icon} size={20} />{c.name}</a></li>)}</ul>
           <p className="setnav__links"><span>Help Center</span> · <span>Professional Community Policies</span> · <span>Privacy Policy</span> · <span>Accessibility</span></p>
         </nav>

@@ -252,5 +252,89 @@
    "peach orchard",
    "peach tree fruit"
   ]
+ },
+ "d-margherita": {
+  "q": [
+   "pizza margherita",
+   "neapolitan pizza margherita"
+  ]
+ },
+ "d-gazpacho": {
+  "q": [
+   "gazpacho andaluz",
+   "gazpacho soup"
+  ]
+ },
+ "d-baba": {
+  "q": [
+   "baba ghanoush",
+   "baba ganoush eggplant dip"
+  ]
+ },
+ "d-moussaka": {
+  "q": [
+   "moussaka greek",
+   "moussaka"
+  ]
+ },
+ "d-melba": {
+  "q": [
+   "peach melba",
+   "pêche melba"
+  ]
+ },
+ "d-hawaiian": {
+  "q": [
+   "hawaiian pizza pineapple ham",
+   "pizza hawaii"
+  ]
+ },
+ "d-pastor": {
+  "q": [
+   "tacos al pastor",
+   "trompo al pastor"
+  ]
+ },
+ "d-caldo": {
+  "q": [
+   "caldo verde",
+   "caldo verde soup"
+  ]
+ },
+ "d-colcannon": {
+  "q": [
+   "colcannon",
+   "colcannon potatoes cabbage"
+  ]
+ },
+ "d-tortilla": {
+  "q": [
+   "corn tortillas comal",
+   "nixtamal masa tortillas"
+  ]
+ },
+ "d-guacamole": {
+  "q": [
+   "guacamole molcajete",
+   "guacamole"
+  ]
+ },
+ "d-foster": {
+  "q": [
+   "bananas foster",
+   "bananas foster flambe"
+  ]
+ },
+ "pepper": {
+  "q": [
+   "bell peppers red yellow green",
+   "bell pepper capsicum annuum"
+  ]
+ },
+ "f-pepper": {
+  "q": [
+   "bell pepper plant greenhouse",
+   "sweet pepper plants field"
+  ]
  }
 }

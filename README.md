@@ -7,7 +7,7 @@ GIFcommit00021
 An unaffiliated layout study. It rebuilds the signed-in application of
 [linkedin.com](https://www.linkedin.com/) (the feed, a profile, the editing of
 one's own profile, Settings & Privacy and the skill assessments) as stacked
-golden grids under a parody name, GIFin. Its twenty-four members are fruits
+golden grids under a parody name, GIFin. Its twenty-five members are fruits
 and vegetables, each with the profile a professional network would ask of it
 and a pair of googly eyes that match what it writes. The voice is cheeky and
 the facts are true. The emphasis is interaction: nearly everything on the
@@ -57,8 +57,9 @@ the Dark mode setting in Settings, which applies on every page.
 The reference sets each post as one card and each profile section as a column
 of rows. The study sets them as golden grids:
 
-- **A post is a grid.** Its picture (or its poll, event or milestone; for a
-  post of words alone, the words) takes the largest square; the words and the
+- **A post is a grid.** Its picture (or its long read, its gallery of
+  photographs, its carousel of slides, its poll, event or milestone; for a post
+  of words alone, the words) takes the largest square; the words and the
   author take the next; and the reactions, with the comments and reposts
   beneath them, are a figure in the smallest. Under the grid the action bar
   and its panels are flat, in the flow of the page: the reaction picker, the
@@ -117,11 +118,19 @@ or hide on the profile.
 
 ## Content and provenance
 
-- **The members** are twenty-four fruits and vegetables, from Tomato to Peach.
-  Each one's surname is its genus, so the nightshades (Tomato, Potato,
-  Eggplant) are all Solanum and the brassicas (Broccoli, Kale, Cauliflower,
-  Brussels Sprout) all Brassica; Pea's is shown as under review, because its
-  genus is disputed.
+- **The members** are twenty-five fruits and vegetables, each with a first
+  name and the name of what it is, at Greg's direction: Tessa Tomato, Otto
+  Orange, Peter Peppers, Chelsea Chilli, Eleanor Eggplant and the rest. Each
+  one's scientific name is a profile detail, under the name and in Contact info
+  (Solanum lycopersicum, Capsicum annuum, Grossum Group); Pea's is shown as
+  under review, because it is disputed.
+- **Long reads, galleries and carousels.** Seven members write long reads on
+  the dishes they are used in (pizza Margherita and gazpacho, baba ghanoush and
+  moussaka, Hawaiian pizza and al pastor, peach Melba, caldo verde and
+  colcannon, nixtamalized corn, bananas Foster), each opening in place; three
+  post galleries of photographs; two post carousels of slides. Every fact in
+  them is checked against the Wikipedia page for the dish, and the disclosure
+  lists those pages by post. Opinions in them are the members' own.
 - **The facts are true; the jokes are the study's.** Every date, place, person
   and number in a member's profile, posts and comments is checked against the
   Wikipedia page the disclosure names for that member, and anything that could
@@ -131,7 +140,7 @@ or hide on the profile.
   St Thomas's Abbey, Brno, 1856 to 1863, with Gregor Mendel. Years before the
   common era are shown as BCE, and a role whose dates no source gives exactly
   carries a phrase in their place.
-- **The signed-in member** is Tomato, a fruit by birth and a vegetable by law,
+- **The signed-in member** is Tessa Tomato, a fruit by birth and a vegetable by law,
   open to work in any kitchen.
 - **Assessment answers** are each checked against the Wikipedia page named
   beside them in the review.
@@ -172,6 +181,10 @@ has been reviewed.
   were two figures; in a five-square post the smallest squares were about 75px
   in the feed's middle column, too small for a figure and its label, so they
   were merged.
+- **Type and avatars were raised after a first look.** Greg found the type in
+  the squares "too safe" and the profile images small: fitted lines in posts,
+  skills and figures now reach about twice their first size, and avatars take
+  about half of a post's author square and up to 230px on a profile.
 - **Panels are in the flow.** The reference opens the reaction picker, menus,
   Send, Repost and the edit forms over the page; here they open beneath what
   opened them. Only the Me menu and the search suggestions hang from the

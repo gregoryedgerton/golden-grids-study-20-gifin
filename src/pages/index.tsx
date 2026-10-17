@@ -25,7 +25,7 @@ function ProfileCard() {
   return (
     <section className="railcard profilecard" aria-label="Your profile">
       <div className="profilecard__cover">{m.cover ? <Pic k={m.cover} sizes="240px" /> : <CoverPattern color={m.color} />}</div>
-      <a className="profilecard__face" href={PAGES.profile} tabIndex={-1} aria-hidden="true"><Avatar m={m} size={72} frame={framed(m)} /></a>
+      <a className="profilecard__face" href={PAGES.profile} tabIndex={-1} aria-hidden="true"><Avatar m={m} size={96} frame={framed(m)} /></a>
       <p className="profilecard__name"><a href={PAGES.profile}>{fullName(m)}</a></p>
       <p className="profilecard__headline">{m.headline}</p>
       <p className="profilecard__place">{m.place}</p>
@@ -79,7 +79,7 @@ function AddToFeed() {
       <ul className="suggest">
         {SUGGESTIONS.map((id) => { const m = member(id)!; return (
           <li key={id}>
-            <a href={profileHref(id)} tabIndex={-1} aria-hidden="true"><Avatar m={m} size={48} /></a>
+            <a href={profileHref(id)} tabIndex={-1} aria-hidden="true"><Avatar m={m} size={64} /></a>
             <div><a href={profileHref(id)}><strong>{fullName(m)}</strong></a><p>{m.headline}</p><FollowButton id={id} /></div>
           </li>
         ); })}

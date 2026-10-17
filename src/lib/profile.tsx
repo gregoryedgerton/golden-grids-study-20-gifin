@@ -35,9 +35,10 @@ export function Identity({ m, x, slotKey, onPanel, panel, preview }: { m: Member
   return (
     <>
       <div className="box box--identity">
-        <div className="identity__face"><Avatar m={m} size={128} frame={framed(m)} label={`${fullName(m)}${framed(m) ? ", open to work" : ""}`} /></div>
+        <div className="identity__face"><Avatar m={m} size={200} frame={framed(m)} label={`${fullName(m)}${framed(m) ? ", open to work" : ""}`} /></div>
         <div className="identity__text">
           <Name className="identity__name">{fullName(m)}{m.pronouns && <span className="identity__pron"> · {m.pronouns}</span>}{!own && <span className="identity__degree"> · {degree(m.id)}</span>}</Name>
+          <p className="identity__binomial">{m.binomial}</p>
           <p className="identity__headline">{m.headline}</p>
           <p className="identity__place">{m.place} · <button className="textbtn textbtn--blue" {...x.triggerProps(slotKey)}>Contact info</button></p>
           {current && <p className="identity__current"><CompanyLogo name={current.company} size={24} />{current.company}</p>}
@@ -75,6 +76,7 @@ export function Identity({ m, x, slotKey, onPanel, panel, preview }: { m: Member
         <ExpandedCell id={x.panelId(slotKey)} title={`${fullName(m)}: contact info`} onClose={x.close} closeRef={x.closeRef}>
           <dl className="contact">
             <div><dt><Icon name="link" size={20} />Profile</dt><dd>gifin/in/{slug(m)}</dd></div>
+            <div><dt><Icon name="info" size={20} />Scientific name</dt><dd><i>{m.binomial}</i></dd></div>
             {own && <div><dt><Icon name="message" size={20} />Email</dt><dd>{EMAIL}</dd></div>}
             <div><dt><Icon name="people" size={20} />Connected</dt><dd>{own ? "This is you" : connected ? "You are connected" : pending ? "Invitation pending" : "Not connected"}</dd></div>
           </dl>
@@ -195,7 +197,7 @@ function SkillBox({ m, k, rank }: { m: Member; k: Skill; rank: number }) {
   const badge = own && res?.passed && res.show;
   return (
     <div className={`box box--skill${rank === 0 ? " box--top" : ""}`}>
-      <div className="box__fit"><Fit as="p" className="fit--title" min={13} max={rank === 0 ? 56 : 40}>{k.name}</Fit></div>
+      <div className="box__fit"><Fit as="p" className="fit--title" min={12} max={rank === 0 ? 96 : 64}>{k.name}</Fit></div>
       {badge && <p className="skill__badge"><Icon name="badge" size={18} />Passed GIFin Skill Assessment</p>}
       <p className="skill__count"><Icon name="people" size={16} />{n} {n === 1 ? "endorsement" : "endorsements"}</p>
       {k.by && k.by.length > 0 && <p className="skill__by">Endorsed by {k.by.map((b) => fullName(member(b)!)).join(" and ")}</p>}

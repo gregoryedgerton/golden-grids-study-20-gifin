@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { GridBand, type Cell } from "../bands/bands";
 import { ExpandedCell, type ExpandGroup } from "./expand";
 import { Fit } from "./fit";
-import { FactStrip, PhotoCard, Pic } from "./cards";
+import { Credit, FactStrip, PhotoCard, Pic } from "./cards";
 import { Avatar } from "./people";
 import { Icon, ReactionGlyph } from "../icons";
 import { CONNECTED, ME, MEMBERS, POSTS, REACTIONS, STOCK, followedAtStart, moodOf, fullName, member, profileHref, type Comment, type Member, type Mood, type Post, type Reaction, framed } from "../content";
@@ -53,7 +53,7 @@ export function FollowButton({ id, compact }: { id: string; compact?: boolean })
 function AuthorBox({ m, when, own, mood }: { m: Member; when: string; own?: boolean; mood: Mood }) {
   return (
     <div className="box box--author">
-      <a className="author__face" href={profileHref(m.id)} tabIndex={-1} aria-hidden="true"><Avatar m={m} size={64} frame={framed(m)} mood={mood} /></a>
+      <a className="author__face" href={profileHref(m.id)} tabIndex={-1} aria-hidden="true"><Avatar m={m} size={96} frame={framed(m)} mood={mood} /></a>
       <div className="author__text">
         <p className="author__name"><a href={profileHref(m.id)}>{fullName(m)}</a>{!own && <span className="author__degree"> · {CONNECTED.has(m.id) ? "1st" : "2nd"}</span>}</p>
         <p className="author__headline">{m.headline}</p>
@@ -72,14 +72,87 @@ function TextBox({ text, x, slotKey, title, lead }: { text: string; x: ExpandGro
       <div className={`box box--words${lead ? " box--lead" : ""}`}>
         {/* Three lengths of the same post; the square's size picks one, and nothing is cut. "…more" opens all of it. */}
         <div className="visually-hidden">{paras.map((p, i) => <p key={i}>{p}</p>)}</div>
-        <div className="box__body words words--all" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={lead ? 28 : 20}>{paras.map((p, i) => <p key={i}>{p}</p>)}</Fit></div>
-        <div className="box__body words words--para" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={lead ? 28 : 20}><p>{paras[0]}</p></Fit></div>
-        <div className="box__body words words--line" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={30}><p>{firstSentence(paras[0])}</p></Fit></div>
+        <div className="box__body words words--all" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={lead ? 48 : 32}>{paras.map((p, i) => <p key={i}>{p}</p>)}</Fit></div>
+        <div className="box__body words words--para" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={lead ? 48 : 32}><p>{paras[0]}</p></Fit></div>
+        <div className="box__body words words--line" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={56}><p>{firstSentence(paras[0])}</p></Fit></div>
         <div className="box__foot"><button className="more" aria-label={`Read all of the post: ${title}`} {...x.triggerProps(slotKey)}>…more</button></div>
       </div>
       {x.isOpen(slotKey) && (
         <ExpandedCell id={x.panelId(slotKey)} title={title} onClose={x.close} closeRef={x.closeRef}>
           <div className="cell__prose">{paras.map((p, i) => <p key={i}>{p.split("\n").map((l, j) => <span key={j}>{l}{j < p.split("\n").length - 1 && <br />}</span>)}</p>)}</div>
+        </ExpandedCell>
+      )}
+    </>
+  );
+}
+
+/** A long read: its cover, its length and its title; opening it shows the whole article in place. */
+function ArticleBox({ post, x, slotKey }: { post: Post; x: ExpandGroup; slotKey: string }) {
+  const a = post.article!;
+  return (
+    <>
+      <div className="box box--article">
+        {post.photo && <div className="article__cover"><Pic k={post.photo} sizes="(min-width: 1100px) 40vw, 100vw" /></div>}
+        <div className="article__meta">
+          <p className="article__kicker"><Icon name="pencil" size={16} />Article · {a.minutes} min read</p>
+          <div className="box__fit box__fit--top"><Fit as="p" className="fit--title" min={14} max={60}>{a.title}</Fit></div>
+          <div className="box__foot"><button className="btn btn--blue btn--small" aria-label={`Read the article: ${a.title}`} {...x.triggerProps(slotKey)}>Read article</button></div>
+        </div>
+      </div>
+      {x.isOpen(slotKey) && (
+        <ExpandedCell id={x.panelId(slotKey)} title={a.title} onClose={x.close} closeRef={x.closeRef}>
+          {post.photo && <figure className="cell__photo"><Pic k={post.photo} sizes="100vw" /><Credit k={post.photo} /></figure>}
+          <p className="note">{a.minutes} min read</p>
+          <div className="cell__prose article__body">{a.sections.map((sec, i) => <section key={i}>{sec.h && <h4>{sec.h}</h4>}{sec.p.map((t, j) => <p key={j}>{t}</p>)}</section>)}</div>
+        </ExpandedCell>
+      )}
+    </>
+  );
+}
+
+/** Several photographs in one square, up to four at a time; opening it shows them all, each with its credit. */
+function GalleryBox({ post, x, slotKey, title }: { post: Post; x: ExpandGroup; slotKey: string; title: string }) {
+  const ps = post.photos!;
+  const shown = ps.slice(0, 4);
+  return (
+    <>
+      <div className={`box box--gallery gallery--${shown.length}`}>
+        {shown.map((k, i) => <div key={k} className="gallery__cell"><Pic k={k} sizes="(min-width: 1100px) 25vw, 50vw" />{i === 3 && ps.length > 4 && <span className="gallery__more" aria-hidden="true">+{ps.length - 4}</span>}</div>)}
+        <button className="media__open" {...x.triggerProps(slotKey)}><span className="visually-hidden">Open the {ps.length} photographs: {title}</span></button>
+        <span className="gallery__count" aria-hidden="true"><Icon name="image" size={16} />{ps.length}</span>
+      </div>
+      {x.isOpen(slotKey) && (
+        <ExpandedCell id={x.panelId(slotKey)} title={`${title}: ${ps.length} photographs`} onClose={x.close} closeRef={x.closeRef}>
+          <ul className="gallery__all">{ps.map((k) => <li key={k}><figure className="cell__photo"><Pic k={k} sizes="100vw" /><Credit k={k} /></figure></li>)}</ul>
+        </ExpandedCell>
+      )}
+    </>
+  );
+}
+
+/** A carousel of slides, turned with Previous and Next; opening it lists them all. */
+function DocBox({ post, x, slotKey }: { post: Post; x: ExpandGroup; slotKey: string }) {
+  const d = post.doc!;
+  const [i, setI] = useState(0);
+  const sl = d.slides[i];
+  return (
+    <>
+      <div className="box box--doc" role="group" aria-roledescription="carousel" aria-label={d.title}>
+        <p className="doc__title">{d.title}</p>
+        <div className="doc__slide" key={i} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${d.slides.length}`}>
+          <div className="box__fit box__fit--top"><Fit as="p" className="fit--title" min={16} max={84}>{sl.title}</Fit></div>
+          <div className="box__body"><Fit as="div" className="fit--body" min={12} max={30}><p>{sl.text}</p></Fit></div>
+        </div>
+        <div className="box__foot doc__nav">
+          <button type="button" className="iconbtn doc__btn" aria-label="Previous slide" disabled={i === 0} onClick={() => setI(i - 1)}><Icon name="chevron" size={20} className="doc__prev" /></button>
+          <span className="doc__n" aria-live="polite">{i + 1} / {d.slides.length}</span>
+          <button type="button" className="iconbtn doc__btn" aria-label="Next slide" disabled={i === d.slides.length - 1} onClick={() => setI(i + 1)}><Icon name="chevron" size={20} className="doc__next" /></button>
+          <button className="more" aria-label={`All slides: ${d.title}`} {...x.triggerProps(slotKey)}>All slides</button>
+        </div>
+      </div>
+      {x.isOpen(slotKey) && (
+        <ExpandedCell id={x.panelId(slotKey)} title={d.title} onClose={x.close} closeRef={x.closeRef}>
+          <ol className="doc__all">{d.slides.map((s2, j) => <li key={j}><h4>{s2.title}</h4><p>{s2.text}</p></li>)}</ol>
         </ExpandedCell>
       )}
     </>
@@ -174,7 +247,8 @@ export function PostBand({ item, index }: { item: Item; index: number }) {
   const added = s.comments[post.id] ?? [];
   // The reader's own comments come first, newest at the top, as the reference shows them.
   const comments = [...[...added].reverse(), ...post.comments];
-  const title = `Post by ${fullName(author)}`;
+  // Named by its author and its opening words, so two posts by one member are two different landmarks.
+  const title = `Post by ${fullName(author)}: ${(post.article?.title ?? post.doc?.title ?? post.text).split(/(?<=[.!?:])\s|\n/)[0].replace(/[.:]$/, "").slice(0, 70)}`;
 
   useEffect(() => { if (panel === "comments") commentRef.current?.focus(); }, [panel]);
 
@@ -204,13 +278,16 @@ export function PostBand({ item, index }: { item: Item; index: number }) {
     : post.kind === "poll" ? () => <Poll post={post} />
     : post.kind === "event" ? () => <EventBox post={post} />
     : post.kind === "milestone" ? () => <Milestone post={post} onCongrats={() => { setDraft(`Congratulations, ${author.first}!`); setPanel("comments"); }} />
+    : post.kind === "article" ? (x, key) => <ArticleBox post={post} x={x} slotKey={key} />
+    : post.kind === "gallery" ? (x, key) => <GalleryBox post={post} x={x} slotKey={key} title={title} />
+    : post.kind === "document" ? (x, key) => <DocBox post={post} x={x} slotKey={key} />
     : words;
   const cells: Cell[] = [];
   if (repostOf) {
     const orig = member(repostOf.author)!;
     cells.push(() => (
       <div className="box box--repost">
-        <p className="repost__by"><Avatar m={orig} size={28} mood={repostOf.mood} /> <a href={profileHref(orig.id)}>{fullName(orig)}</a></p>
+        <p className="repost__by"><Avatar m={orig} size={36} mood={repostOf.mood} /> <a href={profileHref(orig.id)}>{fullName(orig)}</a></p>
         {repostOf.photo && <div className="repost__pic"><Pic k={repostOf.photo} sizes="40vw" /></div>}
         <div className="box__body"><Fit as="div" className="fit--body" min={12} max={20}><p>{repostOf.text.split("\n\n")[0]}</p></Fit></div>
       </div>
@@ -228,7 +305,7 @@ export function PostBand({ item, index }: { item: Item; index: number }) {
     return flat ? <FactStrip f={f} /> : (
       <div className="box box--figure">
         <p className="figure__glyphs" role="img" aria-label={top.length ? `Mostly ${top.map((r) => r.label).join(", ")}` : "No reactions yet"}>{top.map((r) => <ReactionGlyph key={r.id} id={r.id} color={r.color} />)}</p>
-        <div className="box__fit"><Fit as="p" className="fit--display fit--num" min={12} max={80} ariaLabel={`${f.line} ${f.label.toLowerCase()}`}>{f.line}</Fit></div>
+        <div className="box__fit"><Fit as="p" className="fit--display fit--num" min={12} max={120} ariaLabel={`${f.line} ${f.label.toLowerCase()}`}>{f.line}</Fit></div>
         <p className="figure__rest">{rest}</p>
       </div>
     );
@@ -280,7 +357,7 @@ export function PostBand({ item, index }: { item: Item; index: number }) {
       {panel === "comments" && (
         <div className="panel">
           <form className="commentform" onSubmit={(e) => { e.preventDefault(); addComment(); }}>
-            <Avatar m={meNow} size={40} mood={moodOf(draft)} />
+            <Avatar m={meNow} size={56} mood={moodOf(draft)} />
             <label className="visually-hidden" htmlFor={`${base}c`}>Add a comment</label>
             <textarea id={`${base}c`} ref={commentRef} rows={2} placeholder="Add a comment…" value={draft} onChange={(e) => setDraft(e.target.value)} maxLength={1250} />
             <button type="submit" className="btn btn--blue" disabled={!draft.trim()}>Comment</button>
@@ -313,7 +390,7 @@ function CommentList({ postId, comments, onReply }: { postId: string; comments: 
           const liked = Boolean(s.likedComments[key]);
           return (
             <li key={c.id} className="comment">
-              <a href={profileHref(a.id)} tabIndex={-1} aria-hidden="true"><Avatar m={a} size={40} mood={c.mood ?? (c.author === ME ? moodOf(c.text) : undefined)} /></a>
+              <a href={profileHref(a.id)} tabIndex={-1} aria-hidden="true"><Avatar m={a} size={56} mood={c.mood ?? (c.author === ME ? moodOf(c.text) : undefined)} /></a>
               <div className="comment__body">
                 <p className="comment__head"><a href={profileHref(a.id)}><strong>{fullName(a)}</strong></a><span className="comment__ago">{c.ago}</span></p>
                 <p className="comment__headline">{a.headline}</p>
@@ -378,7 +455,7 @@ function SendPanel({ post, onDone }: { post: Post; onDone: (t: string) => void }
       <fieldset className="sendlist">
         <legend className="visually-hidden">Connections</legend>
         {people.slice(0, 6).map((m) => (
-          <label key={m.id} className="sendlist__row"><Avatar m={m} size={36} /><span><strong>{fullName(m)}</strong><small>{m.headline}</small></span><input type="checkbox" checked={to.includes(m.id)} onChange={() => setTo((v) => (v.includes(m.id) ? v.filter((i) => i !== m.id) : [...v, m.id]))} /></label>
+          <label key={m.id} className="sendlist__row"><Avatar m={m} size={48} /><span><strong>{fullName(m)}</strong><small>{m.headline}</small></span><input type="checkbox" checked={to.includes(m.id)} onChange={() => setTo((v) => (v.includes(m.id) ? v.filter((i) => i !== m.id) : [...v, m.id]))} /></label>
         ))}
         {!people.length && <p className="note">No connection by that name.</p>}
       </fieldset>
@@ -410,7 +487,7 @@ export function Composer({ onPosted }: { onPosted: (id: string) => void }) {
       {!open ? (
         <>
           <div className="composer__row">
-            <a href={profileHref(ME)} tabIndex={-1} aria-hidden="true"><Avatar m={meNow} size={48} frame={framed(meNow)} /></a>
+            <a href={profileHref(ME)} tabIndex={-1} aria-hidden="true"><Avatar m={meNow} size={64} frame={framed(meNow)} /></a>
             <button type="button" className="composer__start" onClick={() => setOpen(true)}>Start a post</button>
           </div>
           <div className="composer__kinds">
@@ -422,7 +499,7 @@ export function Composer({ onPosted }: { onPosted: (id: string) => void }) {
       ) : (
         <form onSubmit={(e) => { e.preventDefault(); post(); }} className="composer__form">
           <div className="composer__who">
-            <Avatar m={meNow} size={48} mood={moodOf(text)} />
+            <Avatar m={meNow} size={64} mood={moodOf(text)} />
             <div><strong>{fullName(meNow)}</strong>
               <label className="composer__aud"><span className="visually-hidden">Who can see this post</span>
                 <select value={aud} onChange={(e) => setAud(e.target.value as OwnPost["audience"])}><option value="anyone">Post to Anyone</option><option value="connections">Connections only</option></select>

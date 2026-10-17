@@ -175,7 +175,17 @@ README: the smallest line, and that no screen-reader user has tested it.
   checked is cut, not softened. The jokes may invent jobs and employers
   (Tomato is a "Vegetable, for tariff purposes" at the Supreme Court from
   1893), never dates, places, people or numbers.
-- A member's surname is its genus, so families share one. Years before the
+- Members go by a real first name and the name of what they are (Greg,
+  2026-10-16: "Names should be things like Otto Orange, Peter Peppers, Chelsea
+  Chilli, Eleanor Egglplant, use first real names and last vegetable names, or
+  scientific names as the main profile name that at can be part of profile
+  details"); the scientific name is `Member.binomial`, shown under the name
+  and in Contact info. He also asked for larger profile images, more mixed
+  media and long-form posts on the dishes each is used in, and type that
+  scales more in the squares ("feels too safe"). Long reads, galleries and
+  carousels (`article`, `photos`, `doc` on a post) carry `sources`, the
+  Wikipedia pages their dish facts are checked against; the disclosure lists
+  them. A dish fact without a source is cut. Years before the
   common era are negative (`yearLabel`); a role whose dates no source gives
   exactly carries a `dates` phrase and no span. Profiles stand in `YEAR`.
 - Avatars are photographs of the produce itself, cropped square by
@@ -184,8 +194,8 @@ README: the smallest line, and that no screen-reader user has tested it.
   member's colour for lids. Every post and comment sets a `mood` that matches
   what it says; the reader's own writing gets one from `moodOf`. The eyes
   wobble and blink, and hold still under `prefers-reduced-motion` or the
-  tools' reduced motion. Covers and post pictures are fields, trees and
-  markets; no person appears in any photograph.
+  tools' reduced motion. Covers and post pictures are fields, trees,
+  markets and dishes; no person appears in any photograph.
 - Everything the reader does goes through `src/lib/store.ts` and stays in the
   browser. A form or button that would send something says it sends nothing.
   Settings & Privacy, Data privacy, Reset this study clears it all.
