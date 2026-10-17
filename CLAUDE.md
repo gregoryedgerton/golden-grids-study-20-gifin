@@ -253,7 +253,7 @@ Two geometry rules, verified against source, that every band relies on:
 - **The study's brand is a parody name**: `GIF` in capitals, then the tail of
   the reference's name in lower case (GIFbnb, GIFspn, GIFflix, GIF.gov, GIFx,
   GIFbase, GIFmutual, GIFn'now, GIFbell, GIFipedia, GIFify, GIFmilk Records,
-  GIFdepot, GIFvidia, GIFpark, GIF.org, GIFea, GIFin).
+  GIFdepot, GIFvidia, GIFpark, GIF.org, GIFea, GIFbank, GIFin).
   Do not use GIFcommit as
   a service's name; it is only the npm scope of the library.
 - **A play on the reference's premium tier or named service carries the
