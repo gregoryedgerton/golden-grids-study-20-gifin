@@ -137,12 +137,12 @@ function App() {
 
         <Block id="intro" title="Intro" sub="* Indicates required" dirty={dirty(INTRO)} saved={notes.intro ?? ""} onSave={saveIntro} onDiscard={() => { discard(INTRO); setErrs({}); }}>
           <div className="fields fields--2">
-            <Field id={`${id}first`} label="First name*" error={err("first")}><input id={`${id}first`} value={d.first} onChange={(e) => set("first", e.target.value)} {...described("first")} autoComplete="given-name" /></Field>
-            <Field id={`${id}last`} label="Last name" error={err("last")}><input id={`${id}last`} value={d.last} onChange={(e) => set("last", e.target.value)} {...described("last")} autoComplete="family-name" /></Field>
+            <Field id={`${id}first`} label="First name*" error={err("first")}><input id={`${id}first`} value={d.first} onChange={(e) => set("first", e.target.value)} {...described("first")} autoComplete="off" /></Field>
+            <Field id={`${id}last`} label="Last name" error={err("last")}><input id={`${id}last`} value={d.last} onChange={(e) => set("last", e.target.value)} {...described("last")} autoComplete="off" /></Field>
           </div>
           <Field id={`${id}pron`} label="Pronouns"><select id={`${id}pron`} value={d.pronouns ?? ""} onChange={(e) => set("pronouns", e.target.value || undefined)}>{PRONOUNS.map((p) => <option key={p} value={p}>{p || "Please select"}</option>)}</select></Field>
           <Field id={`${id}headline`} label="Headline*" error={err("headline")} count={`${d.headline.length}/220`}><textarea id={`${id}headline`} rows={2} value={d.headline} onChange={(e) => set("headline", e.target.value)} {...described("headline")} /></Field>
-          <Field id={`${id}place`} label="Location*" error={err("place")}><input id={`${id}place`} value={d.place} onChange={(e) => set("place", e.target.value)} {...described("place")} /></Field>
+          <Field id={`${id}place`} label="Location*" error={err("place")}><input id={`${id}place`} value={d.place} onChange={(e) => set("place", e.target.value)} {...described("place")} autoComplete="off" /></Field>
           <fieldset className="pickset">
             <legend>Cover photograph</legend>
             {COVERS.map((k) => <label key={k} className={`pickpic${d.cover === k ? " is-on" : ""}`}><input type="radio" name={`${id}cover`} checked={d.cover === k} onChange={() => set("cover", k)} /><span className="pickpic__img"><Pic k={k} sizes="96px" /></span><span className="visually-hidden">{photo(k).alt}</span></label>)}
@@ -168,7 +168,7 @@ function App() {
               </Field>
               <Chips label="Job titles" items={open.titles} onRemove={(i) => setOpen({ ...open, titles: open.titles.filter((_, j) => j !== i) })} />
               <Field id={`${id}oplace`} label="Locations">
-                <span className="addrow"><input id={`${id}oplace`} value={placeAdd} onChange={(e) => setPlaceAdd(e.target.value)} />
+                <span className="addrow"><input id={`${id}oplace`} value={placeAdd} onChange={(e) => setPlaceAdd(e.target.value)} autoComplete="off" />
                   <button type="button" className="btn btn--outline" disabled={!placeAdd.trim()} onClick={() => { setOpen({ ...open, places: [...open.places, placeAdd.trim()] }); setPlaceAdd(""); }}>Add</button></span>
               </Field>
               <Chips label="Locations" items={open.places} onRemove={(i) => setOpen({ ...open, places: open.places.filter((_, j) => j !== i) })} />
@@ -198,7 +198,7 @@ function App() {
                 <Field id={`${id}rtitle`} label="Title*" error={err("rtitle")}><input id={`${id}rtitle`} value={role.r.title} onChange={(e) => setRole({ ...role, r: { ...role.r, title: e.target.value } })} {...described("rtitle")} /></Field>
                 <Field id={`${id}rcompany`} label="Company or organisation*" error={err("rcompany")}><input id={`${id}rcompany`} value={role.r.company} onChange={(e) => setRole({ ...role, r: { ...role.r, company: e.target.value } })} {...described("rcompany")} /></Field>
                 <Field id={`${id}rtype`} label="Employment type"><select id={`${id}rtype`} value={role.r.type} onChange={(e) => setRole({ ...role, r: { ...role.r, type: e.target.value } })}>{TYPES.map((t) => <option key={t}>{t}</option>)}</select></Field>
-                <Field id={`${id}rplace`} label="Location"><input id={`${id}rplace`} value={role.r.place ?? ""} onChange={(e) => setRole({ ...role, r: { ...role.r, place: e.target.value } })} /></Field>
+                <Field id={`${id}rplace`} label="Location"><input id={`${id}rplace`} value={role.r.place ?? ""} onChange={(e) => setRole({ ...role, r: { ...role.r, place: e.target.value } })} autoComplete="off" /></Field>
                 <Field id={`${id}rstart`} label="Start year*" error={err("rstart")}><input id={`${id}rstart`} inputMode="numeric" value={role.r.start || ""} onChange={(e) => setRole({ ...role, r: { ...role.r, start: Number(e.target.value.replace(/\D/g, "").slice(0, 4)) } })} {...described("rstart")} /></Field>
                 <Field id={`${id}rend`} label="End year" error={err("rend")}><input id={`${id}rend`} inputMode="numeric" disabled={role.current} value={role.current ? "" : role.r.end || ""} onChange={(e) => setRole({ ...role, r: { ...role.r, end: Number(e.target.value.replace(/\D/g, "").slice(0, 4)) } })} {...described("rend")} /></Field>
               </div>

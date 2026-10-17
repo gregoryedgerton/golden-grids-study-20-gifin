@@ -1061,12 +1061,18 @@ export const HEADER_NAV = [
   { id: "notifications", label: "Notifications", icon: "bell", count: 7 },
 ] as const;
 
-export const RAIL_LINKS = ["About", "Accessibility", "Help Center", "Privacy & Terms", "Ad Choices", "Advertising", "Business Services", "Get the GIFin app"];
+export const RAIL_LINKS = ["About", "Accessibility", "Help Center", "Privacy & Terms", "Ad Choices", "Advertising", "Business Services"];
 
+/**
+ * The pages this study follows, by name. They are not linked from the pages:
+ * they are shown only to members, behind the reference's sign-in, and a
+ * lookalike that links to the service it imitates is what phishing scanners
+ * look for (see CLAUDE.md, Safe Browsing remediation). The README links them.
+ */
 export const REFERENCE = {
-  feed: { label: "the LinkedIn feed (signed-in home)", url: "https://www.linkedin.com/feed/" },
-  profile: { label: "a LinkedIn member profile", url: "https://www.linkedin.com/" },
-  edit: { label: "editing one's own LinkedIn profile", url: "https://www.linkedin.com/" },
-  settings: { label: "LinkedIn's Settings & Privacy", url: "https://www.linkedin.com/mypreferences/d/categories/account" },
-  assessments: { label: "LinkedIn's Skill Assessments, retired in 2023", url: "https://www.linkedin.com/help/learning/answer/a1690529" },
+  feed: { label: "the LinkedIn feed (signed-in home)" },
+  profile: { label: "a LinkedIn member profile" },
+  edit: { label: "editing one's own LinkedIn profile" },
+  settings: { label: "LinkedIn's Settings & Privacy" },
+  assessments: { label: "LinkedIn's Skill Assessments, retired in 2023" },
 };

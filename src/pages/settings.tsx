@@ -5,20 +5,26 @@ import { GridBand, deal, type Cell } from "../bands/bands";
 import { Avatar } from "../lib/people";
 import { Icon, type IconName } from "../icons";
 import { ME, MEMBERS, PAGES, REFERENCE, followedAtStart, fullName, profileHref } from "../content";
-import { applyTheme, me, resetAll, settings, social, shownName, SESSIONS, type Settings } from "../lib/store";
+import { applyTheme, me, resetAll, settings, social, shownName, type Settings } from "../lib/store";
 import { setFollowing } from "../lib/post";
+import { FactTile } from "../lib/cards";
 import "../styles.css";
 
 /**
- * Settings & Privacy, after the reference's: its own reduced header, six
+ * Settings & Privacy, after the reference's: its own reduced header, the
  * categories in a left column, and in each a list of settings grouped under
  * headings, every row naming the setting and its current value. A row opens
  * in place to its control. The settings that change the study do so at once
  * and on every page: Dark mode, the feed's default sort, the profile frame,
- * follows, sessions and the reset. The home is a grid of the six categories,
- * and Notifications is a grid of its kinds, each with its switch.
+ * follows and the reset. The home is a grid of the categories, and
+ * Notifications is a grid of its kinds, each with its switch.
+ *
+ * The reference's Sign in & security category, its Verifications row and
+ * notifications, and Get a copy of your data are left out: a page that looks
+ * like it asks for an address, a password, a code or a download reads as
+ * phishing to automated scanners (CLAUDE.md, Safe Browsing remediation).
  */
-type CatId = "account" | "security" | "visibility" | "privacy" | "ads" | "notifications";
+type CatId = "account" | "visibility" | "privacy" | "ads" | "notifications";
 interface Row { id: string; label: string; value?: (s: Settings) => string; detail: () => ReactNode }
 interface Cat { id: CatId; name: string; icon: IconName; blurb: string; groups: { title: string; rows: Row[] }[] }
 
@@ -53,27 +59,6 @@ function CloseAccount() {
   if (step === 1) return <><p>Closing an account removes your profile, connections and posts. Are you sure?</p><p className="row"><button type="button" className="btn btn--blue" onClick={() => setStep(2)}>Close account</button><button type="button" className="btn btn--outline" onClick={() => setStep(0)}>Back</button></p></>;
   return <><p>Tell us why you're closing your account:</p><Radios name="Reason" value={why} options={[["duplicate", "I have a duplicate account"], ["too-many", "I'm getting too many emails"], ["value", "I'm not getting any value from my membership"], ["privacy", "I have a privacy concern"], ["other", "Other"]]} onChange={setWhy} /><p className="row"><button type="button" className="btn btn--blue" disabled={!why} onClick={() => setStep(1)}>Next</button></p></>;
 }
-function Emails() {
-  const s = settings.use();
-  const [v, setV] = useState("");
-  const [err, setErr] = useState("");
-  const add = () => {
-    const t = v.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)) { setErr("Enter a valid email address."); return; }
-    if (s.emails.some((e) => e.address.toLowerCase() === t.toLowerCase())) { setErr("That address is already on your account."); return; }
-    upd({ emails: [...s.emails, { address: t, verified: false }] }); setV(""); setErr("");
-  };
-  return (
-    <>
-      <ul className="entries entries--plain">{s.emails.map((e) => <li key={e.address}><div><strong>{e.address}</strong><p className="note">{e.primary ? "Primary email" : e.verified ? "Verified" : "Unverified: no verification email is sent in this study"}</p></div>{!e.primary && <span className="row"><button type="button" className="textbtn" onClick={() => upd({ emails: s.emails.map((x) => ({ ...x, primary: x.address === e.address })) })}>Make primary</button><button type="button" className="textbtn" onClick={() => upd({ emails: s.emails.filter((x) => x.address !== e.address) })}>Remove<span className="visually-hidden"> {e.address}</span></button></span>}</li>)}</ul>
-      <div className={`field${err ? " field--error" : ""}`}><label htmlFor="newmail">Add email address</label><span className="addrow"><input id="newmail" type="email" value={v} onChange={(e) => setV(e.target.value)} aria-invalid={err ? true : undefined} aria-describedby={err ? "newmail-e" : undefined} /><button type="button" className="btn btn--outline" onClick={add}>Add</button></span>{err && <p className="field__error" id="newmail-e"><Icon name="info" size={16} />{err}</p>}</div>
-    </>
-  );
-}
-function Sessions() {
-  const s = settings.use();
-  return <><ul className="entries entries--plain">{s.sessions.map((x) => <li key={x}><div><strong>{x.split(" · ")[0]}</strong><p className="note">{x.split(" · ").slice(1).join(" · ")}</p></div>{!x.endsWith("This browser") && <button type="button" className="btn btn--outline btn--small" onClick={() => upd({ sessions: s.sessions.filter((y) => y !== x) })}>Sign out<span className="visually-hidden"> of {x.split(" · ")[0]}</span></button>}</li>)}</ul>{s.sessions.length < SESSIONS.length && <button type="button" className="textbtn" onClick={() => upd({ sessions: SESSIONS })}>Restore the sample sessions</button>}</>;
-}
 function Viewing() {
   const s = settings.use(); const m = me.use();
   const preview = s.viewing === "name" ? `${fullName(m)} · ${m.headline}` : s.viewing === "characteristics" ? `Someone at ${m.roles[0]?.company ?? "a company"}` : "Anonymous GIFin Member";
@@ -82,11 +67,6 @@ function Viewing() {
 function LastName() {
   const s = settings.use(); const m = me.use();
   return <><p>Choose how your last name appears to members who aren't your connections.</p><Radios name="Last name" value={s.lastName} options={[["full", "Your full last name"], ["initial", "Your last initial only"]]} onChange={(v) => upd({ lastName: v })} /><p className="preview" role="status"><span className="label">Members outside your network see</span>{shownName(m, s)}</p></>;
-}
-function DataCopy() {
-  const [which, setWhich] = useState("works");
-  const [sent, setSent] = useState(false);
-  return <><Radios name="Which data" value={which} options={[["works", "Download larger data archive", "Connections, posts, messages, profile and more"], ["pick", "Want something in particular?", "Select the data files you're most interested in"]]} onChange={(v) => { setWhich(v); setSent(false); }} />{which === "pick" && <fieldset className="checks"><legend>Data files</legend>{["Articles", "Connections", "Messages", "Invitations", "Profile", "Recommendations", "Skills"].map((d) => <label key={d}><input type="checkbox" defaultChecked={d === "Profile"} />{d}</label>)}</fieldset>}<p className="row"><button type="button" className="btn btn--blue" onClick={() => setSent(true)}>Request archive</button></p><p className="note" role="status">{sent ? "Nothing was requested: this is a layout study, and its data stays in this browser." : ""}</p></>;
 }
 function Reset() {
   const [sure, setSure] = useState(false);
@@ -101,14 +81,13 @@ function SwitchFor({ k, label, hint }: { k: keyof Settings; label: string; hint?
 const show = (id: string, label: string, text: string, value?: string): Row => ({ id, label, value: () => value ?? "", detail: () => <Note>{text}</Note> });
 
 const ADS = ["Connections", "Location", "Demographics", "Companies you follow", "Groups", "Education", "Job information", "Employer"];
-const KINDS: [string, string][] = [["job", "Searching for a job"], ["hiring", "Hiring someone"], ["connecting", "Connecting with others"], ["catchup", "Network catch-up updates"], ["posting", "Posting and commenting"], ["messaging", "Messaging"], ["groups", "Groups"], ["pages", "Pages"], ["events", "Attending events"], ["news", "News and reports"], ["profile", "Updating your profile"], ["verifications", "Verifications"]];
+const KINDS: [string, string][] = [["job", "Searching for a job"], ["hiring", "Hiring someone"], ["connecting", "Connecting with others"], ["catchup", "Network catch-up updates"], ["posting", "Posting and commenting"], ["messaging", "Messaging"], ["groups", "Groups"], ["pages", "Pages"], ["events", "Attending events"], ["news", "News and reports"], ["profile", "Updating your profile"]];
 
 const CATS: Cat[] = [
   { id: "account", name: "Account preferences", icon: "user", blurb: "Profile information, display, general preferences and account management.", groups: [
     { title: "Profile information", rows: [
       { id: "name", label: "Name, location, and industry", value: () => `${fullName(me.get())} · ${me.get().place}`, detail: () => <><p>Your name and location are edited with the rest of your intro.</p><p><a className="btn btn--outline" href={`${PAGES.edit}#intro`}>Edit your intro</a></p></> },
       show("demographic", "Personal demographic information", "Not collected in this study."),
-      show("verify", "Verifications", "Verification is not available in this study."),
     ] },
     { title: "Display", rows: [{ id: "dark", label: "Dark mode", value: (s) => ({ light: "Always off", dark: "Always on", device: "Use device settings" })[s.theme], detail: () => <DarkMode /> }] },
     { title: "General preferences", rows: [
@@ -119,17 +98,8 @@ const CATS: Cat[] = [
       { id: "feed", label: "Feed preferences", value: (s) => (s.feedSort === "top" ? "Top" : "Recent"), detail: () => <FeedSort /> },
       { id: "unfollowed", label: "People you unfollowed", detail: () => <Unfollowed /> },
     ] },
-    { title: "Subscriptions & payments", rows: [show("premium", "Upgrade for free", "GIFin Premium is shown for the reference's sake. Nothing can be bought.", "Try GIFin Premium")] },
+    { title: "Subscriptions", rows: [show("premium", "Upgrade for free", "GIFin Premium is shown for the reference's sake. Nothing can be bought.", "Try GIFin Premium")] },
     { title: "Account management", rows: [show("hibernate", "Hibernate account", "Hibernating is not available in this study."), { id: "close", label: "Close account", detail: () => <CloseAccount /> }] },
-  ] },
-  { id: "security", name: "Sign in & security", icon: "lock", blurb: "Email addresses, where you're signed in and two-step verification.", groups: [
-    { title: "Account access", rows: [
-      { id: "emails", label: "Email addresses", value: (s) => `${s.emails.length} ${s.emails.length === 1 ? "address" : "addresses"}`, detail: () => <Emails /> },
-      show("phones", "Phone numbers", "No phone number is kept in this study."),
-      show("password", "Change password", "Passwords are not part of this study, and nothing here asks for one."),
-      { id: "sessions", label: "Where you're signed in", value: (s) => `${s.sessions.length} ${s.sessions.length === 1 ? "session" : "sessions"}`, detail: () => <Sessions /> },
-      toggleRow("twostep", "Two-step verification", "twoStep", "A second step at sign-in. Nothing is sent in this study."),
-    ] },
   ] },
   { id: "visibility", name: "Visibility", icon: "eye", blurb: "Who can see your profile, your network and your activity.", groups: [
     { title: "Visibility of your profile & network", rows: [
@@ -145,7 +115,6 @@ const CATS: Cat[] = [
   ] },
   { id: "privacy", name: "Data privacy", icon: "shield", blurb: "Your data, who can reach you, messaging and job seeking.", groups: [
     { title: "How GIFin uses your data", rows: [
-      { id: "copy", label: "Get a copy of your data", detail: () => <DataCopy /> },
       { id: "reset", label: "Reset this study", detail: () => <Reset /> },
     ] },
     { title: "Who can reach you", rows: [{ id: "invites", label: "Invitations to connect", value: (s) => ({ everyone: "Everyone on GIFin", email: "Only people who know your email", nobody: "Only people in your Imported Contacts list" })[s.invitations], detail: () => <Invites /> }] },
@@ -157,9 +126,12 @@ const CATS: Cat[] = [
   ] },
   { id: "notifications", name: "Notifications", icon: "bell", blurb: "What you're notified about, and where.", groups: [] },
 ];
+const NOTIFICATIONS = CATS.find((c) => c.id === "notifications")!;
+/** Every setting the categories hold, the kinds of notification among them: the figure in the home's sixth square. */
+const SETTING_COUNT = CATS.reduce((n, c) => n + c.groups.reduce((m, g) => m + g.rows.length, 0), 0) + KINDS.length;
 
 function CatHome({ q, setQ }: { q: string; setQ: (v: string) => void }) {
-  const hits = q.trim().length >= 2 ? CATS.flatMap((c) => c.groups.flatMap((g) => g.rows.filter((r) => r.label.toLowerCase().includes(q.trim().toLowerCase())).map((r) => ({ c, r })))).concat(KINDS.filter(([, l]) => l.toLowerCase().includes(q.trim().toLowerCase())).map(([k, l]) => ({ c: CATS[5], r: { id: `n-${k}`, label: l, detail: () => null } }))) : [];
+  const hits = q.trim().length >= 2 ? CATS.flatMap((c) => c.groups.flatMap((g) => g.rows.filter((r) => r.label.toLowerCase().includes(q.trim().toLowerCase())).map((r) => ({ c, r })))).concat(KINDS.filter(([, l]) => l.toLowerCase().includes(q.trim().toLowerCase())).map(([k, l]) => ({ c: NOTIFICATIONS, r: { id: `n-${k}`, label: l, detail: () => null } }))) : [];
   return (
     <>
       <div className="wrap setsearch">
@@ -212,6 +184,9 @@ function Notifications() {
       <div className="box__foot"><Switch label={`Notify me about ${label.toLowerCase()}`} on={on(k)} onChange={(v) => upd({ notifications: { ...s.notifications, [k]: v } })} /></div>
     </div>
   ));
+  // The twelfth square, where the reference's Verifications kind stood: how many kinds are on.
+  const count = KINDS.filter(([k]) => on(k)).length;
+  cells.push(() => <FactTile f={{ line: `${count}/${KINDS.length}`, label: "Kinds turned on", tone: "tile", spoken: `${count} of ${KINDS.length}` }} />);
   const groups = deal(cells, 3);
   return <>{groups.map((g, i) => <GridBand key={i} id={`notif-${i}`} title={i === 0 ? "Notifications you receive" : `Notifications you receive, part ${i + 1} of ${groups.length}`} sub={i === 0 ? "On GIFin, by push and by email. Turn a kind off and it stops in all three." : undefined} quiet={i > 0} variant={i + 1} cells={g} />)}</>;
 }
@@ -234,13 +209,13 @@ function App() {
             <>
               <h1 className="pagetitle">Settings</h1>
               <CatHome q={q} setQ={setQ} />
-              {[CATS.slice(0, 3), CATS.slice(3)].map((row, n) => <GridBand key={n} id={`categories-${n + 1}`} title={n === 0 ? "Categories" : "More categories"} quiet variant={n + 1} lead={n === 1} cells={row.map((c): Cell => () => (
+              {[CATS.slice(0, 3), CATS.slice(3)].map((row, n) => <GridBand key={n} id={`categories-${n + 1}`} title={n === 0 ? "Categories" : "More categories"} quiet variant={n + 1} lead={n === 1} cells={[...row.map((c): Cell => () => (
                 <a className="box box--cat" href={`${PAGES.settings}?s=${c.id}`}>
                   <span className="cat__icon" aria-hidden="true"><Icon name={c.icon} size={36} /></span>
                   <span className="cat__name">{c.name}</span>
                   <span className="cat__blurb">{c.blurb}</span>
                 </a>
-              ))} />)}
+              )), ...(n === 1 ? [() => <FactTile f={{ line: String(SETTING_COUNT), label: `Settings, in ${CATS.length} categories`, tone: "tile" }} />] : [])]} />)}
             </>
           ) : (
             <>

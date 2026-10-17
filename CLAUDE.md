@@ -199,6 +199,9 @@ README: the smallest line, and that no screen-reader user has tested it.
 - Everything the reader does goes through `src/lib/store.ts` and stays in the
   browser. A form or button that would send something says it sends nothing.
   Settings & Privacy, Data privacy, Reset this study clears it all.
+- No account access: nothing asks for an email address, a password, a phone
+  number or a code, nothing offers to sign in or out or to download, and
+  nothing links to the reference (see Safe Browsing remediation, below).
 - Dark mode is the reference's own setting: `settings.theme` sets
   `data-theme` on `<html>` (an inline script in each HTML entry applies it
   before the first paint), and the stylesheet's dark tokens apply under the
@@ -276,7 +279,8 @@ Two geometry rules, verified against source, that every band relies on:
   search, its tabs. Do not write "layout study", a study number or the
   reference's name there; the notice above and the disclosure below say that
   on every page. (Greg, 2026-10-09.)
-- **Nothing links to the reference except the notice and the disclosure.** No
+- **Nothing links to the reference except the notice and the disclosure**
+  (in this study, not even those: see Safe Browsing remediation). No
   link in the header, the nav, a band, an opened cell or the footer goes to
   the site being studied or its apps. Nav items are the reference's own, for
   show (plain text); only an item that leads to one of the study's own pages
@@ -327,3 +331,50 @@ opened in StackBlitz at `https://stackblitz.com/~/github.com/gregoryedgerton/gol
 - Do not append `?file=` to the `~/github.com` link; it made the IDE fail to
   start in testing. The classic `/github/` importer accepts `?file=` but waits
   on a WebSocket and can stall at "Cloning repo from GitHub".
+
+## Safe Browsing remediation (2026-10)
+
+On 2026-10-17 Google Safe Browsing flagged the whole origin
+gregoryedgerton.github.io as deceptive ("social engineering"), every study
+and the marketing site with it. The first trigger was the demo bank sign-in
+in Study 19 (GIFbank); see that repository's CLAUDE.md. Nothing was ever
+collected here, and the study sends nothing anywhere, but the scanner reads
+appearance: a LinkedIn lookalike with account-access settings, an email
+field, password and verification rows and links to linkedin.com's
+login-walled pages looks like phishing however clearly it is labelled.
+
+**What changed**
+- Settings (`src/pages/settings.tsx`): the whole Sign in & security category
+  (id `security`: Email addresses with the Add email address field, Phone
+  numbers, Change password, Where you're signed in with its Sign out buttons,
+  Two-step verification) is gone, with its components (`Emails`,
+  `Sessions`). So are the Verifications row of Account preferences, the
+  Verifications kind of notification, and Get a copy of your data
+  (`DataCopy`: Download larger data archive, Request archive). The settings
+  store (`src/lib/store.ts`) lost `twoStep`, `emails`, `sessions` and
+  `SESSIONS`. "Subscriptions & payments" is headed "Subscriptions".
+- The grids stay whole: the settings home's second band carries a sixth
+  square, a `FactTile` with the number of settings (`SETTING_COUNT`), and
+  Notifications' twelfth square, where Verifications was, is a `FactTile`
+  with the number of kinds turned on. The settings search finds the
+  Notifications category by id, not by position.
+- The Me menu has no Sign Out; the rail footer has no Get the GIFin app.
+- The edit forms (`src/pages/edit.tsx`) set `autoComplete="off"` on the name
+  and every location field; no input in the study carries a personal
+  autofill token.
+- The pages do not link to the reference at all, an exception to the
+  program's rule that a study links its reference from the notice and the
+  disclosure (the same exception as GIFbank's). `REFERENCE` in
+  `src/content.ts` has labels and no URLs, the `study.json` pages have no
+  `url`, the closing disclosure (`Page` in `src/lib/Page.tsx`) says why
+  ("Why nothing here links to LinkedIn"), and the README keeps the addresses.
+  `study.json` says what was left out without repeating the trigger words.
+
+**Do not** bring back, here or in any sibling study: an email, password,
+phone or verification-code field; a sign-in, sign-out, password, session or
+two-step row, button or menu item; a data download or archive request; an
+app download link; real autofill tokens (`email`, `given-name`,
+`family-name`, `tel`, `street-address` and the like) on any input; or any
+link to linkedin.com. After a build, `grep -ri "linkedin\.com" dist` must
+print nothing. After deploying, request a review in Google Search Console
+(Security Issues) so the flag is lifted.

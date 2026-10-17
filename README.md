@@ -26,6 +26,15 @@ reference is kept. The reference retired its skill assessments in 2023 and
 removed the badges in 2024 (its help page, "Skill Assessments - no longer
 available"); the study rebuilds the feature as it worked.
 
+The study's pages name these references but do not link to them (see Notes
+for review). Their addresses are kept here:
+[the feed](https://www.linkedin.com/feed/),
+[Settings & Privacy](https://www.linkedin.com/mypreferences/d/categories/account)
+and the help page
+[Skill Assessments - no longer available](https://www.linkedin.com/help/learning/answer/a1690529);
+a member's profile and its editing are at addresses particular to the member,
+under [linkedin.com](https://www.linkedin.com/).
+
 - **The feed:** a white bar with the mark, a search field and the global
   navigation as icons over names (Home, My Network, Jobs, Messaging,
   Notifications, Me, For Business, the premium offer); the member's card and
@@ -42,7 +51,9 @@ available"); the study rebuilds the feature as it worked.
   220 characters), About (2,600), Open to work, a position and skills.
 - **Settings & Privacy:** a reduced header, six categories (Account
   preferences, Sign in & security, Visibility, Data privacy, Advertising data,
-  Notifications), each a list of settings with their current values.
+  Notifications), each a list of settings with their current values. The
+  study rebuilds five of them; Sign in & security is left out (see Notes for
+  review).
 - **Skill assessments:** a list, an introduction, timed multiple-choice
   questions taken in one sitting, and a result that adds a badge to the skill.
 
@@ -71,9 +82,10 @@ of rows. The study sets them as golden grids:
   ordered by endorsements, so the most endorsed skill is the largest square.
 - **The editing page puts the top card above the forms as a live preview**,
   changing as the reader types; each form saves on its own.
-- **Settings** is a grid of its six categories on its home page, a list of
-  rows that open in place within a category, and a grid of the kinds of
-  notification, each with its switch.
+- **Settings** is a grid of its five categories on its home page, with the
+  number of settings in the sixth square, a list of rows that open in place
+  within a category, and a grid of the kinds of notification, each with its
+  switch, with the number turned on in the last square.
 - **Assessments** are squares, the one for a skill on the reader's profile
   largest, and a result is a grid of its figures beside the badge.
 
@@ -89,8 +101,8 @@ Long lists are dealt into bands as evenly as possible (`deal()` in
 | | Experience | the roles, current first, with figures where there is one role |
 | | Skills | up to five skills, most endorsed first |
 | Edit profile | Preview | the top card, live |
-| Settings | Home | the six categories, in two bands of three |
-| | Notifications | twelve kinds in three bands of four, each with a switch |
+| Settings | Home | the five categories and the number of settings, in two bands of three |
+| | Notifications | eleven kinds, each with a switch, and the number turned on, in four bands of three |
 | Skill assessments | List | the five assessments, the one for a profile skill first |
 | | Result | correct answers, the badge, the score, the time taken |
 
@@ -108,10 +120,9 @@ and Recent; the search's suggestions of members and assessments. On the
 editing page every field changes the preview at once, with required fields,
 character limits and year checks. In Settings, Dark mode, the feed's default
 sort, the last-name setting (with what others see), the profile viewing
-options (with what others see), email addresses, sessions, two-step
-verification, every notification and advertising switch, Close account in
-three steps that close nothing, a data request that requests nothing, and a
-reset that clears everything the study keeps. In an assessment, the timer
+options (with what others see), every notification and advertising switch,
+Close account in three steps that close nothing, and a reset that clears
+everything the study keeps. In an assessment, the timer
 (which can be turned off before or during the test), shuffled answers, a pass
 mark, a review of every answer with its source, and a badge the reader can show
 or hide on the profile.
@@ -170,6 +181,24 @@ Observations for whoever reviews this study, recorded without a verdict.
 Whether the layout suits the page is assessed separately, after every study
 has been reviewed.
 
+- **Account access was taken out after Google flagged the site
+  (2026-10-17).** Google Safe Browsing flagged the whole of
+  gregoryedgerton.github.io as deceptive ("social engineering"), first for a
+  demo bank sign-in in Study 19. Nothing here was ever collected, but the
+  scanner reads appearance, so this study no longer has the reference's Sign
+  in & security category (email addresses with an Add email address field,
+  phone numbers, Change password, Where you're signed in with Sign out
+  buttons, two-step verification), the Verifications row of Account
+  preferences, the Verifications kind of notification, Get a copy of your
+  data (with Download larger data archive and Request archive), Sign Out in
+  the Me menu, or Get the GIFin app in the rail's footer. The edit forms ask
+  browsers not to autofill the name and location fields. To keep the grids
+  whole, the settings home's sixth square carries the number of settings,
+  and the twelfth square of Notifications, where Verifications was, the
+  number of kinds turned on. The pages name the
+  reference but no longer link to it; the closing disclosure says why ("Why
+  nothing here links to LinkedIn"), and the addresses are kept in this README
+  and nowhere in the build.
 - **The cast was replaced.** The study was first built with characters from
   Quentin Tarantino's films and withdrawn before review as weak source
   material; the pages and their interactions stayed, and the members, posts,

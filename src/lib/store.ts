@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from "react";
-import { EMAIL, ME, member, type AssessmentId, type Comment, type Member, type Reaction } from "../content";
+import { ME, member, type AssessmentId, type Comment, type Member, type Reaction } from "../content";
 
 /**
  * Everything a reader changes, kept in this browser's local storage under
@@ -86,18 +86,13 @@ export interface Settings {
   readReceipts: boolean;
   invitations: "everyone" | "email" | "nobody";
   recruiters: boolean;
-  twoStep: boolean;
-  emails: { address: string; primary?: boolean; verified: boolean }[];
-  sessions: string[];
   notifications: Record<string, boolean>;
   ads: Record<string, boolean>;
   language: string;
 }
-export const SESSIONS = ["Chrome on macOS · Naples, Italy · This browser", "GIFin app on iPhone · Naples, Italy", "Safari on iPad · Lima, Peru"];
 export const settings = persisted<Settings>("settings", {
   theme: "device", feedSort: "top", lastName: "full", viewing: "name", autoplay: true, sounds: false, photos: "everyone",
-  connectionsVisible: true, activeStatus: "connections", shareUpdates: true, readReceipts: true, invitations: "everyone", recruiters: true, twoStep: false,
-  emails: [{ address: EMAIL, primary: true, verified: true }], sessions: SESSIONS,
+  connectionsVisible: true, activeStatus: "connections", shareUpdates: true, readReceipts: true, invitations: "everyone", recruiters: true,
   notifications: {}, ads: {}, language: "English",
 });
 

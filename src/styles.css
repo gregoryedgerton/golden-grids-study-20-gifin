@@ -128,7 +128,7 @@ a.gnav__item:hover, button.gnav__item:hover { color: var(--fg); }
 .memenu ul { display: grid; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
 .memenu li > * { display: block; padding: 6px 12px; color: var(--fg-2); text-decoration: none; }
 .memenu li a:hover { text-decoration: underline; color: var(--fg); }
-.memenu__out { padding: 10px 12px 0; color: var(--fg-2); }
+.memenu ul:last-child { padding-bottom: 0; border-bottom: 0; }
 .settop__me { margin-left: auto; display: inline-flex; }
 
 /* --- The app's columns -------------------------------------------------------------------- */

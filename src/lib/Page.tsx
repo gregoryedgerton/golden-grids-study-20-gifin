@@ -13,8 +13,9 @@ import { me } from "./store";
  * My Network, Jobs, Messaging, Notifications, Me), then For Business and the
  * premium offer. Home and the Me menu lead to the study's pages; the rest are
  * the reference's items, for show. The settings pages carry the reference's
- * own reduced header. Nothing in the shell leaves for the reference: it is
- * linked only from the notice and the disclosure.
+ * own reduced header. Nothing in the shell or the disclosure leaves for the
+ * reference: the disclosure names the pages it follows without linking them,
+ * and says why. The Me menu has no Sign Out, as the study has no sign-in.
  */
 function Search() {
   const [q, setQ] = useState("");
@@ -66,7 +67,6 @@ function MeMenu() {
           </ul>
           <p className="memenu__h">Manage</p>
           <ul><li><a href={`${PAGES.feed}#saved`}>Posts &amp; Activity</a></li><li><span>Job Posting Account</span></li></ul>
-          <p className="memenu__out"><span>Sign Out</span></p>
         </div>
       )}
     </li>
@@ -129,7 +129,7 @@ export function RailFooter() {
   );
 }
 
-export function Page({ current, source, header = "app", children }: { current: string; source: { label: string; url: string }[]; header?: "app" | "settings"; children: ReactNode }) {
+export function Page({ current, source, header = "app", children }: { current: string; source: { label: string }[]; header?: "app" | "settings"; children: ReactNode }) {
   return (
     <>
       <a className="skip" href="#content">Skip to content</a>
@@ -138,7 +138,8 @@ export function Page({ current, source, header = "app", children }: { current: s
       {header === "app" ? <GlobalNav current={current} /> : <SettingsTop />}
       <main id="content" className="app">{children}</main>
       <StudyDisclosure>
-        <p>This page follows {source.map((s, i) => <span key={s.url + s.label}>{i > 0 && (i === source.length - 1 ? " and " : ", ")}<a href={s.url}>{s.label}</a></span>)}, as the reference is known in October 2026; it was built without signing in.</p>
+        <p>This page follows {source.map((s, i) => <span key={s.label}>{i > 0 && (i === source.length - 1 ? " and " : ", ")}{s.label}</span>)}, as the reference is known in October 2026; it was built without signing in.</p>
+        <p><strong>Why nothing here links to LinkedIn.</strong> The pages this study follows are named but not linked. LinkedIn shows them only to its members, and a page styled after a service that links to that service's own pages can be flagged as phishing by automated scanners, as the site this study is published on was in October 2026, so the study does not link out to it. The addresses are listed in the study's repository.</p>
         <Credits />
       </StudyDisclosure>
     </>
