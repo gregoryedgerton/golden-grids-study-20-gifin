@@ -1,6 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { seen, photo } from "../photos";
-import { FILMS, MEMBERS, type FilmId } from "../content";
+import { MEMBERS, fullName } from "../content";
 
 /** Flat modules: tabs, prose, read more and the page's credits. */
 
@@ -50,7 +50,7 @@ export function SeeMore({ text, lines = 3 }: { text: string; lines?: number }) {
   );
 }
 
-/** Every photograph on the page and the films its members come from, for the disclosure. Rendered after the page has drawn. */
+/** Every photograph on the page and the page each member's facts are checked against, for the disclosure. Rendered after the page has drawn. */
 export function Credits() {
   const [keys, setKeys] = useState<string[]>([]);
   useEffect(() => {
@@ -59,7 +59,6 @@ export function Credits() {
     const t = setInterval(read, 1500);
     return () => clearInterval(t);
   }, []);
-  const films = [...new Set(MEMBERS.map((m) => m.film))] as FilmId[];
   return (
     <>
       {keys.length > 0 && (
@@ -69,8 +68,8 @@ export function Credits() {
         </details>
       )}
       <details>
-        <summary>The films the members come from ({films.length})</summary>
-        <ul>{films.sort((a, b) => FILMS[a].year - FILMS[b].year).map((f) => <li key={f}>{FILMS[f].title} ({FILMS[f].year}), written and directed by Quentin Tarantino: {MEMBERS.filter((m) => m.film === f).map((m) => [m.first, m.last].filter(Boolean).join(" ")).join(", ")}. Plot checked against <a href={FILMS[f].source}>Wikipedia</a>.</li>)}</ul>
+        <summary>Where the members' facts are checked ({MEMBERS.length})</summary>
+        <ul>{MEMBERS.map((m) => <li key={m.id}>{fullName(m)}: <a href={m.source}>{decodeURIComponent(m.source.split("/wiki/")[1]).replace(/_/g, " ")}</a>, Wikipedia.</li>)}</ul>
       </details>
     </>
   );

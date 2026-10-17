@@ -1,9 +1,9 @@
 import { useSyncExternalStore } from "react";
-import { ME, member, type AssessmentId, type Comment, type Member, type Reaction } from "../content";
+import { EMAIL, ME, member, type AssessmentId, type Comment, type Member, type Reaction } from "../content";
 
 /**
  * Everything a reader changes, kept in this browser's local storage under
- * `gg19-*` and sent nowhere: the profile as edited, posts written, reactions,
+ * `gg19p-*` and sent nowhere: the profile as edited, posts written, reactions,
  * comments, votes, follows, invitations, endorsements, assessment results and
  * settings. One store per kind, each a value with a setter and a hook, so a
  * change made on one page shows on the others. If storage is unavailable the
@@ -12,7 +12,7 @@ import { ME, member, type AssessmentId, type Comment, type Member, type Reaction
 type Listener = () => void;
 
 export function persisted<T>(key: string, initial: T) {
-  const k = `gg19-${key}`;
+  const k = `gg19p-${key}`;
   let value: T = initial;
   try { const raw = localStorage.getItem(k); if (raw) { const v = JSON.parse(raw); value = (Array.isArray(initial) ? v : { ...initial, ...v }) as T; } } catch { /* in memory */ }
   const listeners = new Set<Listener>();
@@ -93,11 +93,11 @@ export interface Settings {
   ads: Record<string, boolean>;
   language: string;
 }
-export const SESSIONS = ["Chrome on macOS · Los Angeles, California · This browser", "GIFin app on iPhone · Los Angeles, California", "Safari on iPad · Mexico City, Mexico"];
+export const SESSIONS = ["Chrome on macOS · Naples, Italy · This browser", "GIFin app on iPhone · Naples, Italy", "Safari on iPad · Lima, Peru"];
 export const settings = persisted<Settings>("settings", {
   theme: "device", feedSort: "top", lastName: "full", viewing: "name", autoplay: true, sounds: false, photos: "everyone",
   connectionsVisible: true, activeStatus: "connections", shareUpdates: true, readReceipts: true, invitations: "everyone", recruiters: true, twoStep: false,
-  emails: [{ address: "jackie.brown@cabo-air.example", primary: true, verified: true }], sessions: SESSIONS,
+  emails: [{ address: EMAIL, primary: true, verified: true }], sessions: SESSIONS,
   notifications: {}, ads: {}, language: "English",
 });
 
@@ -110,7 +110,7 @@ applyTheme(settings.get().theme);
 
 /** Everything this study keeps, cleared. */
 export function resetAll() {
-  try { Object.keys(localStorage).filter((k) => k.startsWith("gg19-")).forEach((k) => localStorage.removeItem(k)); } catch { /* nothing kept */ }
+  try { Object.keys(localStorage).filter((k) => k.startsWith("gg19p-")).forEach((k) => localStorage.removeItem(k)); } catch { /* nothing kept */ }
 }
 
 /** The name shown to members outside the network when the last name is set to an initial. */

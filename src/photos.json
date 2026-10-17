@@ -1,292 +1,442 @@
 {
- "lax": {
-  "credit": "Junkyardsparkle",
-  "licence": "CC0",
-  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:LAX_Theme_Building_and_moon_from_northwest_2016-07-21.jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1280,
-  "alt": "The Theme Building at Los Angeles International Airport, lit at night, its arches over a round deck."
- },
- "galley": {
-  "credit": "N509FZ",
-  "licence": "CC BY-SA 4.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Aft_galley_on_B-32DL_(20240212092430).jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1280,
-  "alt": "The galley of an airliner: steel carts and stowage, a corridor of cabinets."
- },
- "madrid": {
-  "credit": "Felipe Gabaldón from Spain",
-  "licence": "CC BY 2.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Gran_V%C3%ADa_(Madrid)_42.jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1278,
-  "alt": "Gran Vía in Madrid: a domed corner building and a long street of grand facades."
- },
- "tvcamera": {
-  "credit": "Museo nazionale della scienza e della tecnologia Leonardo da Vinci, Milan",
-  "licence": "CC BY-SA 4.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Telecamera_per_ripresa_televisiva_elettronica,_a_colori_-_Museo_scienza_tecnologia_Milano_10062_01_dia.jpg",
-  "source": "Wikimedia Commons",
-  "w": 1151,
-  "h": 1293,
-  "alt": "A vintage television studio camera on a pedestal, with a lens turret at the front."
- },
- "amsterdam": {
-  "credit": "Basile Morin",
-  "licence": "CC BY-SA 4.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Colorful_canal_houses_at_golden_hour_in_Damrak_avenue_Amsterdam_the_Netherlands.jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1280,
-  "alt": "Tall narrow houses along the water in Amsterdam under a grey sky."
- },
- "jukebox": {
-  "credit": "Jim Linwood",
-  "licence": "CC BY 2.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:AMI_Multi-Horn_High_Fidelity_200_Play_Jukebox_-_The_Richard_Hamilton_Exhibition_-_Tate_Modern,_London.jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 2560,
-  "alt": "A jukebox from the 1950s with chrome trim and a lit record carousel."
- },
- "desert": {
-  "credit": "Dietmar Rabich",
-  "licence": "CC BY-SA 4.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Amboy_(California,_USA),_Hist._Route_66_--_2012_--_1.jpg",
-  "source": "Wikimedia Commons",
-  "w": 3840,
-  "h": 1948,
-  "alt": "A straight highway across flat desert with route markings painted on the road."
- },
- "watch": {
-  "credit": "Siavash Ghazvinian",
-  "licence": "CC BY-SA 3.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Gold_Chaika_Pocket_Watch_made_in_the_USSR.jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1278,
-  "alt": "A gold pocket watch with its lid open and its chain coiled beside it."
- },
- "diner": {
-  "credit": "Paul Lowry",
-  "licence": "CC BY 2.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Mel%27s_Diner,_Lafayette_Louisiana_June_2025_-_interior.jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1382,
-  "alt": "A diner counter with red stools, a chequered floor and chrome trim."
- },
- "okinawa": {
-  "credit": "Syced",
-  "licence": "CC0",
-  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Path_to_Ishigaki_Crystal_Beach_8.jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1446,
-  "alt": "A sandy beach in Okinawa between green headlands."
- },
- "katana": {
-  "credit": "The Metropolitan Museum of Art",
-  "licence": "CC0",
-  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Blade_and_Mounting_for_a_Sword_(Katana)_MET_sfsbx11s2.jpeg",
-  "source": "Wikimedia Commons",
-  "w": 3045,
-  "h": 1321,
-  "alt": "A Japanese sword drawn from its black lacquered scabbard."
- },
- "challenger": {
-  "credit": "Sicnag",
-  "licence": "CC BY 2.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:1970_Dodge_Challenger_RT_440_Magnum_(13440720504).jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1280,
-  "alt": "A white 1970 Dodge Challenger parked on grass at a car show."
- },
- "lebanon": {
-  "credit": "Brian Stansberry",
-  "licence": "CC BY 3.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Lebanon-public-square-southeast-tn1.jpg",
-  "source": "Wikimedia Commons",
-  "w": 3840,
-  "h": 2160,
-  "alt": "Brick storefronts on the square in Lebanon, Tennessee."
- },
- "makeup": {
-  "credit": "www.Pixel.la Free Stock Photos",
-  "licence": "CC0",
-  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Brush-makeup-make-up-brushes_(24244266921).jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1280,
-  "alt": "Makeup brushes laid out side by side."
- },
- "cinema": {
-  "credit": "Reinhardhauke",
-  "licence": "CC BY-SA 3.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Paris_Cin%C3%A9ma_Le_Louxor_7185.JPG",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1280,
-  "alt": "Ornamental ironwork over the entrance of a Paris cinema from the 1920s."
- },
- "projector": {
-  "credit": "Steven Sun",
-  "licence": "CC BY-SA 4.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Strong_Highlight_II_35mm_Film_Projectors_20250624_01.jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 2560,
-  "alt": "A 35mm film projector with its reels mounted, in a museum."
- },
- "filmstrip": {
-  "credit": "Santeri Viinamäki",
-  "licence": "CC BY-SA 4.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:AGFA_Vista_200_35_mm_film_strip.jpg",
+ "tomato": {
+  "credit": "Ton Rulkens from Mozambique",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Red_tomato_(6951842889).jpg",
   "source": "Wikimedia Commons",
   "w": 1920,
   "h": 1440,
-  "alt": "Two strips of 35mm film with their perforations, on a white ground."
+  "alt": "Ripe red tomatoes on the vine."
  },
- "babelsberg": {
-  "credit": "Rino Porrovecchio from Palermo, Italy",
-  "licence": "CC BY-SA 2.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Babelsberg_film_studios_(2533969959).jpg",
-  "source": "Wikimedia Commons",
-  "w": 1920,
-  "h": 1237,
-  "alt": "A street of studio buildings at Babelsberg, near Berlin."
- },
- "hollywood": {
-  "credit": "Thomas Wolf, www.foto-tw.de",
+ "potato": {
+  "credit": "Ruslan V. Albitsky aka pauk",
   "licence": "CC BY-SA 3.0",
   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Hollywood_Sign_(Zuschnitt).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Potato_tubers_in_pail.jpg",
   "source": "Wikimedia Commons",
   "w": 1920,
-  "h": 1200,
-  "alt": "The Hollywood sign on the hillside under a blue sky."
+  "h": 1440,
+  "alt": "A bowl of freshly dug potatoes with soil on their skins."
  },
- "tabernas": {
-  "credit": "Javier Perez Montes",
+ "eggplant": {
+  "credit": "Grey Geezer",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Aubergine-Varianten.JPG",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1711,
+  "alt": "Three eggplants side by side: one streaked purple and white, one deep purple, one white."
+ },
+ "chili": {
+  "credit": "MTur Destinos",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:VitorJubini_MercadoDaVilaRubim_Vitoria_ES_(39182859020)_(square_crop).jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1920,
+  "alt": "A heap of small red chili peppers in a bowl."
+ },
+ "carrot": {
+  "credit": "domdomegg",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Carrots_at_Ljubljana_Central_Market.JPG",
+  "source": "Wikimedia Commons",
+  "w": 3840,
+  "h": 2154,
+  "alt": "A pile of orange carrots."
+ },
+ "broccoli": {
+  "credit": "পাপৰি বৰা",
   "licence": "CC BY-SA 4.0",
   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Fort_Bravo_-_Tabernas_04.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Broccoli_3.jpg",
   "source": "Wikimedia Commons",
   "w": 1920,
-  "h": 1280,
-  "alt": "A western town set in the Tabernas desert in Spain: adobe buildings and a chapel."
+  "h": 1975,
+  "alt": "A head of broccoli, deep green."
  },
- "karmannghia": {
-  "credit": "先従隗始",
+ "kale": {
+  "credit": "Evan-Amos",
   "licence": "CC0",
   "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_14_Karmann_Ghia_1200_Coupe_(23110314592).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Kale-Bundle.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1217,
+  "alt": "A bunch of curly green kale on a white ground."
+ },
+ "cauliflower": {
+  "credit": "HaJunkiyada",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Cauliflower_from_San_Francisco_farmers_market.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 2560,
+  "alt": "A white head of cauliflower on a dark ground."
+ },
+ "brussels": {
+  "credit": "Amada44",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Brussels_sprouts_on_white_background_5849.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1502,
+  "alt": "Four Brussels sprouts on a white ground."
+ },
+ "banana": {
+  "credit": "Krzysztof Golik",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bananas_on_black_background_02.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1226,
+  "alt": "Two ripe yellow bananas on a dark ground."
+ },
+ "strawberry": {
+  "credit": "Cary Bass",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Basket_of_strawberries_red_accent.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1440,
+  "alt": "Strawberries in a small white plastic basket."
+ },
+ "avocado": {
+  "credit": "Ivar Leidus",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Avocado_Hass_-_single_and_halved.jpg",
   "source": "Wikimedia Commons",
   "w": 1920,
   "h": 1280,
-  "alt": "A green Volkswagen Karmann Ghia coupe from the 1960s."
+  "alt": "A Hass avocado whole beside one cut in half with its stone."
  },
- "cadillac": {
-  "credit": "Calreyn88",
-  "licence": "CC BY-SA 4.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:1966_Cadillac_Coupe_De_Ville_Convertible.jpg",
-  "source": "Wikimedia Commons",
-  "w": 3840,
-  "h": 2016,
-  "alt": "A white 1966 Cadillac Coupe de Ville convertible."
- },
- "stagecoach": {
-  "credit": "Library of Congress",
-  "licence": "Public domain",
-  "licenceUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Old_stagecoach,_Yellowstone_National_Park,_Wyoming_LCCN92515074.jpg",
+ "kiwi": {
+  "credit": "Luc Viatour",
+  "licence": "CC BY-SA 2.5",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Kiwi_(Actinidia_chinensis)_1_Luc_Viatour.jpg",
   "source": "Wikimedia Commons",
   "w": 1920,
-  "h": 1531,
-  "alt": "A stagecoach and its team of horses on a trail in Yellowstone, Wyoming, in an old photograph."
+  "h": 1311,
+  "alt": "Kiwifruit whole and halved, showing green flesh and black seeds."
  },
- "wyoming": {
-  "credit": "Chris Light",
+ "lemon": {
+  "credit": "Ivar Leidus",
   "licence": "CC BY-SA 4.0",
   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Elk_Mtn_9006.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Lemon_-_whole_and_split.jpg",
   "source": "Wikimedia Commons",
-  "w": 3840,
-  "h": 2160,
-  "alt": "A snowbound highway in Wyoming with mountains under cloud."
+  "w": 1920,
+  "h": 1280,
+  "alt": "A lemon beside a lemon cut in half, on a dark ground."
  },
- "snowcabin": {
-  "credit": "USFWSAlaska",
-  "licence": "Public domain",
-  "licenceUrl": "",
-  "page": "https://commons.wikimedia.org/wiki/File:Dolly_Varden_Public_Use_Cabin_in_the_snow_(51011193270).jpg",
+ "orange": {
+  "credit": "freestock.ca",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Orange_Fruit_Close-up.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1800,
+  "h": 1200,
+  "alt": "A whole orange on a white ground."
+ },
+ "grapefruit": {
+  "credit": "Ivar Leidus",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Grapefruits_-_whole-halved-segments.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1280,
+  "alt": "A grapefruit beside a halved grapefruit and a segment, pink inside."
+ },
+ "pea": {
+  "credit": "Bill Ebbesen",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Peas_in_pods_-_Studio.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1657,
+  "alt": "Opened pea pods laid in rows, the peas showing."
+ },
+ "corn": {
+  "credit": "The original uploader was ChildofMidnight at English Wikipedia.",
+  "licence": "CC BY 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Boiled_maize_(Indian_corn)_from_Korean_grocer.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1280,
+  "alt": "An ear of maize with kernels in yellow, brown and purple."
+ },
+ "pumpkin": {
+  "credit": "Mozzihh",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pumpkin_2108-1292.jpg",
   "source": "Wikimedia Commons",
   "w": 1920,
   "h": 1281,
-  "alt": "A log cabin in deep snow among bare trees."
+  "alt": "An orange pumpkin on its vine on the ground."
  },
- "lasky": {
-  "credit": "Levi Clancy",
-  "licence": "CC BY-SA 4.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Skyline_of_Los_Angeles,_Downtown_Los_Angeles,_California_13.jpg",
+ "watermelon": {
+  "credit": "John Phelan",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Slice_of_Watermelon_from_Wilson_Farm,_Lexington_MA.jpg",
   "source": "Wikimedia Commons",
   "w": 1920,
-  "h": 1233,
-  "alt": "The towers of downtown Los Angeles against a blue sky."
+  "h": 1440,
+  "alt": "A wedge of watermelon on a white plate."
  },
- "palms": {
-  "credit": "Downtowngal",
+ "peanut": {
+  "credit": "Ivar Leidus",
   "licence": "CC BY-SA 4.0",
   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Washingtonia_robusta_lined_street,_Los_Angeles.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg",
   "source": "Wikimedia Commons",
   "w": 1920,
-  "h": 2151,
-  "alt": "A Los Angeles street lined with tall palm trees."
+  "h": 1280,
+  "alt": "Peanuts in and out of their shells on a pale blue ground."
  },
- "typewriter": {
-  "credit": "William Warby from London, England",
+ "rhubarb": {
+  "credit": "Dieter Weber (User:Uellue)",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Rheum_rhabarbarum.2006-04-27.uellue.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1440,
+  "alt": "Red rhubarb stalks fanned out under their green leaves."
+ },
+ "pineapple": {
+  "credit": "Pineapple Supply Co., via Unsplash",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Pineapple_decor_(Unsplash).jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1280,
+  "alt": "Two pineapples on a wooden table."
+ },
+ "peach": {
+  "credit": "Jack Dykinga, USDA",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Autumn_Red_peaches.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1308,
+  "alt": "Peaches, one cut in half to show its stone."
+ },
+ "field-tomato": {
+  "credit": "Shixart1985",
   "licence": "CC BY 2.0",
   "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Bletchley_Park_Desk_and_Typewriter_(21598716801).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Greenhouse_filled_with_tomato_plants_and_a_bucket_on_the_path.jpg",
   "source": "Wikimedia Commons",
   "w": 1920,
-  "h": 1440,
-  "alt": "A typewriter on a wooden desk with papers and a cup of tea."
+  "h": 2876,
+  "alt": "Tomato plants on stakes in a long greenhouse."
  },
- "coffee": {
-  "credit": "Ssu",
+ "field-potato": {
+  "credit": "Adrian Diack",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Field_of_flowering_potatoes_at_Usan_-_geograph.org.uk_-_6377844.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1280,
+  "alt": "A green potato field under a blue sky."
+ },
+ "potato-flower": {
+  "credit": "Kolforn",
   "licence": "CC BY-SA 4.0",
   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Cup_of_coffee_on_caf%C3%A9_table.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:-2018-09-04_Flowering_potato_plant,_Trimingham,_Norfolk.JPG",
   "source": "Wikimedia Commons",
   "w": 1920,
   "h": 1440,
-  "alt": "A cup of black coffee on a saucer, on marble."
+  "alt": "A white potato flower among the leaves."
+ },
+ "field-kiwi": {
+  "credit": "A.j.morris",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Kiwifruit_on_vine.JPG",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1440,
+  "alt": "Kiwifruit hanging from a vine on an overhead trellis."
+ },
+ "field-avocado": {
+  "credit": "Treysam",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Avocado_Pear_fruit_hanging_on_a_pear_plant.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1280,
+  "alt": "Avocados hanging from a branch."
+ },
+ "field-broccoli": {
+  "credit": "Mike Pennington",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:PYO_Broccoli,_Garson%27s_Farm,_Esher_-_geograph.org.uk_-_6250930.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1600,
+  "h": 1067,
+  "alt": "A field of broccoli with a small sign that reads Broccoli."
+ },
+ "pumpkins": {
+  "credit": "Jengod",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Green_waste_-_unsold_pumpkins_left_behind_after_a_pumpkin_patch_Halloween_carnival.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1440,
+  "alt": "A great pile of pumpkins in orange, green and grey."
+ },
+ "pumpkin-varieties": {
+  "credit": "George Chernilevsky",
+  "licence": "Public domain",
+  "licenceUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Cucurbita_2011_G1.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1280,
+  "alt": "Pumpkins of several kinds and colours in the grass."
+ },
+ "field-corn": {
+  "credit": "Lotus Head from Johannesburg, Gauteng, South Africa",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Cornfield_in_South_Africa.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1600,
+  "h": 1200,
+  "alt": "Young maize plants filling a field."
+ },
+ "field-lemon": {
+  "credit": "Hans Hillewaert",
+  "licence": "CC BY-SA 3.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Citrus_x_limon_(Outjo).jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 2561,
+  "alt": "A cluster of lemons on the tree."
+ },
+ "field-banana": {
+  "credit": "BalukuBrian",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:A_banana_plantation_in_Bushenyi_district_next_to_Bushenyi_to_Kasese_road_in_western_Uganda.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1440,
+  "alt": "A banana plantation under a cloudy sky."
+ },
+ "frost-kale": {
+  "credit": "Ruth Hartnup from Vancouver, Canada",
+  "licence": "CC BY 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Frozen_kale_(23753909205).jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1370,
+  "alt": "Curly kale leaves covered in frost."
+ },
+ "pea-plants": {
+  "credit": "Jennifer Petrie",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Pea_Plants_with_Pods_-_geograph.org.uk_-_6890382.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1600,
+  "h": 900,
+  "alt": "Pea plants growing thick in a field."
+ },
+ "market": {
+  "credit": "PattayaPatrol",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:DFC_2101_Vivid_purple_round_eggplants_piled_with_fresh_green_beans_and_cucumbers_at_a_market_stall.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1280,
+  "alt": "Small purple eggplants and green beans on a market stall."
+ },
+ "market-roots": {
+  "credit": "PattayaPatrol",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:DSCF1116_Fresh_root_vegetables_piled_at_a_bustling_market_stall_with_fruits_and_produce_blurred_in_the_colorful_background.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1280,
+  "alt": "Root vegetables piled on a market stall."
+ },
+ "dried-chili": {
+  "credit": "Twentyfour Students from Bangkok, Thailand",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dried_chili_peppers.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1600,
+  "h": 1200,
+  "alt": "Red chili peppers drying on a woven tray."
+ },
+ "field-orange": {
+  "credit": "Gerda Arendt",
+  "licence": "CC0",
+  "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Orange_grove,_La_Mata,_La_Palma.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1440,
+  "alt": "An orange tree heavy with fruit under a blue sky."
+ },
+ "watermelon-slices": {
+  "credit": "Harsha K R",
+  "licence": "CC BY-SA 2.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Sliced_Watermelon.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1285,
+  "alt": "Slices of watermelon in a row."
+ },
+ "field-pineapple": {
+  "credit": "Famartin",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2021-10-06_16_08_57_Field_full_of_pineapple_plants_at_the_Dole_Plantation_in_Oahu,_Hawaii.jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 1440,
+  "alt": "Rows of young pineapple plants in red earth."
+ },
+ "field-peach": {
+  "credit": "Harry Van den Bulck",
+  "licence": "CC BY-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Peach_tree_branch_with_fruits_(2).jpg",
+  "source": "Wikimedia Commons",
+  "w": 1920,
+  "h": 2560,
+  "alt": "Peaches ripening on the tree."
  }
 }

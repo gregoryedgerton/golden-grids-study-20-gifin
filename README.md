@@ -7,12 +7,13 @@ GIFcommit00020
 An unaffiliated layout study. It rebuilds the signed-in application of
 [linkedin.com](https://www.linkedin.com/) (the feed, a profile, the editing of
 one's own profile, Settings & Privacy and the skill assessments) as stacked
-golden grids under a parody name, GIFin. Its twenty-two members are characters
-from eight of Quentin Tarantino's films, each given the profile a professional
-network would ask of them. The emphasis is interaction: nearly everything on
-the pages answers back, and what the reader does is kept in their browser and
-sent nowhere. None of the reference's sentences, photographs or marks is
-reproduced, and no line of any film is quoted. Built with
+golden grids under a parody name, GIFin. Its twenty-four members are fruits
+and vegetables, each with the profile a professional network would ask of it
+and a pair of googly eyes that match what it writes. The voice is cheeky and
+the facts are true. The emphasis is interaction: nearly everything on the
+pages answers back, and what the reader does is kept in their browser and sent
+nowhere. None of the reference's sentences, photographs or marks is
+reproduced. Built with
 [Golden Grids](https://github.com/gregoryedgerton/golden-grids) from the
 [study template](https://github.com/gregoryedgerton/golden-grids-study-template).
 
@@ -20,7 +21,7 @@ reproduced, and no line of any film is quoted. Built with
 
 The reference shows its feed, settings and full profiles only to members, and
 the study does not sign in to anyone's account. The pages are built from the
-application's known structure, read on 2026-10-15; no screenshot of the
+application's known structure, read on 2026-10-15 and 2026-10-16; no screenshot of the
 reference is kept. The reference retired its skill assessments in 2023 and
 removed the badges in 2024 (its help page, "Skill Assessments - no longer
 available"); the study rebuilds the feature as it worked.
@@ -116,27 +117,41 @@ or hide on the profile.
 
 ## Content and provenance
 
-- **The members** are characters from Reservoir Dogs, Pulp Fiction, Jackie
-  Brown, Kill Bill, Death Proof, Inglourious Basterds, The Hateful Eight and
-  Once Upon a Time in Hollywood, under their own names. Their jobs, places
-  and the turns in their stories are the films', checked against each film's
-  plot on Wikipedia; everything else is new writing. No line of dialogue is
-  quoted. Characters whose stories turn on hatred or atrocity are left out,
-  and so is anyone who was a real person.
-- **Each member's dates** run in the years of their own film: Jackie Brown's
-  profile stands in 1997, O.B. Jackson's in 1877.
-- **The signed-in member** is Jackie Brown, flight attendant, planning a move to
-  Madrid.
-- **Assessment answers** are each checked against the Wikipedia or Wiktionary
-  page named beside them in the review.
-- **Faces are not shown.** The characters are played by real actors, so every
-  avatar is drawn: initials on a ground of the member's own colour.
+- **The members** are twenty-four fruits and vegetables, from Tomato to Peach.
+  Each one's surname is its genus, so the nightshades (Tomato, Potato,
+  Eggplant) are all Solanum and the brassicas (Broccoli, Kale, Cauliflower,
+  Brussels Sprout) all Brassica; Pea's is shown as under review, because its
+  genus is disputed.
+- **The facts are true; the jokes are the study's.** Every date, place, person
+  and number in a member's profile, posts and comments is checked against the
+  Wikipedia page the disclosure names for that member, and anything that could
+  not be checked was cut. The jokes turn a plant's history into a career:
+  Tomato has been a "Vegetable, for tariff purposes" at the Supreme Court of
+  the United States since 1893, the year of Nix v. Hedden; Pea's education is
+  St Thomas's Abbey, Brno, 1856 to 1863, with Gregor Mendel. Years before the
+  common era are shown as BCE, and a role whose dates no source gives exactly
+  carries a phrase in their place.
+- **The signed-in member** is Tomato, a fruit by birth and a vegetable by law,
+  open to work in any kitchen.
+- **Assessment answers** are each checked against the Wikipedia page named
+  beside them in the review.
+- **Googly eyes.** Every avatar is a photograph of the fruit or vegetable
+  itself, with googly eyes drawn over it in CSS, so no person's face appears.
+  Each post and comment sets its author's mood (happy, proud, cheeky,
+  surprised, worried, curious or sleepy) to match what it says: Banana is
+  worried about the disease that threatens it, Brussels Sprout nervous in an
+  open letter, Tomato winks. The reader's own comments and posts get a mood
+  from what they type, a question curious and an exclamation surprised. The
+  pupils wobble and the lids blink, each pair on its own clock, in the
+  member's own colour; with reduced motion, from the system or the study's
+  tools, the eyes hold still in the mood's resting look.
 - **Photographs** are in [`src/photos.json`](src/photos.json), each with its
   author, licence, page and alt text, all from Wikimedia Commons under CC BY,
-  CC BY-SA or CC0 or in the public domain; each stands in for a place or thing
-  a post describes, and none is a still from a film.
-  [`captures/hunt.py`](captures/hunt.py) found the candidates and
-  [`captures/pick.py`](captures/pick.py) downloaded and recorded them.
+  CC BY-SA or CC0 or in the public domain. The avatars are photographs of the
+  produce; the covers and the posts' pictures are its fields, trees and
+  markets. [`captures/hunt.py`](captures/hunt.py) found the candidates,
+  [`captures/pick.py`](captures/pick.py) downloaded and recorded them, and
+  [`captures/avatars.py`](captures/avatars.py) cut the avatars square.
 - **Icons and reaction glyphs** are the study's own drawings. **Text** is the
   study's own.
 
@@ -146,6 +161,10 @@ Observations for whoever reviews this study, recorded without a verdict.
 Whether the layout suits the page is assessed separately, after every study
 has been reviewed.
 
+- **The cast was replaced.** The study was first built with characters from
+  Quentin Tarantino's films and withdrawn before review as weak source
+  material; the pages and their interactions stayed, and the members, posts,
+  questions and photographs were replaced.
 - **Built without the reference on screen.** The signed-in application cannot
   be read without an account; its structure is the known one, and details such
   as exact spacing are the study's.
@@ -167,7 +186,9 @@ has been reviewed.
   under 12px and no axe violations in Chrome and WebKit at 390, 820 and 1440,
   light and dark, on all five pages and their variants. `captures/cells.cjs`
   opens every expandable square at 390 in WebKit and Chrome. The timer can be
-  turned off. No screen-reader user has tested it.
+  turned off. The googly eyes are hidden from assistive technology; the mood
+  they show is always in the words beside them. No screen-reader user has
+  tested it.
 
 ## Disclosure
 
@@ -180,7 +201,7 @@ top, and "About this layout study", the last element on the page.
 ```bash
 npm install
 npm run dev
-NODE_PATH=<a node_modules with playwright> node captures/scan.cjs http://localhost:5173/ index profile "profile?u=rick" edit settings "settings?s=account" assessments "assessments?a=projection"
+NODE_PATH=<a node_modules with playwright> node captures/scan.cjs http://localhost:5173/ index profile "profile?u=avocado" edit settings "settings?s=account" assessments "assessments?a=botany"
 ```
 
 Pushing to `main` deploys to GitHub Pages.

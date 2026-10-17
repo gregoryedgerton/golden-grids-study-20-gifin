@@ -443,7 +443,11 @@ a.box:hover { box-shadow: inset 0 0 0 2px var(--blue-ink); }
 .role__title { font-weight: 600; font-size: clamp(14px, calc(10px + 1.6cqmin), 18px); }
 .role__company { font-size: 14px; }
 .role__dates, .role__place { color: var(--fg-2); font-size: 13px; }
-@container (max-height: 220px) or (max-width: 200px) { .box--role .logo, .role__place { display: none; } }
+@container (max-height: 220px) or (max-width: 200px) {
+  .box--role .logo, .role__place, .role__type, .role__span { display: none; }
+  .role__title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .role__company { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden; }
+}
 @container (max-height: 150px) { .role__dates { display: none; } }
 .box--skill { --tone-bg: var(--card); box-shadow: var(--ring); gap: 6px; }
 .box--skill.box--top { box-shadow: inset 0 3px 0 var(--blue-ink), var(--ring); }
@@ -591,7 +595,52 @@ a.box:hover { box-shadow: inset 0 0 0 2px var(--blue-ink); }
 .cell, .cell__body { min-width: 0; max-width: 100%; }
 .cell img { max-width: 100%; }
 
-.avatar { display: block; border-radius: 50%; }
+.avatar { display: block; flex: none; position: relative; width: var(--size, 48px); aspect-ratio: 1; border-radius: 50%; container-type: inline-size; }
+.avatar > svg { display: block; width: 100%; height: 100%; }
+
+/* Googly eyes: a CSS layer over the photograph. --ex/--ey place the centre
+   between the eyes, --es is each eye's size and --eg the distance between
+   their centres, all as fractions of the avatar's side. The lids take the
+   member's colour. Each mood sets a resting look; the wobble and the blink
+   play over it, and stop under reduced motion. */
+.eyes { position: absolute; inset: 0; pointer-events: none; }
+.eye { position: absolute; top: calc((var(--ey) - var(--es) / 2) * 100%); width: calc(var(--es) * 100%); aspect-ratio: 1; border-radius: 50%; background: #fff; overflow: hidden; box-shadow: 0 0 0 max(1px, 1.3cqi) #1a1a1a, 0 1cqi 3cqi rgb(0 0 0 / 0.35); }
+.eye--l { left: calc((var(--ex) - var(--eg) / 2 - var(--es) / 2) * 100%); }
+.eye--r { left: calc((var(--ex) + var(--eg) / 2 - var(--es) / 2) * 100%); }
+.eye__pupil { position: absolute; left: 27%; top: 27%; width: 46%; height: 46%; border-radius: 50%; background: radial-gradient(circle at 34% 32%, #fff 0 13%, #111 15%); translate: var(--px, 0%) var(--py, 0%); scale: var(--ps, 1); animation: gg-wobble var(--t, 3s) cubic-bezier(0.3, 1.6, 0.5, 1) var(--d, 0s) infinite; }
+.eye__lid { position: absolute; inset: -2% -2% auto; height: 104%; background: var(--lid-c); transform-origin: top; transform: scaleY(var(--lid, 0)); animation: gg-blink var(--b, 5s) linear var(--d, 0s) infinite; }
+.eye__low { position: absolute; left: -15%; right: -15%; top: 62%; height: 90%; border-radius: 50%; background: var(--lid-c); transform: translateY(var(--low, 80%)); }
+.eyes::before, .eyes::after { content: ""; position: absolute; top: calc((var(--ey) - var(--es) * 0.95 - var(--brow-y, 0) * var(--es)) * 100%); width: calc(var(--es) * 100%); height: max(1.5px, 3.2cqi); border-radius: 2cqi; background: #1a1a1a; opacity: var(--brow, 0); }
+.eyes::before { left: calc((var(--ex) - var(--eg) / 2 - var(--es) / 2) * 100%); rotate: var(--brow-l, 0deg); }
+.eyes::after { left: calc((var(--ex) + var(--eg) / 2 - var(--es) / 2) * 100%); rotate: var(--brow-r, 0deg); translate: 0 calc(var(--brow-ry, 0) * -100%); }
+
+.eyes--happy { --low: 0%; --py: -18%; }
+.eyes--proud { --lid: 0.4; --py: 6%; --brow: 1; --brow-y: 0.05; --brow-l: 6deg; --brow-r: -6deg; }
+.eyes--cheeky .eye--l { --px: 38%; --py: -8%; }
+.eyes--cheeky .eye--r { background: none; box-shadow: none; overflow: visible; }
+.eyes--cheeky .eye--r .eye__lid, .eyes--cheeky .eye--r .eye__pupil { display: none; }
+.eyes--cheeky .eye--r .eye__low { left: 6%; right: 6%; top: 34%; height: 64%; background: none; border: max(1.5px, 3cqi) solid #1a1a1a; border-color: #1a1a1a transparent transparent; transform: none; filter: drop-shadow(0 0 max(1px, 1cqi) #fff); }
+.eyes--cheeky { --brow: 1; --brow-l: -10deg; --brow-r: 8deg; --brow-y: 0.1; }
+.eyes--surprised { --ps: 0.68; --brow: 1; --brow-y: 0.35; }
+.eyes--surprised .eye { scale: 1.14; }
+.eyes--worried { --lid: 0.12; --py: 34%; --brow: 1; --brow-l: -18deg; --brow-r: 18deg; --brow-y: 0.12; }
+.eyes--curious { --px: 30%; --py: -30%; --brow: 1; --brow-ry: 1.6; --brow-r: -6deg; }
+.eyes--sleepy { --lid: 0.56; --py: 30%; --b: 7s; }
+
+@keyframes gg-wobble {
+  0%, 100% { transform: translate(0, 0); }
+  12% { transform: translate(24%, 10%); }
+  24% { transform: translate(-16%, 20%); }
+  38% { transform: translate(12%, -18%); }
+  52% { transform: translate(-22%, -6%); }
+  66% { transform: translate(8%, 22%); }
+  80% { transform: translate(-6%, -10%); }
+}
+@keyframes gg-blink {
+  0%, 91%, 100% { transform: scaleY(var(--lid, 0)); }
+  94% { transform: scaleY(1); }
+}
+html[data-motion="reduced"] .eyes * { animation: none !important; }
 .logo { display: block; flex: none; }
 .glyph { display: block; flex: none; }
 

@@ -5,7 +5,7 @@ import { Fit } from "./fit";
 import { FactStrip, PhotoCard, Pic } from "./cards";
 import { Avatar } from "./people";
 import { Icon, ReactionGlyph } from "../icons";
-import { CONNECTED, ME, MEMBERS, POSTS, REACTIONS, STOCK, followedAtStart, fullName, member, profileHref, type Comment, type Member, type Post, type Reaction, framed } from "../content";
+import { CONNECTED, ME, MEMBERS, POSTS, REACTIONS, STOCK, followedAtStart, moodOf, fullName, member, profileHref, type Comment, type Member, type Mood, type Post, type Reaction, framed } from "../content";
 import { me, ownPosts, social, toggle, useMember, type OwnPost } from "./store";
 import { photo } from "../photos";
 
@@ -50,10 +50,10 @@ export function FollowButton({ id, compact }: { id: string; compact?: boolean })
 }
 
 /** The author's square: avatar, name, headline, time and visibility, and Follow. */
-function AuthorBox({ m, when, own }: { m: Member; when: string; own?: boolean }) {
+function AuthorBox({ m, when, own, mood }: { m: Member; when: string; own?: boolean; mood: Mood }) {
   return (
     <div className="box box--author">
-      <a className="author__face" href={profileHref(m.id)} tabIndex={-1} aria-hidden="true"><Avatar m={m} size={64} frame={framed(m)} /></a>
+      <a className="author__face" href={profileHref(m.id)} tabIndex={-1} aria-hidden="true"><Avatar m={m} size={64} frame={framed(m)} mood={mood} /></a>
       <div className="author__text">
         <p className="author__name"><a href={profileHref(m.id)}>{fullName(m)}</a>{!own && <span className="author__degree"> · {CONNECTED.has(m.id) ? "1st" : "2nd"}</span>}</p>
         <p className="author__headline">{m.headline}</p>
@@ -74,7 +74,7 @@ function TextBox({ text, x, slotKey, title, lead }: { text: string; x: ExpandGro
         <div className="visually-hidden">{paras.map((p, i) => <p key={i}>{p}</p>)}</div>
         <div className="box__body words words--all" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={lead ? 28 : 20}>{paras.map((p, i) => <p key={i}>{p}</p>)}</Fit></div>
         <div className="box__body words words--para" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={lead ? 28 : 20}><p>{paras[0]}</p></Fit></div>
-        <div className="box__body words words--line" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={lead ? 28 : 20}><p>{firstSentence(paras[0])}</p></Fit></div>
+        <div className="box__body words words--line" aria-hidden="true"><Fit as="div" className="fit--body fit--words" min={12} max={30}><p>{firstSentence(paras[0])}</p></Fit></div>
         <div className="box__foot"><button className="more" aria-label={`Read all of the post: ${title}`} {...x.triggerProps(slotKey)}>…more</button></div>
       </div>
       {x.isOpen(slotKey) && (
@@ -148,7 +148,7 @@ export function itemFromOwn(o: OwnPost): Item {
   const repostOf = o.repostOf ? POSTS.find((p) => p.id === o.repostOf) : undefined;
   return {
     own: o, repostOf,
-    post: { id: o.id, author: ME, ago: ago(o.at), minutes: (Date.now() - o.at) / 60000, kind: o.photo ? "photo" : "text", photo: o.photo, text: o.text, reactions: {}, reposts: 0, comments: [] },
+    post: { id: o.id, author: ME, ago: ago(o.at), minutes: (Date.now() - o.at) / 60000, kind: o.photo ? "photo" : "text", mood: moodOf(o.text), photo: o.photo, text: o.text, reactions: {}, reposts: 0, comments: [] },
   };
 }
 
@@ -210,7 +210,7 @@ export function PostBand({ item, index }: { item: Item; index: number }) {
     const orig = member(repostOf.author)!;
     cells.push(() => (
       <div className="box box--repost">
-        <p className="repost__by"><Avatar m={orig} size={28} /> <a href={profileHref(orig.id)}>{fullName(orig)}</a></p>
+        <p className="repost__by"><Avatar m={orig} size={28} mood={repostOf.mood} /> <a href={profileHref(orig.id)}>{fullName(orig)}</a></p>
         {repostOf.photo && <div className="repost__pic"><Pic k={repostOf.photo} sizes="40vw" /></div>}
         <div className="box__body"><Fit as="div" className="fit--body" min={12} max={20}><p>{repostOf.text.split("\n\n")[0]}</p></Fit></div>
       </div>
@@ -220,7 +220,7 @@ export function PostBand({ item, index }: { item: Item; index: number }) {
     cells.push(lead);
     if (hasMedia) cells.push(words);
   }
-  cells.push(() => <AuthorBox m={author} when={post.ago} own={post.author === ME} />);
+  cells.push(() => <AuthorBox m={author} when={post.ago} own={post.author === ME} mood={post.mood} />);
   // One square of counts: the reactions as the figure, the comments and reposts beneath it.
   cells.push((_x, _k, flat) => {
     const f = { line: total.toLocaleString("en-US"), label: total === 1 ? "Reaction" : "Reactions", tone: "tile" as const };
@@ -280,7 +280,7 @@ export function PostBand({ item, index }: { item: Item; index: number }) {
       {panel === "comments" && (
         <div className="panel">
           <form className="commentform" onSubmit={(e) => { e.preventDefault(); addComment(); }}>
-            <Avatar m={meNow} size={40} />
+            <Avatar m={meNow} size={40} mood={moodOf(draft)} />
             <label className="visually-hidden" htmlFor={`${base}c`}>Add a comment</label>
             <textarea id={`${base}c`} ref={commentRef} rows={2} placeholder="Add a comment…" value={draft} onChange={(e) => setDraft(e.target.value)} maxLength={1250} />
             <button type="submit" className="btn btn--blue" disabled={!draft.trim()}>Comment</button>
@@ -313,7 +313,7 @@ function CommentList({ postId, comments, onReply }: { postId: string; comments: 
           const liked = Boolean(s.likedComments[key]);
           return (
             <li key={c.id} className="comment">
-              <a href={profileHref(a.id)} tabIndex={-1} aria-hidden="true"><Avatar m={a} size={40} /></a>
+              <a href={profileHref(a.id)} tabIndex={-1} aria-hidden="true"><Avatar m={a} size={40} mood={c.mood ?? (c.author === ME ? moodOf(c.text) : undefined)} /></a>
               <div className="comment__body">
                 <p className="comment__head"><a href={profileHref(a.id)}><strong>{fullName(a)}</strong></a><span className="comment__ago">{c.ago}</span></p>
                 <p className="comment__headline">{a.headline}</p>
@@ -422,7 +422,7 @@ export function Composer({ onPosted }: { onPosted: (id: string) => void }) {
       ) : (
         <form onSubmit={(e) => { e.preventDefault(); post(); }} className="composer__form">
           <div className="composer__who">
-            <Avatar m={meNow} size={48} />
+            <Avatar m={meNow} size={48} mood={moodOf(text)} />
             <div><strong>{fullName(meNow)}</strong>
               <label className="composer__aud"><span className="visually-hidden">Who can see this post</span>
                 <select value={aud} onChange={(e) => setAud(e.target.value as OwnPost["audience"])}><option value="anyone">Post to Anyone</option><option value="connections">Connections only</option></select>

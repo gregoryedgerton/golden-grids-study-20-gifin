@@ -3,8 +3,9 @@ import { createRoot } from "react-dom/client";
 import { Page, Rails } from "../lib/Page";
 import { TopCard } from "../lib/profile";
 import { Pic } from "../lib/cards";
+import { photo } from "../photos";
 import { Icon } from "../icons";
-import { ME, PAGES, REFERENCE, member, span, type Member, type Role } from "../content";
+import { COVERS, ME, PAGES, REFERENCE, YEAR, member, roleDates, type Member, type Role } from "../content";
 import { me } from "../lib/store";
 import "../styles.css";
 
@@ -17,8 +18,7 @@ import "../styles.css";
  * saves on its own, to this browser, and says what is unsaved.
  */
 type Draft = Member;
-const COVERS = ["lax", "galley", "madrid", "palms", "lasky", "coffee"];
-const COLORS = ["#7a3e9d", "#0a66c2", "#057642", "#b24020", "#37474f", "#915907"];
+const COLORS = ["#c62828", "#0a66c2", "#057642", "#b24020", "#37474f", "#915907"];
 const PRONOUNS = ["", "She/Her", "He/Him", "They/Them"];
 const TYPES = ["Full-time", "Part-time", "Self-employed", "Freelance", "Contract", "Internship", "Seasonal"];
 const WORK = ["Full-time", "Part-time", "Contract", "Temporary", "Freelance"];
@@ -74,7 +74,6 @@ function App() {
   const saveIntro = () => {
     const e: Record<string, string> = {};
     if (!d.first.trim()) e.first = "Enter a first name.";
-    if (!d.last.trim()) e.last = "Enter a last name.";
     if (!d.headline.trim()) e.headline = "Enter a headline.";
     if (d.headline.length > 220) e.headline = "Keep the headline to 220 characters.";
     if (!d.place.trim()) e.place = "Enter a location.";
@@ -90,7 +89,7 @@ function App() {
   const setOpen = (o: Draft["open"]) => set("open", o);
 
   // Experience
-  const blank: Role = { title: "", company: "", type: "Full-time", start: d.year, place: "" };
+  const blank: Role = { title: "", company: "", type: "Full-time", start: YEAR, place: "" };
   const [role, setRole] = useState<{ at: number | null; r: Role; current: boolean } | null>(null);
   const roleRef = useRef<HTMLDivElement>(null);
   const saveRole = () => {
@@ -98,12 +97,12 @@ function App() {
     const r = role.r; const e: Record<string, string> = {};
     if (!r.title.trim()) e.rtitle = "Enter a title.";
     if (!r.company.trim()) e.rcompany = "Enter a company or organisation.";
-    if (!r.start || r.start < 1850 || r.start > d.year) e.rstart = `Enter a start year between 1850 and ${d.year}.`;
-    if (!role.current && (!r.end || r.end < r.start)) e.rend = "The end year can't be before the start year.";
-    if (!role.current && r.end && r.end > d.year) e.rend = `Enter an end year no later than ${d.year}.`;
+    if (!r.start || r.start < 1 || r.start > YEAR) e.rstart = `Enter a start year between 1 and ${YEAR}.`;
+    if (!role.current && (!r.end || r.end < (r.start ?? 0))) e.rend = "The end year can't be before the start year.";
+    if (!role.current && r.end && r.end > YEAR) e.rend = `Enter an end year no later than ${YEAR}.`;
     setErrs(e);
     if (Object.keys(e).length) { focusFirst(Object.keys(e).map((k) => `${id}${k}`)); return; }
-    const next = { ...r, end: role.current ? undefined : r.end };
+    const next: Role = { ...r, end: role.current ? undefined : r.end, approx: undefined, dates: undefined };
     set("roles", role.at == null ? [next, ...d.roles] : d.roles.map((x, i) => (i === role.at ? next : x)));
     setRole(null);
   };
@@ -139,18 +138,18 @@ function App() {
         <Block id="intro" title="Intro" sub="* Indicates required" dirty={dirty(INTRO)} saved={notes.intro ?? ""} onSave={saveIntro} onDiscard={() => { discard(INTRO); setErrs({}); }}>
           <div className="fields fields--2">
             <Field id={`${id}first`} label="First name*" error={err("first")}><input id={`${id}first`} value={d.first} onChange={(e) => set("first", e.target.value)} {...described("first")} autoComplete="given-name" /></Field>
-            <Field id={`${id}last`} label="Last name*" error={err("last")}><input id={`${id}last`} value={d.last} onChange={(e) => set("last", e.target.value)} {...described("last")} autoComplete="family-name" /></Field>
+            <Field id={`${id}last`} label="Last name" error={err("last")}><input id={`${id}last`} value={d.last} onChange={(e) => set("last", e.target.value)} {...described("last")} autoComplete="family-name" /></Field>
           </div>
           <Field id={`${id}pron`} label="Pronouns"><select id={`${id}pron`} value={d.pronouns ?? ""} onChange={(e) => set("pronouns", e.target.value || undefined)}>{PRONOUNS.map((p) => <option key={p} value={p}>{p || "Please select"}</option>)}</select></Field>
           <Field id={`${id}headline`} label="Headline*" error={err("headline")} count={`${d.headline.length}/220`}><textarea id={`${id}headline`} rows={2} value={d.headline} onChange={(e) => set("headline", e.target.value)} {...described("headline")} /></Field>
           <Field id={`${id}place`} label="Location*" error={err("place")}><input id={`${id}place`} value={d.place} onChange={(e) => set("place", e.target.value)} {...described("place")} /></Field>
           <fieldset className="pickset">
             <legend>Cover photograph</legend>
-            {COVERS.map((k) => <label key={k} className={`pickpic${d.cover === k ? " is-on" : ""}`}><input type="radio" name={`${id}cover`} checked={d.cover === k} onChange={() => set("cover", k)} /><span className="pickpic__img"><Pic k={k} sizes="96px" /></span><span className="visually-hidden">{k}</span></label>)}
+            {COVERS.map((k) => <label key={k} className={`pickpic${d.cover === k ? " is-on" : ""}`}><input type="radio" name={`${id}cover`} checked={d.cover === k} onChange={() => set("cover", k)} /><span className="pickpic__img"><Pic k={k} sizes="96px" /></span><span className="visually-hidden">{photo(k).alt}</span></label>)}
             <label className={`pickpic${!d.cover ? " is-on" : ""}`}><input type="radio" name={`${id}cover`} checked={!d.cover} onChange={() => set("cover", undefined)} /><span className="pickpic__none">Pattern</span></label>
           </fieldset>
           <fieldset className="pickset">
-            <legend>Avatar colour</legend>
+            <legend>Colour, for your eyelids and the pattern cover</legend>
             {COLORS.map((c) => <label key={c} className={`swatchpick${d.color === c ? " is-on" : ""}`}><input type="radio" name={`${id}color`} checked={d.color === c} onChange={() => set("color", c)} /><span style={{ background: c }} /><span className="visually-hidden">Colour {c}</span></label>)}
           </fieldset>
         </Block>
@@ -186,7 +185,7 @@ function App() {
           <ul className="editroles">
             {d.roles.map((r, i) => (
               <li key={`${r.title}${i}`}>
-                <div><strong>{r.title}</strong><p>{r.company}{r.type ? ` · ${r.type}` : ""}</p><p className="note">{r.start} – {r.end ?? "Present"} · {span(r, d.year)}</p></div>
+                <div><strong>{r.title}</strong><p>{r.company}{r.type ? ` · ${r.type}` : ""}</p><p className="note">{roleDates(r)}</p></div>
                 <span className="row"><button type="button" className="iconbtn" aria-label={`Edit ${r.title}, ${r.company}`} onClick={() => { setRole({ at: i, r: { ...r }, current: !r.end }); requestAnimationFrame(() => roleRef.current?.querySelector("input")?.focus()); }}><Icon name="pencil" size={18} /></button>
                   <button type="button" className="iconbtn" aria-label={`Delete ${r.title}, ${r.company}`} onClick={() => set("roles", d.roles.filter((_, j) => j !== i))}><Icon name="trash" size={18} /></button></span>
               </li>

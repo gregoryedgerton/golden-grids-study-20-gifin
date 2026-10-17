@@ -6,15 +6,15 @@ Guidance for agents working in a Golden Grids layout study.
 
 Study 19: LinkedIn's signed-in application (feed, profile, editing one's own
 profile, Settings & Privacy, skill assessments) rebuilt as stacked golden grids
-under the GIFin parody name, with characters from Quentin Tarantino's films as
-its members. FIVE pages (`index`, `profile`, `edit`, `settings`,
+under the GIFin parody name, with fruits and vegetables as its members. FIVE pages (`index`, `profile`, `edit`, `settings`,
 `assessments`), Vite entries with plain links; `?u=` picks a profile, `?s=` a
 settings category, `?a=` an assessment. `src/lib/Page.tsx` is the shell (the
 global navigation with a suggesting search and the Me menu, the settings
 header, `Rails`); `src/lib/post.tsx` the post as a grid, its action bar and
 panels, and the composer; `src/lib/profile.tsx` the top card, Experience and
-Skills; `src/lib/people.tsx` the drawn avatars, logos and cover pattern;
-`src/lib/store.ts` everything the reader changes (local storage, `gg19-*`);
+Skills; `src/lib/people.tsx` the avatars with their googly eyes, logos and
+cover pattern; `src/lib/store.ts` everything the reader changes (local
+storage, `gg19p-*`);
 `src/content.ts` every member, post and question. Read
 `docs/program/PROGRAM.md`, then `STUDY-BRIEF.md`, then `README.md`.
 
@@ -161,16 +161,31 @@ README: the smallest line, and that no screen-reader user has tested it.
 
 ## This study's own rules
 
-- The members are characters from Tarantino's films under their own names. A
-  job, a place or a turn in the story comes from the film (checked against its
-  plot on Wikipedia, linked in `FILMS`); everything else is new writing. Never
-  quote a line of dialogue. Leave out characters whose stories turn on hatred
-  or atrocity, and anyone who was a real person (actors, directors, victims).
-- No faces. Avatars are drawn (`Avatar`: initials on the member's colour); a
-  photograph never stands for a member. Photographs stand in for places and
-  things a post describes; never a film still.
-- Each member's dates run in their own film's year (`Member.year`); durations
-  are computed against it.
+- The members are fruits and vegetables. Greg's direction (2026-10-15):
+  "What if it was a linked in of fruit and vegetables? In a lovable discourse
+  of course" (a typo fixed), and "Permission to be peachy I mean cheeky",
+  and googly eyes that animate and carry the emotion of the writing, static
+  under reduced motion. So the voice is cheeky, puns welcome, and kind: no
+  member is mocked, and the jokes land on the network's habits, not on
+  anyone. The study was first built with Tarantino's characters and withdrawn
+  (2026-10-15) as weak source material; an idea of real AI leaders' profiles
+  was declined because it would have meant inventing what real people said.
+- Every fact is true. Each member's facts are checked against the Wikipedia
+  page in `Member.source` (the disclosure lists them); a claim that cannot be
+  checked is cut, not softened. The jokes may invent jobs and employers
+  (Tomato is a "Vegetable, for tariff purposes" at the Supreme Court from
+  1893), never dates, places, people or numbers.
+- A member's surname is its genus, so families share one. Years before the
+  common era are negative (`yearLabel`); a role whose dates no source gives
+  exactly carries a `dates` phrase and no span. Profiles stand in `YEAR`.
+- Avatars are photographs of the produce itself, cropped square by
+  `captures/avatars.py` from `captures/avatars.json`. Googly eyes sit over
+  them in CSS (`Eyes` in `people.tsx`, placed by `Member.eyes`), with the
+  member's colour for lids. Every post and comment sets a `mood` that matches
+  what it says; the reader's own writing gets one from `moodOf`. The eyes
+  wobble and blink, and hold still under `prefers-reduced-motion` or the
+  tools' reduced motion. Covers and post pictures are fields, trees and
+  markets; no person appears in any photograph.
 - Everything the reader does goes through `src/lib/store.ts` and stays in the
   browser. A form or button that would send something says it sends nothing.
   Settings & Privacy, Data privacy, Reset this study clears it all.

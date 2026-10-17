@@ -47,7 +47,7 @@ function App() {
   const [panel, setPanel] = useState<string | null>(null);
   const posts = POSTS.filter((p) => p.author === ID);
   const given = MEMBERS.flatMap((x) => (x.recs ?? []).filter((r) => r.from === ID).map((r) => ({ ...r, to: x.id })));
-  const viewed = MEMBERS.filter((x) => x.id !== ID && x.id !== ME).sort((a, b) => Number(b.film === m.film) - Number(a.film === m.film)).slice(0, 5);
+  const viewed = MEMBERS.filter((x) => x.id !== ID && x.id !== ME).sort((a, b) => Number(b.family === m.family) - Number(a.family === m.family)).slice(0, 5);
   const interests = MEMBERS.filter((x) => x.id !== ID && (s.follows[x.id] ?? CONNECTED.has(x.id)) && x.followers > 1000).slice(0, 4);
   const companies = [...new Set(m.roles.map((r) => r.company))].filter((c) => !/self-employed|freelance/i.test(c));
 

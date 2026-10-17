@@ -2,10 +2,10 @@ import meta from "./photos.json";
 
 /**
  * Photographs are third parties': from Wikimedia Commons, under Creative
- * Commons licences, CC0 or in the public domain. None is IKEA's, and each
- * shows the design it is set beside (or, for a room, the room). `photos.json`
- * records each one's author, licence and page, and its alt text, which is the
- * only place a picture is described.
+ * Commons licences, CC0 or in the public domain. Each shows the fruit or
+ * vegetable it stands for, or a field, tree or market where it grows or is
+ * sold. `photos.json` records each one's author, licence and page, and its alt
+ * text, which is the only place a picture is described.
  */
 export interface Photo { key: string; src: string; srcSet: string; alt: string; credit: string; licence: string; page: string; source: string; w: number; h: number }
 type Meta = Record<string, { credit: string; licence: string; page: string; source: string; alt: string; w: number; h: number }>;

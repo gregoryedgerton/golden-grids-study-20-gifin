@@ -5,7 +5,7 @@ import { Fit } from "./fit";
 import { FactStrip, FactTile, PhotoCard } from "./cards";
 import { Avatar, CompanyLogo, CoverPattern } from "./people";
 import { Icon } from "../icons";
-import { CONNECTED, ME, PAGES, assessmentHref, degree, fullName, member, profileHref, span, type Member, type Role, type Skill, framed } from "../content";
+import { CONNECTED, EMAIL, ME, PAGES, assessmentHref, degree, fullName, member, profileHref, roleDates, roleRange, span, years, type Member, type Role, type Skill, framed } from "../content";
 import { results, social, toggle } from "./store";
 import { setFollowing, useFollowing } from "./post";
 
@@ -75,7 +75,7 @@ export function Identity({ m, x, slotKey, onPanel, panel, preview }: { m: Member
         <ExpandedCell id={x.panelId(slotKey)} title={`${fullName(m)}: contact info`} onClose={x.close} closeRef={x.closeRef}>
           <dl className="contact">
             <div><dt><Icon name="link" size={20} />Profile</dt><dd>gifin/in/{slug(m)}</dd></div>
-            {own && <div><dt><Icon name="message" size={20} />Email</dt><dd>jackie.brown@cabo-air.example</dd></div>}
+            {own && <div><dt><Icon name="message" size={20} />Email</dt><dd>{EMAIL}</dd></div>}
             <div><dt><Icon name="people" size={20} />Connected</dt><dd>{own ? "This is you" : connected ? "You are connected" : pending ? "Invitation pending" : "Not connected"}</dd></div>
           </dl>
           <p className="note">Addresses here are the study's own and reach no one.</p>
@@ -154,22 +154,22 @@ export function TopCard({ m, panel, setPanel, preview }: { m: Member; panel: str
   return <GridBand id="top" title={preview ? "Preview of your top card" : `${fullName(m)}, profile`} quiet lead variant={1} cells={cells} />;
 }
 
-function RoleBox({ r, year, x, slotKey }: { r: Role; year: number; x: ExpandGroup; slotKey: string }) {
+function RoleBox({ r, x, slotKey }: { r: Role; x: ExpandGroup; slotKey: string }) {
   const title = `${r.title}, ${r.company}`;
   return (
     <>
       <div className="box box--role">
         <CompanyLogo name={r.company} size={48} />
         <p className="role__title">{r.title}</p>
-        <p className="role__company">{r.company}{r.type ? ` · ${r.type}` : ""}</p>
-        <p className="role__dates">{r.start} – {r.end ?? "Present"} · {span(r, year)}</p>
+        <p className="role__company">{r.company}{r.type && <span className="role__type"> · {r.type}</span>}</p>
+        <p className="role__dates">{roleRange(r)}{!r.dates && r.start !== undefined && <span className="role__span"> · {span(r)}</span>}</p>
         {r.place && <p className="role__place">{r.place}</p>}
         {r.text && <div className="box__body"><Fit as="div" className="fit--body" min={12} max={18}><p>{r.text}</p></Fit></div>}
         {r.text && <div className="box__foot"><button className="more" aria-label={`More: ${title}`} {...x.triggerProps(slotKey)}>…see more</button></div>}
       </div>
       {x.isOpen(slotKey) && (
         <ExpandedCell id={x.panelId(slotKey)} title={title} onClose={x.close} closeRef={x.closeRef}>
-          <div className="cell__prose"><p><strong>{r.title}</strong>, {r.company}{r.type ? ` · ${r.type}` : ""}</p><p>{r.start} – {r.end ?? "Present"} · {span(r, year)}{r.place ? ` · ${r.place}` : ""}</p><p>{r.text}</p></div>
+          <div className="cell__prose"><p><strong>{r.title}</strong>, {r.company}{r.type ? ` · ${r.type}` : ""}</p><p>{roleDates(r)}{r.place ? ` · ${r.place}` : ""}</p><p>{r.text}</p></div>
         </ExpandedCell>
       )}
     </>
@@ -177,9 +177,9 @@ function RoleBox({ r, year, x, slotKey }: { r: Role; year: number; x: ExpandGrou
 }
 
 export function Experience({ m }: { m: Member }) {
-  const cells: Cell[] = m.roles.map((r): Cell => (x, key) => <RoleBox r={r} year={m.year} x={x} slotKey={key} />);
-  const years = m.roles.reduce((n, r) => n + ((r.end ?? m.year) - r.start), 0);
-  if (cells.length < 3) cells.push(() => <FactTile f={{ line: String(years), label: years === 1 ? "Year of experience" : "Years of experience", tone: "tile" }} />);
+  const cells: Cell[] = m.roles.map((r): Cell => (x, key) => <RoleBox r={r} x={x} slotKey={key} />);
+  const total = m.roles.reduce((n, r) => n + years(r), 0);
+  if (cells.length < 3 && total > 0) cells.push(() => <FactTile f={{ line: total.toLocaleString("en-US"), label: total === 1 ? "Year of experience" : "Years of experience", tone: "tile" }} />);
   if (cells.length < 3) cells.push(() => <FactTile f={{ line: String(m.roles.length), label: m.roles.length === 1 ? "Role" : "Roles", tone: "tile" }} />);
   return <GridBand id="experience" title="Experience" variant={2} cells={cells} />;
 }
