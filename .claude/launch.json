@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "study-19",
+      "name": "study-20",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
         "run",

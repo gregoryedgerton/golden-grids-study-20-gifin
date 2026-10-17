@@ -20,7 +20,7 @@ export function Avatar({ m, size = 48, frame, label, mood }: { m: Pick<Member, "
           <>
             <clipPath id={`clip${id}`}><circle cx="50" cy="50" r="50" /></clipPath>
             <circle cx="50" cy="50" r="50" fill={m.color} />
-            <image href={`${BASE}assets/s19-${m.photo}-avatar.jpg`} width="100" height="100" clipPath={`url(#clip${id})`} preserveAspectRatio="xMidYMid slice" />
+            <image href={`${BASE}assets/s20-${m.photo}-avatar.jpg`} width="100" height="100" clipPath={`url(#clip${id})`} preserveAspectRatio="xMidYMid slice" />
           </>
         ) : (
           <>

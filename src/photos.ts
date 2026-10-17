@@ -13,7 +13,7 @@ type Meta = Record<string, { credit: string; licence: string; page: string; sour
 export function photo(key: string): Photo {
   const m = (meta as Meta)[key];
   if (!m) throw new Error(`photo "${key}" is not in photos.json`);
-  const base = `${import.meta.env.BASE_URL}assets/s19-${key}`;
+  const base = `${import.meta.env.BASE_URL}assets/s20-${key}`;
   const small = Math.round(m.w * Math.min(1, 800 / Math.max(m.w, m.h)));
   const large = Math.round(m.w * Math.min(1, 1600 / Math.max(m.w, m.h)));
   return { key, src: `${base}-800.jpg`, srcSet: `${base}-800.jpg ${small}w, ${base}-1600.jpg ${large}w`, alt: m.alt, credit: m.credit, licence: m.licence, page: m.page, source: m.source, w: m.w, h: m.h };

@@ -2,8 +2,8 @@
 
 Each entry in avatars.json is [cx, cy, side]: the crop's centre as fractions
 of the photograph's width and height, and its side as a fraction of the
-photograph's shorter side. Reads public/assets/s19-<key>-1600.jpg and writes
-public/assets/s19-<key>-avatar.jpg at 320px, twice the largest avatar.
+photograph's shorter side. Reads public/assets/s20-<key>-1600.jpg and writes
+public/assets/s20-<key>-avatar.jpg at 320px, twice the largest avatar.
 
     python3 captures/avatars.py [--sheet out.jpg]
 
@@ -18,7 +18,7 @@ SPEC = json.loads((ROOT / "captures/avatars.json").read_text())
 SIZE = 320
 
 def crop(key, cx, cy, side):
-    im = Image.open(ROOT / f"public/assets/s19-{key}-1600.jpg").convert("RGB")
+    im = Image.open(ROOT / f"public/assets/s20-{key}-1600.jpg").convert("RGB")
     w, h = im.size
     s = min(w, h) * side
     x = min(max(cx * w - s / 2, 0), w - s)
@@ -28,7 +28,7 @@ def crop(key, cx, cy, side):
 out = {}
 for key, (cx, cy, side) in SPEC.items():
     im = crop(key, cx, cy, side)
-    im.save(ROOT / f"public/assets/s19-{key}-avatar.jpg", quality=84, optimize=True, progressive=True)
+    im.save(ROOT / f"public/assets/s20-{key}-avatar.jpg", quality=84, optimize=True, progressive=True)
     out[key] = im
 
 if "--sheet" in sys.argv:

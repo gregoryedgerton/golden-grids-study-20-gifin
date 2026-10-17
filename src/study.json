@@ -1,5 +1,5 @@
 {
-  "number": "19",
+  "number": "20",
   "name": "LinkedIn",
   "brand": "GIFin",
   "notice": "A layout study, not LinkedIn: its signed-in feed, profile, profile editing, settings and skill assessments rebuilt with Golden Grids as GIFin, a parody name, with fruits and vegetables as its members. Not affiliated with LinkedIn; nothing you do here is sent anywhere.",
@@ -80,6 +80,6 @@
     }
   ],
   "owner": "LinkedIn or Microsoft",
-  "repo": "https://github.com/gregoryedgerton/golden-grids-study-19-linkedin",
+  "repo": "https://github.com/gregoryedgerton/golden-grids-study-20-linkedin",
   "updated": "October 16, 2026"
 }

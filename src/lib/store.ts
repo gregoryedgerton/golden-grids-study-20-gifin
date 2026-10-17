@@ -3,7 +3,7 @@ import { EMAIL, ME, member, type AssessmentId, type Comment, type Member, type R
 
 /**
  * Everything a reader changes, kept in this browser's local storage under
- * `gg19p-*` and sent nowhere: the profile as edited, posts written, reactions,
+ * `gg20-*` and sent nowhere: the profile as edited, posts written, reactions,
  * comments, votes, follows, invitations, endorsements, assessment results and
  * settings. One store per kind, each a value with a setter and a hook, so a
  * change made on one page shows on the others. If storage is unavailable the
@@ -12,7 +12,7 @@ import { EMAIL, ME, member, type AssessmentId, type Comment, type Member, type R
 type Listener = () => void;
 
 export function persisted<T>(key: string, initial: T) {
-  const k = `gg19p-${key}`;
+  const k = `gg20-${key}`;
   let value: T = initial;
   try { const raw = localStorage.getItem(k); if (raw) { const v = JSON.parse(raw); value = (Array.isArray(initial) ? v : { ...initial, ...v }) as T; } } catch { /* in memory */ }
   const listeners = new Set<Listener>();
@@ -110,7 +110,7 @@ applyTheme(settings.get().theme);
 
 /** Everything this study keeps, cleared. */
 export function resetAll() {
-  try { Object.keys(localStorage).filter((k) => k.startsWith("gg19p-")).forEach((k) => localStorage.removeItem(k)); } catch { /* nothing kept */ }
+  try { Object.keys(localStorage).filter((k) => k.startsWith("gg20-")).forEach((k) => localStorage.removeItem(k)); } catch { /* nothing kept */ }
 }
 
 /** The name shown to members outside the network when the last name is set to an initial. */

@@ -1,8 +1,8 @@
-GIFcommit00020
+GIFcommit00021
 
 # Layout study — LinkedIn, as GIFin
 
-**Live:** [`https://gregoryedgerton.github.io/golden-grids-study-19-linkedin/`](https://gregoryedgerton.github.io/golden-grids-study-19-linkedin/)
+**Live:** [`https://gregoryedgerton.github.io/golden-grids-study-20-linkedin/`](https://gregoryedgerton.github.io/golden-grids-study-20-linkedin/)
 
 An unaffiliated layout study. It rebuilds the signed-in application of
 [linkedin.com](https://www.linkedin.com/) (the feed, a profile, the editing of

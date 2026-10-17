@@ -4,7 +4,7 @@ Guidance for agents working in a Golden Grids layout study.
 
 ## What this repo is
 
-Study 19: LinkedIn's signed-in application (feed, profile, editing one's own
+Study 20: LinkedIn's signed-in application (feed, profile, editing one's own
 profile, Settings & Privacy, skill assessments) rebuilt as stacked golden grids
 under the GIFin parody name, with fruits and vegetables as its members. FIVE pages (`index`, `profile`, `edit`, `settings`,
 `assessments`), Vite entries with plain links; `?u=` picks a profile, `?s=` a
@@ -14,11 +14,11 @@ header, `Rails`); `src/lib/post.tsx` the post as a grid, its action bar and
 panels, and the composer; `src/lib/profile.tsx` the top card, Experience and
 Skills; `src/lib/people.tsx` the avatars with their googly eyes, logos and
 cover pattern; `src/lib/store.ts` everything the reader changes (local
-storage, `gg19p-*`);
+storage, `gg20-*`);
 `src/content.ts` every member, post and question. Read
 `docs/program/PROGRAM.md`, then `STUDY-BRIEF.md`, then `README.md`.
 
-Live at https://gregoryedgerton.github.io/golden-grids-study-19-linkedin/;
+Live at https://gregoryedgerton.github.io/golden-grids-study-20-linkedin/;
 pushing to `main` deploys.
 
 ## Rules that are not negotiable
