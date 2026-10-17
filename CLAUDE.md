@@ -18,7 +18,7 @@ storage, `gg20-*`);
 `src/content.ts` every member, post and question. Read
 `docs/program/PROGRAM.md`, then `STUDY-BRIEF.md`, then `README.md`.
 
-Live at https://gregoryedgerton.github.io/golden-grids-study-20-linkedin/;
+Live at https://gregoryedgerton.github.io/golden-grids-study-20-gifin/;
 pushing to `main` deploys.
 
 ## Rules that are not negotiable
@@ -378,3 +378,5 @@ app download link; real autofill tokens (`email`, `given-name`,
 link to linkedin.com. After a build, `grep -ri "linkedin\.com" dist` must
 print nothing. After deploying, request a review in Google Search Console
 (Security Issues) so the flag is lifted.
+
+- **Address (2026-10-17, Greg).** The repository moved from `golden-grids-study-20-linkedin` to `golden-grids-study-20-gifin`, so the reference's name is no longer in the study's web address (a step against the Safe Browsing flag on the shared origin); the old address no longer serves anything.

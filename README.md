@@ -2,7 +2,7 @@ GIFcommit00021
 
 # Layout study — LinkedIn, as GIFin
 
-**Live:** [`https://gregoryedgerton.github.io/golden-grids-study-20-linkedin/`](https://gregoryedgerton.github.io/golden-grids-study-20-linkedin/)
+**Live:** [`https://gregoryedgerton.github.io/golden-grids-study-20-gifin/`](https://gregoryedgerton.github.io/golden-grids-study-20-gifin/)
 
 An unaffiliated layout study. It rebuilds the signed-in application of
 [linkedin.com](https://www.linkedin.com/) (the feed, a profile, the editing of
@@ -247,3 +247,5 @@ NODE_PATH=<a node_modules with playwright> node captures/scan.cjs http://localho
 ```
 
 Pushing to `main` deploys to GitHub Pages.
+
+- **Address (2026-10-17, Greg).** The repository moved from `golden-grids-study-20-linkedin` to `golden-grids-study-20-gifin`, so the reference's name is no longer in the study's web address (a step against the Safe Browsing flag on the shared origin); the old address no longer serves anything.
