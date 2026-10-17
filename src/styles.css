@@ -4,7 +4,7 @@
    ink at 90% and 60% black, the blue #0a66c2 of its buttons and links, pill
    buttons, the system face, and green for open to work. The reference has a
    dark mode of its own, and so does the study: it follows the device, or the
-   Dark mode setting (Settings, Account preferences), which sets data-theme. */
+   data-theme set before the first paint. */
 
 :root {
   --font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -128,6 +128,8 @@ a.gnav__item:hover, button.gnav__item:hover { color: var(--fg); }
 .memenu ul { display: grid; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
 .memenu li > * { display: block; padding: 6px 12px; color: var(--fg-2); text-decoration: none; }
 .memenu li a:hover { text-decoration: underline; color: var(--fg); }
+.memenu__btn { width: 100%; border: 0; background: none; text-align: left; font: inherit; cursor: pointer; }
+.memenu__btn:hover { text-decoration: underline; color: var(--fg); }
 .memenu ul:last-child { padding-bottom: 0; border-bottom: 0; }
 .settop__me { margin-left: auto; display: inline-flex; }
 
@@ -518,45 +520,11 @@ a.box:hover { box-shadow: inset 0 0 0 2px var(--blue-ink); }
 .radios span { display: grid; } .radios small { color: var(--fg-2); }
 .preview { display: grid; gap: 2px; padding: 10px 12px; border-radius: var(--r); background: var(--tile); }
 
-/* --- Settings ----------------------------------------------------------------------------- */
-.settings { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 820px) { .settings { grid-template-columns: 240px minmax(0, 1fr); align-items: start; } .setnav { position: sticky; top: calc(var(--study-banner-h, 0px) + var(--bar-h, 0px) + 24px); } }
-.setnav { display: grid; gap: 8px; }
-.setnav__me { display: flex; align-items: center; gap: 10px; }
-.setnav__title { font-size: 24px; font-weight: 600; }
-.setnav ul { display: grid; gap: 2px; }
-.setnav a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 4px; text-decoration: none; font-weight: 600; color: var(--fg-2); border-left: 3px solid transparent; }
-.setnav a:hover { background: var(--card); color: var(--fg); }
-.setnav a[aria-current] { color: var(--green); border-left-color: var(--green); background: var(--card); }
-.setnav__links { color: var(--fg-2); font-size: 12px; }
-.setmain { min-width: 0; display: grid; gap: 12px; }
-.setmain .wrap { width: 100%; }
+/* --- The back link and search field the assessments use ------------------------------------ */
 .setback a { display: inline-flex; align-items: center; gap: 6px; color: var(--fg-2); font-weight: 600; text-decoration: none; }
 .setback a:hover { color: var(--blue-ink); text-decoration: underline; }
 .setsearch { position: relative; }
 .setsearch input { padding-left: 36px; min-height: 40px; border: 0; background: var(--card); box-shadow: var(--ring); }
-.setgroup { padding: 16px 0 4px; }
-.setgroup .card__title { padding: 0 24px; font-size: 18px; margin-bottom: 4px; }
-@media (max-width: 639px) { .setgroup .card__title { padding: 0 16px; } }
-.setrows li + li { border-top: 1px solid var(--line); }
-.setrow { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 8px 24px; border: 0; background: transparent; color: var(--fg); text-align: left; cursor: pointer; }
-@media (max-width: 639px) { .setrow { padding: 8px 16px; } .setrow__detail { padding: 4px 16px 16px; } }
-.setrow:hover { background: var(--tile); }
-.setrow__label { flex: 1; }
-.setrow__value { color: var(--fg-2); font-size: 13px; text-align: right; }
-.setrow__detail { display: grid; gap: 10px; padding: 4px 24px 18px; }
-.box--cat { --tone-bg: var(--card); box-shadow: var(--ring); gap: 8px; color: var(--fg); }
-.cat__icon { color: var(--green); }
-.cat__name { font-weight: 600; font-size: clamp(15px, calc(10px + 2.2cqmin), 24px); }
-.cat__blurb { color: var(--fg-2); font-size: clamp(12px, calc(10px + 1cqmin), 15px); }
-@container (max-height: 170px) or (max-width: 160px) { .cat__blurb { display: none; } }
-@container (max-height: 110px) { .cat__icon { display: none; } }
-.box--notif { --tone-bg: var(--card); box-shadow: var(--ring); }
-.box--notif.is-on { box-shadow: inset 0 3px 0 var(--green), var(--ring); }
-.notif__state { margin-top: 4px; font-size: clamp(22px, calc(10px + 6cqmin), 56px); font-weight: 600; line-height: 1; }
-.box--notif .box__foot { display: block; }
-.box--notif .switch > span:first-of-type { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-@container (max-width: 110px) or (max-height: 115px) { .box--notif .box__foot { display: block; } .notif__state { display: none; } }
 
 /* --- Skill assessments --------------------------------------------------------------------- */
 .box--test { --tone-bg: var(--card); box-shadow: var(--ring); gap: 6px; color: var(--fg); }

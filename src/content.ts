@@ -15,7 +15,6 @@ export const PAGES = {
   feed: `${BASE}`,
   profile: `${BASE}profile.html`,
   edit: `${BASE}edit.html`,
-  settings: `${BASE}settings.html`,
   assessments: `${BASE}assessments.html`,
 };
 export const profileHref = (id: string) => (id === ME ? PAGES.profile : `${PAGES.profile}?u=${id}`);
@@ -1073,6 +1072,5 @@ export const REFERENCE = {
   feed: { label: "the LinkedIn feed (signed-in home)" },
   profile: { label: "a LinkedIn member profile" },
   edit: { label: "editing one's own LinkedIn profile" },
-  settings: { label: "LinkedIn's Settings & Privacy" },
   assessments: { label: "LinkedIn's Skill Assessments, retired in 2023" },
 };

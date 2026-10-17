@@ -5,12 +5,12 @@ Guidance for agents working in a Golden Grids layout study.
 ## What this repo is
 
 Study 20: LinkedIn's signed-in application (feed, profile, editing one's own
-profile, Settings & Privacy, skill assessments) rebuilt as stacked golden grids
-under the GIFin parody name, with fruits and vegetables as its members. FIVE pages (`index`, `profile`, `edit`, `settings`,
-`assessments`), Vite entries with plain links; `?u=` picks a profile, `?s=` a
-settings category, `?a=` an assessment. `src/lib/Page.tsx` is the shell (the
-global navigation with a suggesting search and the Me menu, the settings
-header, `Rails`); `src/lib/post.tsx` the post as a grid, its action bar and
+profile, skill assessments) rebuilt as stacked golden grids under the GIFin
+parody name, with fruits and vegetables as its members. FOUR pages (`index`,
+`profile`, `edit`, `assessments`), Vite entries with plain links; `?u=` picks
+a profile, `?a=` an assessment. There is no settings page (removed
+2026-10-17, below). `src/lib/Page.tsx` is the shell (the global navigation
+with a suggesting search and the Me menu, `Rails`); `src/lib/post.tsx` the post as a grid, its action bar and
 panels, and the composer; `src/lib/profile.tsx` the top card, Experience and
 Skills; `src/lib/people.tsx` the avatars with their googly eyes, logos and
 cover pattern; `src/lib/store.ts` everything the reader changes (local
@@ -198,15 +198,12 @@ README: the smallest line, and that no screen-reader user has tested it.
   markets and dishes; no person appears in any photograph.
 - Everything the reader does goes through `src/lib/store.ts` and stays in the
   browser. A form or button that would send something says it sends nothing.
-  Settings & Privacy, Data privacy, Reset this study clears it all.
+  Reset the demo, in the Me menu, clears it all.
 - No account access: nothing asks for an email address, a password, a phone
   number or a code, nothing offers to sign in or out or to download, and
   nothing links to the reference (see Safe Browsing remediation, below).
-- Dark mode is the reference's own setting: `settings.theme` sets
-  `data-theme` on `<html>` (an inline script in each HTML entry applies it
-  before the first paint), and the stylesheet's dark tokens apply under the
-  device preference unless `data-theme="light"`, and always under
-  `data-theme="dark"`.
+- Dark mode follows the device only; the setting that chose it went with the
+  settings page, and `store.ts` clears any `data-theme` kept from before.
 - Panels open in the flow beneath what opened them (reaction picker, menus,
   Send, Repost, Connect, Message, edit forms). Only the Me menu and the search
   suggestions hang from the header. No fixed bars.
@@ -369,6 +366,17 @@ login-walled pages looks like phishing however clearly it is labelled.
   `url`, the closing disclosure (`Page` in `src/lib/Page.tsx`) says why
   ("Why nothing here links to LinkedIn"), and the README keeps the addresses.
   `study.json` says what was left out without repeating the trigger words.
+
+**Then the whole settings page went (2026-10-17, Greg: "lets also get rid
+of our settings on GIFin. scrub the pages and the mentions of settings in
+the studies or the marketing material itself").** `settings.html`,
+`src/pages/settings.tsx`, the settings header (`SettingsTop`), their styles
+and the dark-mode script in each HTML entry are gone; the Me menu's
+Settings & Privacy item is Reset the demo; the profile rail's language and
+URL rows have no edit links. The study, its README and study.json, and the
+marketing material (the library's showcase row, the gallery's study file,
+GIFcommit's master list, the repository's description) no longer mention
+settings. Do not add a settings page back.
 
 **Do not** bring back, here or in any sibling study: an email, password,
 phone or verification-code field; a sign-in, sign-out, password, session or

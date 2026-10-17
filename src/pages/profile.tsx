@@ -61,8 +61,8 @@ function App() {
     <>
       {own && (
         <section className="railcard" aria-label="Profile language and public address">
-          <div className="railrow"><div><h2 className="railcard__title">Profile language</h2><p className="note">English</p></div><a className="iconbtn" href={PAGES.settings} aria-label="Change profile language in settings"><Icon name="pencil" size={18} /></a></div>
-          <div className="railrow"><div><h2 className="railcard__title">Public profile &amp; URL</h2><p className="note">{profileUrl(m)}</p></div><a className="iconbtn" href={`${PAGES.settings}?s=visibility`} aria-label="Edit public profile visibility"><Icon name="pencil" size={18} /></a></div>
+          <div className="railrow"><div><h2 className="railcard__title">Profile language</h2><p className="note">English</p></div></div>
+          <div className="railrow"><div><h2 className="railcard__title">Public profile &amp; URL</h2><p className="note">{profileUrl(m)}</p></div></div>
         </section>
       )}
       <Section title="People also viewed">

@@ -6,7 +6,7 @@ GIFcommit00021
 
 An unaffiliated layout study. It rebuilds the signed-in application of
 [linkedin.com](https://www.linkedin.com/) (the feed, a profile, the editing of
-one's own profile, Settings & Privacy and the skill assessments) as stacked
+one's own profile and the skill assessments) as stacked
 golden grids under a parody name, GIFin. Its twenty-five members are fruits
 and vegetables, each with the profile a professional network would ask of it
 and a pair of googly eyes that match what it writes. The voice is cheeky and
@@ -19,7 +19,7 @@ reproduced. Built with
 
 ## Reference
 
-The reference shows its feed, settings and full profiles only to members, and
+The reference shows its feed and full profiles only to members, and
 the study does not sign in to anyone's account. The pages are built from the
 application's known structure, read on 2026-10-15 and 2026-10-16; no screenshot of the
 reference is kept. The reference retired its skill assessments in 2023 and
@@ -28,8 +28,7 @@ available"); the study rebuilds the feature as it worked.
 
 The study's pages name these references but do not link to them (see Notes
 for review). Their addresses are kept here:
-[the feed](https://www.linkedin.com/feed/),
-[Settings & Privacy](https://www.linkedin.com/mypreferences/d/categories/account)
+[the feed](https://www.linkedin.com/feed/)
 and the help page
 [Skill Assessments - no longer available](https://www.linkedin.com/help/learning/answer/a1690529);
 a member's profile and its editing are at addresses particular to the member,
@@ -49,19 +48,13 @@ under [linkedin.com](https://www.linkedin.com/).
   received and given, Languages and Interests; People also viewed.
 - **Editing:** the reference's dialogs for the intro (with a headline of up to
   220 characters), About (2,600), Open to work, a position and skills.
-- **Settings & Privacy:** a reduced header, six categories (Account
-  preferences, Sign in & security, Visibility, Data privacy, Advertising data,
-  Notifications), each a list of settings with their current values. The
-  study rebuilds five of them; Sign in & security is left out (see Notes for
-  review).
 - **Skill assessments:** a list, an introduction, timed multiple-choice
   questions taken in one sitting, and a result that adds a badge to the skill.
 
 **Register:** a warm grey ground `#f4f2ee`, white cards with 8px corners and a
 faint ring for an edge, ink at 90% and 60% black, the blue `#0a66c2` of the
 buttons and links, pill buttons, the system face, and green for open to work.
-The reference has a dark mode of its own; the study's follows the device, or
-the Dark mode setting in Settings, which applies on every page.
+The reference has a dark mode of its own; the study's follows the device.
 
 ## Approach
 
@@ -82,10 +75,6 @@ of rows. The study sets them as golden grids:
   ordered by endorsements, so the most endorsed skill is the largest square.
 - **The editing page puts the top card above the forms as a live preview**,
   changing as the reader types; each form saves on its own.
-- **Settings** is a grid of its five categories on its home page, with the
-  number of settings in the sixth square, a list of rows that open in place
-  within a category, and a grid of the kinds of notification, each with its
-  switch, with the number turned on in the last square.
 - **Assessments** are squares, the one for a skill on the reader's profile
   largest, and a result is a grid of its figures beside the badge.
 
@@ -101,14 +90,12 @@ Long lists are dealt into bands as evenly as possible (`deal()` in
 | | Experience | the roles, current first, with figures where there is one role |
 | | Skills | up to five skills, most endorsed first |
 | Edit profile | Preview | the top card, live |
-| Settings | Home | the five categories and the number of settings, in two bands of three |
-| | Notifications | eleven kinds, each with a switch, and the number turned on, in four bands of three |
 | Skill assessments | List | the five assessments, the one for a profile skill first |
 | | Result | correct answers, the badge, the score, the time taken |
 
 Flat modules stay flat: the navigation and search, the rails, the composer,
 the action bar and its panels, the profile's prose sections, the forms, the
-settings rows, the quiz and the answer review.
+quiz and the answer review.
 
 **What answers back.** Like and the six reactions; comments, with likes and
 replies; votes in a poll; Attend on an event; Say congratulations on a
@@ -118,10 +105,7 @@ photograph; Follow and Following everywhere; Connect with a note, Pending and
 Withdraw; Message; Recommend; Endorse; Contact info; Open to; the feed's Top
 and Recent; the search's suggestions of members and assessments. On the
 editing page every field changes the preview at once, with required fields,
-character limits and year checks. In Settings, Dark mode, the feed's default
-sort, the last-name setting (with what others see), the profile viewing
-options (with what others see), every notification and advertising switch,
-Close account in three steps that close nothing, and a reset that clears
+character limits and year checks. Reset the demo, in the Me menu, clears
 everything the study keeps. In an assessment, the timer
 (which can be turned off before or during the test), shuffled answers, a pass
 mark, a review of every answer with its source, and a badge the reader can show
@@ -181,24 +165,18 @@ Observations for whoever reviews this study, recorded without a verdict.
 Whether the layout suits the page is assessed separately, after every study
 has been reviewed.
 
-- **Account access was taken out after Google flagged the site
+- **The account pages were taken out after Google flagged the site
   (2026-10-17).** Google Safe Browsing flagged the whole of
   gregoryedgerton.github.io as deceptive ("social engineering"), first for a
   demo bank sign-in in Study 19. Nothing here was ever collected, but the
-  scanner reads appearance, so this study no longer has the reference's Sign
-  in & security category (email addresses with an Add email address field,
-  phone numbers, Change password, Where you're signed in with Sign out
-  buttons, two-step verification), the Verifications row of Account
-  preferences, the Verifications kind of notification, Get a copy of your
-  data (with Download larger data archive and Request archive), Sign Out in
-  the Me menu, or Get the GIFin app in the rail's footer. The edit forms ask
-  browsers not to autofill the name and location fields. To keep the grids
-  whole, the settings home's sixth square carries the number of settings,
-  and the twelfth square of Notifications, where Verifications was, the
-  number of kinds turned on. The pages name the
-  reference but no longer link to it; the closing disclosure says why ("Why
-  nothing here links to LinkedIn"), and the addresses are kept in this README
-  and nowhere in the build.
+  scanner reads appearance. The study no longer rebuilds the reference's
+  account pages at all (at Greg's direction),
+  nor Sign Out in the Me menu or Get the GIFin app in the rail's footer; Reset
+  the demo in the Me menu stands where the reset used to be. The edit forms
+  ask browsers not to autofill the name and location fields. The pages name
+  the reference but no longer link to it; the closing disclosure says why
+  ("Why nothing here links to LinkedIn"), and the addresses are kept in this
+  README and nowhere in the build.
 - **The cast was replaced.** The study was first built with characters from
   Quentin Tarantino's films and withdrawn before review as weak source
   material; the pages and their interactions stayed, and the members, posts,
@@ -243,7 +221,7 @@ top, and "About this layout study", the last element on the page.
 ```bash
 npm install
 npm run dev
-NODE_PATH=<a node_modules with playwright> node captures/scan.cjs http://localhost:5173/ index profile "profile?u=avocado" edit settings "settings?s=account" assessments "assessments?a=botany"
+NODE_PATH=<a node_modules with playwright> node captures/scan.cjs http://localhost:5173/ index profile "profile?u=avocado" edit assessments "assessments?a=botany"
 ```
 
 Pushing to `main` deploys to GitHub Pages.

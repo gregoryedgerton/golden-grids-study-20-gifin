@@ -5,15 +5,14 @@ import { Credits, useBarHeight } from "./modules";
 import { Icon, type IconName } from "../icons";
 import { Avatar } from "./people";
 import { ASSESSMENTS, HEADER_NAV, MEMBERS, ME, PAGES, RAIL_LINKS, assessmentHref, fullName, profileHref } from "../content";
-import { me } from "./store";
+import { me, resetAll } from "./store";
 
 /**
  * The shell, after the reference's signed-in app: a white bar with the mark,
  * a search field, and the global navigation as icons over their names (Home,
  * My Network, Jobs, Messaging, Notifications, Me), then For Business and the
  * premium offer. Home and the Me menu lead to the study's pages; the rest are
- * the reference's items, for show. The settings pages carry the reference's
- * own reduced header. Nothing in the shell or the disclosure leaves for the
+ * the reference's items, for show. Nothing in the shell or the disclosure leaves for the
  * reference: the disclosure names the pages it follows without linking them,
  * and says why. The Me menu has no Sign Out, as the study has no sign-in.
  */
@@ -59,14 +58,13 @@ function MeMenu() {
           <p className="memenu__view"><a className="btn btn--outline btn--block" href={PAGES.profile}>View profile</a></p>
           <p className="memenu__h">Account</p>
           <ul>
-            <li><a href={PAGES.settings}>Settings &amp; Privacy</a></li>
             <li><a href={PAGES.edit}>Edit profile</a></li>
             <li><a href={PAGES.assessments}>Skill assessments</a></li>
             <li><span>Help</span></li>
             <li><span>Language</span></li>
           </ul>
           <p className="memenu__h">Manage</p>
-          <ul><li><a href={`${PAGES.feed}#saved`}>Posts &amp; Activity</a></li><li><span>Job Posting Account</span></li></ul>
+          <ul><li><a href={`${PAGES.feed}#saved`}>Posts &amp; Activity</a></li><li><span>Job Posting Account</span></li><li><button type="button" className="memenu__btn" onClick={() => { resetAll(); location.assign(PAGES.feed); }}>Reset the demo</button></li></ul>
         </div>
       )}
     </li>
@@ -96,19 +94,6 @@ function GlobalNav({ current }: { current: string }) {
   );
 }
 
-function SettingsTop() {
-  const m = me.use();
-  const ref = useBarHeight<HTMLElement>();
-  return (
-    <header className="gtop gtop--settings" ref={ref}>
-      <div className="wrap gtop__row">
-        <a className="mark" href={PAGES.feed} aria-label="GIFin home"><span className="mark__gif">GIF</span><span className="mark__in">in</span></a>
-        <a className="settop__me" href={PAGES.profile} aria-label={`Your profile, ${fullName(m)}`}><Avatar m={m} size={32} /></a>
-      </div>
-    </header>
-  );
-}
-
 /** The app's three columns: a left rail, the main column and a right rail. */
 export function Rails({ left, right, children }: { left?: ReactNode; right?: ReactNode; children: ReactNode }) {
   return (
@@ -129,13 +114,13 @@ export function RailFooter() {
   );
 }
 
-export function Page({ current, source, header = "app", children }: { current: string; source: { label: string }[]; header?: "app" | "settings"; children: ReactNode }) {
+export function Page({ current, source, children }: { current: string; source: { label: string }[]; children: ReactNode }) {
   return (
     <>
       <a className="skip" href="#content">Skip to content</a>
       <StudyBanner />
       <Tools />
-      {header === "app" ? <GlobalNav current={current} /> : <SettingsTop />}
+      <GlobalNav current={current} />
       <main id="content" className="app">{children}</main>
       <StudyDisclosure>
         <p>This page follows {source.map((s, i) => <span key={s.label}>{i > 0 && (i === source.length - 1 ? " and " : ", ")}{s.label}</span>)}, as the reference is known in October 2026; it was built without signing in.</p>

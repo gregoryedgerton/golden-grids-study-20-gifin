@@ -2,18 +2,17 @@
   "number": "20",
   "name": "LinkedIn",
   "brand": "GIFin",
-  "notice": "A layout study, not LinkedIn: its signed-in feed, profile, profile editing, settings and skill assessments rebuilt with Golden Grids as GIFin, a parody name, with fruits and vegetables as its members. Not affiliated with LinkedIn; nothing you do here is sent anywhere.",
+  "notice": "A layout study, not LinkedIn: its signed-in feed, profile, profile editing and skill assessments rebuilt with Golden Grids as GIFin, a parody name, with fruits and vegetables as its members. Not affiliated with LinkedIn; nothing you do here is sent anywhere.",
   "pages": {
     "index": "Feed",
     "profile": "Profile",
     "edit": "Edit profile",
-    "settings": "Settings & Privacy",
     "assessments": "Skill assessments"
   },
-  "summary": "LinkedIn's signed-in application, rebuilt as stacked golden grids: the feed, a member's profile, the editing of one's own profile, Settings & Privacy, and the skill assessments the reference ran until 2023. Its twenty-five members are fruits and vegetables with first names (Tessa Tomato, Otto Orange, Chelsea Chilli), each with the profile a professional network would ask of them and a pair of googly eyes that match what they write. The feed mixes photographs, galleries, carousels of slides and long reads on the dishes each one is used in. The voice is cheeky and the facts are true. Nearly everything on the pages answers back: reactions, comments, reposts, polls, invitations, endorsements, edits, settings and timed tests, all kept in the reader's browser.",
+  "summary": "LinkedIn's signed-in application, rebuilt as stacked golden grids: the feed, a member's profile, the editing of one's own profile, and the skill assessments the reference ran until 2023. Its twenty-five members are fruits and vegetables with first names (Tessa Tomato, Otto Orange, Chelsea Chilli), each with the profile a professional network would ask of them and a pair of googly eyes that match what they write. The feed mixes photographs, galleries, carousels of slides and long reads on the dishes each one is used in. The voice is cheeky and the facts are true. Nearly everything on the pages answers back: reactions, comments, reposts, polls, invitations, endorsements, edits and timed tests, all kept in the reader's browser.",
   "reviewed": {
     "date": "October 16, 2026",
-    "method": "Built from the signed-in application's known structure, without signing in: the reference shows its feed, settings and full profiles only to members, and the study does not sign in to anyone's account. The retirement of skill assessments in 2023 is from the reference's own help page. No screenshot, photograph or text of the reference is kept in the repository or published. The pages are named here but not linked: a lookalike of a service that links to that service's own pages reads as phishing to Google's scanners, which flagged the site this study is published on in October 2026. The repository's README links them.",
+    "method": "Built from the signed-in application's known structure, without signing in: the reference shows its feed and full profiles only to members, and the study does not sign in to anyone's account. The retirement of skill assessments in 2023 is from the reference's own help page. No screenshot, photograph or text of the reference is kept in the repository or published. The pages are named here but not linked: a lookalike of a service that links to that service's own pages reads as phishing to Google's scanners, which flagged the site this study is published on in October 2026. The repository's README links them.",
     "pages": [
       {
         "label": "The feed (signed-in home)"
@@ -25,15 +24,12 @@
         "label": "Editing one's own profile"
       },
       {
-        "label": "Settings & Privacy"
-      },
-      {
         "label": "Skill Assessments: no longer available (help)"
       }
     ]
   },
   "real": [
-    "The shape of each page as the reference's application is known: the global navigation, the three columns of the feed, a post's author line, text, picture, counts and action bar with its six reactions, the profile's top card and sections, the edit forms and their limits (a headline of 220 characters, an About of 2,600), five of the six categories of Settings & Privacy, and a skill assessment's timed multiple-choice questions and badge.",
+    "The shape of each page as the reference's application is known: the global navigation, the three columns of the feed, a post's author line, text, picture, counts and action bar with its six reactions, the profile's top card and sections, the edit forms and their limits (a headline of 220 characters, an About of 2,600), and a skill assessment's timed multiple-choice questions and badge.",
     "Every fact about a member: its botany, where and when it was domesticated or bred, the people in its history (Rudolph Hass, Gregor Mendel, Wilbur Scoville, James Lind, Joseph Paxton, Norman Sondag) and the dates of each, checked against the Wikipedia page the disclosure names for that member; and every answer in the skill assessments, checked against the Wikipedia page named beside it. Claims that could not be checked were left out.",
     "Each member's scientific name, shown as a profile detail, and every fact in the long reads, galleries and carousels about the dishes the members are used in (pizza Margherita, gazpacho, baba ghanoush, moussaka, Hawaiian pizza, al pastor, peach Melba, caldo verde, colcannon, nixtamalization, guacamole, bananas Foster), each checked against the Wikipedia page the disclosure names for that post."
   ],
@@ -42,8 +38,8 @@
     "The members' first names (Tessa Tomato, Otto Orange, Peter Peppers, Chelsea Chilli, Eleanor Eggplant and the rest), at Greg's direction, and every post, comment, headline, About, recommendation, count and setting value: new writing in the study's own words, in the members' own cheeky voices. The jokes and the opinions are the study's; the facts inside them are not invented. Job titles, employers and dates turn a plant's history into a career: Tessa Tomato's role as a vegetable, for tariff purposes, begins in 1893, the year of Nix v. Hedden. Roles whose dates no source gives exactly carry a phrase in place of years.",
     "The googly eyes, drawn in CSS over each photograph. Each post and comment sets its author's mood (happy, proud, cheeky, surprised, worried, curious or sleepy), and what the reader types sets the mood of their own. The eyes wobble and blink, and hold still with reduced motion.",
     "The skill assessments, which have six questions each where the reference's had fifteen, and the pass mark of seventy per cent; the reference's badge went to members in the top thirty per cent, which a study of one reader cannot measure.",
-    "Everything the reader does: posts, reactions, comments, votes, invitations, messages, endorsements, edits, settings and results are kept in this browser's local storage and sent nowhere. Settings & Privacy can clear them.",
-    "What is left out. After Google's scanners flagged the site this study is published on as deceptive in October 2026, the reference's account-access category of Settings & Privacy and every row about email addresses, phone numbers or identity checks were taken out, with the request for a copy of one's data, the last item of the Me menu and the rail's link to the mobile app. Nothing on the pages asks for an email address or a code. In the squares they leave, on the settings home and in Notifications, figures stand: how many settings there are, and how many kinds of notification are turned on."
+    "Everything the reader does: posts, reactions, comments, votes, invitations, messages, endorsements, edits and results are kept in this browser's local storage and sent nowhere. Reset the demo, in the Me menu, clears them.",
+    "What is left out. After Google's scanners flagged the site this study is published on as deceptive in October 2026, the reference's account pages were taken out entirely, with the last item of the Me menu and the rail's link to the mobile app. Nothing on the pages asks for an email address, a phone number or a code. The pages name LinkedIn but do not link to it."
   ],
   "assets": [
     {

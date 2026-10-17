@@ -13,8 +13,8 @@ function pagesBase(): string {
   return `/${repo}/`;
 }
 
-// Five pages, no router, plain relative links; the profile and the assessments take a query (?u=, ?a=), settings a section (?s=).
-const pages = ["index", "profile", "edit", "settings", "assessments"];
+// Four pages, no router, plain relative links; the profile and the assessments take a query (?u=, ?a=).
+const pages = ["index", "profile", "edit", "assessments"];
 
 export default defineConfig({
   base: pagesBase(),

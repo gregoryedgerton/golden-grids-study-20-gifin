@@ -10,6 +10,6 @@ No screenshot of the reference is kept: its pages carry its own photographs and 
 - `site-issue.cjs`: files the request to join the Golden Grids site's gallery.
 
 ```bash
-NODE_PATH=<a node_modules with playwright> node captures/scan.cjs http://localhost:5196/ index profile "profile?u=avocado" edit settings "settings?s=account" assessments "assessments?a=botany"
+NODE_PATH=<a node_modules with playwright> node captures/scan.cjs http://localhost:5196/ index profile "profile?u=avocado" edit assessments "assessments?a=botany"
 NODE_PATH=<a node_modules with playwright> node captures/cells.cjs http://localhost:5196/ 390 webkit index "profile?u=avocado"
 ```
