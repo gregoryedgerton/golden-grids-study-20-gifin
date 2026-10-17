@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Golden Grids layout study 19: LinkedIn's signed-in feed, profile, profile editing, settings and skill assessments, rebuilt as stacked golden grids under the GIFin brand and populated with characters from Quentin Tarantino's films, with the emphasis on interaction.",
+  "description": "Golden Grids layout study 20: LinkedIn's signed-in feed, profile, profile editing, settings and skill assessments, rebuilt as stacked golden grids under the GIFin brand, with fruits and vegetables as its members and the emphasis on interaction.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
